@@ -1005,6 +1005,10 @@ button {
     z-index: 2;
 }
 
+[data-theme="light"] .champion-gradient-overlay {
+    background: linear-gradient(180deg, rgba(30, 31, 34, 0.15) 0%, rgba(30, 31, 34, 0.88) 60%, rgba(20, 21, 24, 0.95) 100%);
+}
+
 .champion-watermark-rank {
     position: absolute;
     top: 10px;
@@ -2901,6 +2905,10 @@ button {
     inset: 0;
     background: linear-gradient(180deg, rgba(20, 21, 24, 0.1) 0%, rgba(20, 21, 24, 0.72) 55%, var(--bg-surface) 100%);
     z-index: 2;
+}
+
+[data-theme="light"] .ov-hero-mask {
+    background: linear-gradient(180deg, rgba(20, 21, 24, 0.1) 0%, rgba(20, 21, 24, 0.72) 55%, rgba(20, 21, 24, 0.95) 100%);
 }
 
 .ov-hero-content {
