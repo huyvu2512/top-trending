@@ -45,24 +45,45 @@ function parseNetflixTableRows(html, categoryId, categoryName) {
     return items;
 }
 
+async function fetchWithRetry(url, categoryId, categoryName) {
+    const userAgents = [
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15'
+    ];
+
+    for (let attempt = 0; attempt < userAgents.length; attempt++) {
+        try {
+            const res = await axios.get(url, {
+                headers: {
+                    'User-Agent': userAgents[attempt],
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+                    'Accept-Language': 'vi,en-US;q=0.9,en;q=0.8',
+                    'Cache-Control': 'no-cache'
+                },
+                timeout: 30000
+            });
+            const items = parseNetflixTableRows(res.data, categoryId, categoryName);
+            if (items.length > 0) {
+                return items;
+            }
+        } catch (e) {
+            if (attempt === userAgents.length - 1) {
+                throw e;
+            }
+        }
+    }
+    return [];
+}
+
 export async function fetchNetflixTrends() {
     console.log('[Netflix]: Đang cào bảng xếp hạng Top 10 Việt Nam (Phim & TV)...');
-
-    const headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
-        'Accept-Language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7'
-    };
 
     let films = [];
     let tvShows = [];
 
     // 1. Cào Top 10 Phim điện ảnh
     try {
-        const filmRes = await axios.get('https://www.netflix.com/tudum/top10/vietnam', {
-            headers,
-            timeout: 12000
-        });
-        films = parseNetflixTableRows(filmRes.data, 'films', 'Phim điện ảnh');
+        films = await fetchWithRetry('https://www.netflix.com/tudum/top10/vietnam', 'films', 'Phim điện ảnh');
         console.log(`[Netflix]: Đã lấy ${films.length} phim điện ảnh Top 10.`);
     } catch (e) {
         console.warn('[Netflix]: Lỗi cào Top 10 Phim:', e.message);
@@ -70,11 +91,7 @@ export async function fetchNetflixTrends() {
 
     // 2. Cào Top 10 Phim truyền hình (TV Shows)
     try {
-        const tvRes = await axios.get('https://www.netflix.com/tudum/top10/vietnam/tv', {
-            headers,
-            timeout: 12000
-        });
-        tvShows = parseNetflixTableRows(tvRes.data, 'tv', 'Phim truyền hình');
+        tvShows = await fetchWithRetry('https://www.netflix.com/tudum/top10/vietnam/tv', 'tv', 'Phim truyền hình');
         console.log(`[Netflix]: Đã lấy ${tvShows.length} series truyền hình Top 10.`);
     } catch (e) {
         console.warn('[Netflix]: Lỗi cào Top 10 TV Shows:', e.message);
