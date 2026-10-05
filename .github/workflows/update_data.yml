@@ -5,6 +5,10 @@ on:
     - cron: '0 */3 * * *' # Tu dong chay moi 3 tieng mot lan
   workflow_dispatch:      # Cho phep bam chay thu cong tren giao dien GitHub
 
+concurrency:
+  group: sync-trending-data
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
