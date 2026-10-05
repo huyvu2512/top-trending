@@ -1,9 +1,7 @@
 name: Sync Data to Firebase
 
 on:
-  schedule:
-    - cron: '0 */6 * * *' # Tu dong chay moi 6 tieng mot lan
-  workflow_dispatch:      # Cho phep bam chay thu cong tren giao dien GitHub
+  workflow_dispatch:
 
 concurrency:
   group: sync-trending-data
