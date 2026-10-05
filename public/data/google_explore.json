@@ -663,94 +663,94 @@
     },
     {
       "rank": 38,
-      "query": "tik tok",
-      "growth": "+7%",
-      "growthNum": 7,
-      "url": "https://www.google.com/search?q=tik%20tok"
-    },
-    {
-      "rank": 39,
       "query": "vn",
       "growth": "+6%",
       "growthNum": 6,
       "url": "https://www.google.com/search?q=vn"
     },
     {
-      "rank": 40,
+      "rank": 39,
       "query": "vioedu",
       "growth": "+5%",
       "growthNum": 5,
       "url": "https://www.google.com/search?q=vioedu"
     },
     {
-      "rank": 41,
+      "rank": 40,
       "query": "youtube",
       "growth": "+4%",
       "growthNum": 4,
       "url": "https://www.google.com/search?q=youtube"
     },
     {
-      "rank": 42,
+      "rank": 41,
       "query": "soundcloud",
       "growth": "+4%",
       "growthNum": 4,
       "url": "https://www.google.com/search?q=soundcloud"
     },
     {
-      "rank": 43,
+      "rank": 42,
       "query": "xổ số miền nam hôm nay",
       "growth": "+4%",
       "growthNum": 4,
       "url": "https://www.google.com/search?q=x%E1%BB%95%20s%E1%BB%91%20mi%E1%BB%81n%20nam%20h%C3%B4m%20nay"
     },
     {
-      "rank": 44,
+      "rank": 43,
       "query": "zalo web",
       "growth": "+3%",
       "growthNum": 3,
       "url": "https://www.google.com/search?q=zalo%20web"
     },
     {
-      "rank": 45,
+      "rank": 44,
       "query": "yt",
       "growth": "+3%",
       "growthNum": 3,
       "url": "https://www.google.com/search?q=yt"
     },
     {
-      "rank": 46,
+      "rank": 45,
       "query": "pinterest",
       "growth": "+1%",
       "growthNum": 1,
       "url": "https://www.google.com/search?q=pinterest"
     },
     {
-      "rank": 47,
+      "rank": 46,
       "query": "xổ số miền trung",
       "growth": "+0%",
       "growthNum": 0,
       "url": "https://www.google.com/search?q=x%E1%BB%95%20s%E1%BB%91%20mi%E1%BB%81n%20trung"
     },
     {
-      "rank": 48,
+      "rank": 47,
       "query": "roblox",
       "growth": "+0%",
       "growthNum": 0,
       "url": "https://www.google.com/search?q=roblox"
     },
     {
-      "rank": 49,
+      "rank": 48,
       "query": "game",
       "growth": "+0%",
       "growthNum": 0,
       "url": "https://www.google.com/search?q=game"
     },
     {
-      "rank": 50,
+      "rank": 49,
       "query": "7m",
       "growth": "+-1%",
       "growthNum": -1,
       "url": "https://www.google.com/search?q=7m"
+    },
+    {
+      "rank": 50,
+      "query": "you",
+      "growth": "+-1%",
+      "growthNum": -1,
+      "url": "https://www.google.com/search?q=you"
     }
   ]
 }

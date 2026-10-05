@@ -15,7 +15,7 @@
     "growthPct": 1000,
     "growthFormatted": "↑1,000%",
     "velocity": "↑1,000%",
-    "startedAgo": "1 giờ trước",
+    "startedAgo": "2 giờ trước",
     "publishedAt": "2026-10-05T17:50:00.000Z",
     "relatedQueries": [
       "pháp vs bỉ",
@@ -44,7 +44,7 @@
     "growthPct": 1000,
     "growthFormatted": "↑1,000%",
     "velocity": "↑1,000%",
-    "startedAgo": "10 giờ trước",
+    "startedAgo": "11 giờ trước",
     "publishedAt": "2026-10-05T09:00:00.000Z",
     "relatedQueries": [
       "vn vs malaysia",
@@ -52,12 +52,10 @@
       "đội tuyển bóng đá quốc gia malaysia",
       "việt nam vs malaysia",
       "trực tiếp bóng đá việt nam-malaysia",
-      "lê giang patrik",
       "nguyễn đình bắc",
       "việt nam vs malaysia tranh hạng 3",
       "vietnam malaysia",
       "kết quả việt nam-malaysia",
-      "fpt play",
       "kết quả bóng đá việt nam-malaysia",
       "bóng đá việt nam-malaysia",
       "đội tuyển bóng đá quốc gia việt nam",
@@ -79,12 +77,37 @@
     "id": "gg_trend_3",
     "rank": 3,
     "platform": "google",
+    "title": "ý đấu với thổ nhĩ kỳ",
+    "creator": "Nhận định bóng đá Italia vs Thổ Nhĩ Kỳ, 01h45 ngày 6/10: Azzurri hạ cánh",
+    "newsTitle": "Nhận định bóng đá Italia vs Thổ Nhĩ Kỳ, 01h45 ngày 6/10: Azzurri hạ cánh",
+    "newsSource": "Tạp chí Bóng đá",
+    "newsUrl": "https://bongdaplus.vn/nations-league/nhan-dinh-bong-da-italia-vs-tho-nhi-ky-01h45-ngay-6-10-azzurri-ha-canh-5241952610.html",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOFn52BmXysZ8dE5Xwz9LTqOneR17JHLNBdO43XHAgDUiTqfxD_E3tBQx6oPs",
+    "url": "https://www.google.com/search?q=%C3%BD%20%C4%91%E1%BA%A5u%20v%E1%BB%9Bi%20th%E1%BB%95%20nh%C4%A9%20k%E1%BB%B3",
+    "trafficNum": 500,
+    "primaryMetric": "500+ lượt tìm kiếm",
+    "growthPct": 1000,
+    "growthFormatted": "↑1,000%",
+    "velocity": "↑1,000%",
+    "startedAgo": "2 giờ trước",
+    "publishedAt": "2026-10-05T18:00:00.000Z",
+    "relatedQueries": [],
+    "catIds": [
+      17
+    ],
+    "categoryId": "sports",
+    "category": "Thể thao"
+  },
+  {
+    "id": "gg_trend_4",
+    "rank": 4,
+    "platform": "google",
     "title": "thái lan vs indonesia",
-    "creator": "Indonesia - Thái Lan: Thẻ đỏ, 2 bàn liên tiếp trong 7 phút &quot;điên rồ”",
-    "newsTitle": "Indonesia - Thái Lan: Thẻ đỏ, 2 bàn liên tiếp trong 7 phút &quot;điên rồ”",
+    "creator": "Video bóng đá Indonesia - Thái Lan: 4 bàn rượt đuổi, luân lưu định đoạt (Chung kết FIFA ASEAN Cup)",
+    "newsTitle": "Video bóng đá Indonesia - Thái Lan: 4 bàn rượt đuổi, luân lưu định đoạt (Chung kết FIFA ASEAN Cup)",
     "newsSource": "Tin tức 24h",
-    "newsUrl": "https://www.24h.com.vn/bong-da/indonesia-thai-lan-dai-chien-ruc-lua-loat-khoanh-khac-man-nhan-c48a1800318.html",
-    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRju1z1EhL-Kmnm0hiM2ChOGOg48ErP99SSOtnsu1M6FchRbgS4M-d1a3RAFWw",
+    "newsUrl": "https://www.24h.com.vn/bong-da/video-bong-da-indonesia-thai-lan-4-ban-ruot-duoi-luan-luu-dinh-doat-chung-ket-fifa-asean-cup-c48a1800382.html",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ_yParo-AD9aRU_C-bF0Cw5ezce-f6kjCn23pUqJ6nrLTMWDm1ZqODCI5KH8",
     "url": "https://www.google.com/search?q=th%C3%A1i%20lan%20vs%20indonesia",
     "trafficNum": 20000,
     "primaryMetric": "20 N+ lượt tìm kiếm",
@@ -102,36 +125,9 @@
       "thailand vs indonesia",
       "indo và thái lan",
       "thái lan indonesia hôm nay",
+      "fpt play",
       "đội tuyển bóng đá quốc gia thái lan",
-      "tv360",
       "đội tuyển bóng đá quốc gia việt nam"
-    ],
-    "catIds": [
-      17
-    ],
-    "categoryId": "sports",
-    "category": "Thể thao"
-  },
-  {
-    "id": "gg_trend_4",
-    "rank": 4,
-    "platform": "google",
-    "title": "ý đấu với thổ nhĩ kỳ",
-    "creator": "Nhận định bóng đá Italia vs Thổ Nhĩ Kỳ, 01h45 ngày 6/10: Azzurri hạ cánh",
-    "newsTitle": "Nhận định bóng đá Italia vs Thổ Nhĩ Kỳ, 01h45 ngày 6/10: Azzurri hạ cánh",
-    "newsSource": "Tạp chí Bóng đá",
-    "newsUrl": "https://bongdaplus.vn/nations-league/nhan-dinh-bong-da-italia-vs-tho-nhi-ky-01h45-ngay-6-10-azzurri-ha-canh-5241952610.html",
-    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOFn52BmXysZ8dE5Xwz9LTqOneR17JHLNBdO43XHAgDUiTqfxD_E3tBQx6oPs",
-    "url": "https://www.google.com/search?q=%C3%BD%20%C4%91%E1%BA%A5u%20v%E1%BB%9Bi%20th%E1%BB%95%20nh%C4%A9%20k%E1%BB%B3",
-    "trafficNum": 2000,
-    "primaryMetric": "2 N+ lượt tìm kiếm",
-    "growthPct": 1000,
-    "growthFormatted": "↑1,000%",
-    "velocity": "↑1,000%",
-    "startedAgo": "1 giờ trước",
-    "publishedAt": "2026-10-05T18:00:00.000Z",
-    "relatedQueries": [
-      "ý vs"
     ],
     "catIds": [
       17
@@ -368,7 +364,7 @@
     "growthPct": 1000,
     "growthFormatted": "↑1,000%",
     "velocity": "↑1,000%",
-    "startedAgo": "9 giờ trước",
+    "startedAgo": "10 giờ trước",
     "publishedAt": "2026-10-05T09:50:00.000Z",
     "relatedQueries": [
       "xổ số miền bắc thứ hai hàng tuần",
@@ -384,8 +380,8 @@
       "xổ số miền trung",
       "xổ số quảng ngãi",
       "xổ số kiên giang",
-      "xổ số tiền giang",
       "xsmb hôm qua",
+      "xổ số tiền giang",
       "xổ số miền trung thứ bảy",
       "xổ số đà nẵng",
       "xổ số miền nam chủ nhật",
@@ -467,6 +463,31 @@
   {
     "id": "gg_trend_16",
     "rank": 16,
+    "platform": "google",
+    "title": "lê giang patrik",
+    "creator": "Patrik Lê Giang nói thẳng về thất bại của tuyển Việt Nam ở FIFA ASEAN Cup",
+    "newsTitle": "Patrik Lê Giang nói thẳng về thất bại của tuyển Việt Nam ở FIFA ASEAN Cup",
+    "newsSource": "Báo VietNamNet",
+    "newsUrl": "https://vietnamnet.vn/patrik-le-giang-noi-thang-ve-that-bai-cua-tuyen-viet-nam-o-fifa-asean-cup-2561912.html",
+    "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTdV3NneMZ_BaTSnblpqej59chafFpqr4IU-LyBv0O4rZE35_QHI8OfO0tM-Pk",
+    "url": "https://www.google.com/search?q=l%C3%AA%20giang%20patrik",
+    "trafficNum": 2000,
+    "primaryMetric": "2 N+ lượt tìm kiếm",
+    "growthPct": 1000,
+    "growthFormatted": "↑1,000%",
+    "velocity": "↑1,000%",
+    "startedAgo": "10 giờ trước",
+    "publishedAt": "2026-10-05T10:00:00.000Z",
+    "relatedQueries": [],
+    "catIds": [
+      17
+    ],
+    "categoryId": "sports",
+    "category": "Thể thao"
+  },
+  {
+    "id": "gg_trend_17",
+    "rank": 17,
     "platform": "google",
     "title": "việt nam vs thái lan",
     "creator": "Tìm kiếm liên quan: việt nam thái lan",
@@ -583,8 +604,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_17",
-    "rank": 17,
+    "id": "gg_trend_18",
+    "rank": 18,
     "platform": "google",
     "title": "croatia đấu với anh",
     "creator": "Tìm kiếm liên quan: anh vs croatia",
@@ -611,15 +632,15 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_18",
-    "rank": 18,
+    "id": "gg_trend_19",
+    "rank": 19,
     "platform": "google",
     "title": "khu du lịch đại nam",
-    "creator": "Chưa đầy 3 tháng nữa, khu du lịch 6.000 tỷ lớn bậc nhất Đông Nam Á của vợ chồng ông Huỳnh Uy Dũng chính thức kết thúc chương trình ưu đãi dài hơi",
-    "newsTitle": "Chưa đầy 3 tháng nữa, khu du lịch 6.000 tỷ lớn bậc nhất Đông Nam Á của vợ chồng ông Huỳnh Uy Dũng chính thức kết thúc chương trình ưu đãi dài hơi",
-    "newsSource": "nguoiquansat.vn",
-    "newsUrl": "https://nguoiquansat.vn/chua-day-3-thang-nua-khu-du-lich-6-000-ty-lon-bac-nhat-dong-nam-a-cua-vo-chong-ong-huynh-uy-dung-chinh-thuc-ket-thuc-chuong-trinh-uu-dai-dai-hoi-320178.html",
-    "thumbnail": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQcwKBWBx9IXYeO69XOShLljWXAQaKUNesI26TpmkQDsnqqCrB_Th8vjwplHts",
+    "creator": "Xu hướng tìm kiếm Google",
+    "newsTitle": null,
+    "newsSource": "Google Search",
+    "newsUrl": "https://www.google.com/search?q=khu%20du%20l%E1%BB%8Bch%20%C4%91%E1%BA%A1i%20nam",
+    "thumbnail": null,
     "url": "https://www.google.com/search?q=khu%20du%20l%E1%BB%8Bch%20%C4%91%E1%BA%A1i%20nam",
     "trafficNum": 2000,
     "primaryMetric": "2 N+ lượt tìm kiếm",
@@ -636,8 +657,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_19",
-    "rank": 19,
+    "id": "gg_trend_20",
+    "rank": 20,
     "platform": "google",
     "title": "áp thấp nhiệt đới",
     "creator": "Xu hướng tìm kiếm Google",
@@ -661,8 +682,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_20",
-    "rank": 20,
+    "id": "gg_trend_21",
+    "rank": 21,
     "platform": "google",
     "title": "tây ban nha đấu với séc",
     "creator": "Tìm kiếm liên quan: tây ban nha đấu với croatia",
@@ -694,8 +715,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_21",
-    "rank": 21,
+    "id": "gg_trend_22",
+    "rank": 22,
     "platform": "google",
     "title": "vàng",
     "creator": "Tìm kiếm liên quan: giá vàng hôm nay",
@@ -721,8 +742,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_22",
-    "rank": 22,
+    "id": "gg_trend_23",
+    "rank": 23,
     "platform": "google",
     "title": "argentina đấu với bolivia",
     "creator": "Tìm kiếm liên quan: argentina vs",
@@ -749,8 +770,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_23",
-    "rank": 23,
+    "id": "gg_trend_24",
+    "rank": 24,
     "platform": "google",
     "title": "thành ủy thành phố hồ chí minh",
     "creator": "Xu hướng tìm kiếm Google",
@@ -774,8 +795,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_24",
-    "rank": 24,
+    "id": "gg_trend_25",
+    "rank": 25,
     "platform": "google",
     "title": "đợt lạnh",
     "creator": "Tìm kiếm liên quan: gió mùa đông bắc",
@@ -806,8 +827,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_25",
-    "rank": 25,
+    "id": "gg_trend_26",
+    "rank": 26,
     "platform": "google",
     "title": "nguyễn thị oanh",
     "creator": "Xu hướng tìm kiếm Google",
@@ -832,8 +853,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_26",
-    "rank": 26,
+    "id": "gg_trend_27",
+    "rank": 27,
     "platform": "google",
     "title": "u-23 hàn quốc đấu với u-23 nhật bản",
     "creator": "Tìm kiếm liên quan: u-23 uzbekistan đấu với u-23 nhật bản",
@@ -865,8 +886,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_27",
-    "rank": 27,
+    "id": "gg_trend_28",
+    "rank": 28,
     "platform": "google",
     "title": "ấn độ đấu với brasil",
     "creator": "Xu hướng tìm kiếm Google",
@@ -890,8 +911,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_28",
-    "rank": 28,
+    "id": "gg_trend_29",
+    "rank": 29,
     "platform": "google",
     "title": "viet nam vs pakistan",
     "creator": "Tìm kiếm liên quan: việt nam vs pakistan",
@@ -932,8 +953,33 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_29",
-    "rank": 29,
+    "id": "gg_trend_30",
+    "rank": 30,
+    "platform": "google",
+    "title": "tv360",
+    "creator": "Xu hướng tìm kiếm Google",
+    "newsTitle": null,
+    "newsSource": "Google Search",
+    "newsUrl": "https://www.google.com/search?q=tv360",
+    "thumbnail": null,
+    "url": "https://www.google.com/search?q=tv360",
+    "trafficNum": 5000,
+    "primaryMetric": "5 N+ lượt tìm kiếm",
+    "growthPct": 1000,
+    "growthFormatted": "↑1,000%",
+    "velocity": "↑1,000%",
+    "startedAgo": "10 giờ trước",
+    "publishedAt": "2026-10-05T09:10:00.000Z",
+    "relatedQueries": [],
+    "catIds": [
+      17
+    ],
+    "categoryId": "sports",
+    "category": "Thể thao"
+  },
+  {
+    "id": "gg_trend_31",
+    "rank": 31,
     "platform": "google",
     "title": "ngân hàng",
     "creator": "Tìm kiếm liên quan: agribank",
@@ -959,8 +1005,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_30",
-    "rank": 30,
+    "id": "gg_trend_32",
+    "rank": 32,
     "platform": "google",
     "title": "hy lạp đấu với đức",
     "creator": "Tìm kiếm liên quan: thứ hạng của đội tuyển đức gặp đội tuyển bóng đá quốc gia serbia",
@@ -989,8 +1035,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_31",
-    "rank": 31,
+    "id": "gg_trend_33",
+    "rank": 33,
     "platform": "google",
     "title": "u-23 trung quốc đấu với u-23 uzbekistan",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1014,8 +1060,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_32",
-    "rank": 32,
+    "id": "gg_trend_34",
+    "rank": 34,
     "platform": "google",
     "title": "vnexpress",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1039,8 +1085,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_33",
-    "rank": 33,
+    "id": "gg_trend_35",
+    "rank": 35,
     "platform": "google",
     "title": "chuyển khoản",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1054,7 +1100,7 @@
     "growthPct": 1000,
     "growthFormatted": "↑1,000%",
     "velocity": "↑1,000%",
-    "startedAgo": "1 ngày trước",
+    "startedAgo": "2 ngày trước",
     "publishedAt": "2026-10-03T20:00:00.000Z",
     "relatedQueries": [],
     "catIds": [
@@ -1065,8 +1111,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_34",
-    "rank": 34,
+    "id": "gg_trend_36",
+    "rank": 36,
     "platform": "google",
     "title": "hoa kỳ đấu với mexico",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1090,8 +1136,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_35",
-    "rank": 35,
+    "id": "gg_trend_37",
+    "rank": 37,
     "platform": "google",
     "title": "mưa",
     "creator": "Tìm kiếm liên quan: dự báo thời tiết tphcm",
@@ -1117,8 +1163,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_36",
-    "rank": 36,
+    "id": "gg_trend_38",
+    "rank": 38,
     "platform": "google",
     "title": "wales đấu với đan mạch",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1142,8 +1188,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_37",
-    "rank": 37,
+    "id": "gg_trend_39",
+    "rank": 39,
     "platform": "google",
     "title": "dải phân cách",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1167,8 +1213,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_38",
-    "rank": 38,
+    "id": "gg_trend_40",
+    "rank": 40,
     "platform": "google",
     "title": "trung tướng quân đội nhân dân việt nam",
     "creator": "Tìm kiếm liên quan: trung tướng hồ quang tuấn nghỉ hưu",
@@ -1194,8 +1240,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_39",
-    "rank": 39,
+    "id": "gg_trend_41",
+    "rank": 41,
     "platform": "google",
     "title": "pháp đấu với ý",
     "creator": "Tìm kiếm liên quan: pháp vs ý",
@@ -1222,8 +1268,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_40",
-    "rank": 40,
+    "id": "gg_trend_42",
+    "rank": 42,
     "platform": "google",
     "title": "bảo hiểm xã hội",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1247,8 +1293,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_41",
-    "rank": 41,
+    "id": "gg_trend_43",
+    "rank": 43,
     "platform": "google",
     "title": "nhà máy nhiệt điện",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1272,8 +1318,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_42",
-    "rank": 42,
+    "id": "gg_trend_44",
+    "rank": 44,
     "platform": "google",
     "title": "portugal vs norway",
     "creator": "Tìm kiếm liên quan: portugal national football team vs norway national football team standings",
@@ -1299,8 +1345,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_43",
-    "rank": 43,
+    "id": "gg_trend_45",
+    "rank": 45,
     "platform": "google",
     "title": "argentina vs burkina faso",
     "creator": "Tìm kiếm liên quan: argentina vs",
@@ -1326,8 +1372,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_44",
-    "rank": 44,
+    "id": "gg_trend_46",
+    "rank": 46,
     "platform": "google",
     "title": "nhật bản đấu với ecuador",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1351,8 +1397,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_45",
-    "rank": 45,
+    "id": "gg_trend_47",
+    "rank": 47,
     "platform": "google",
     "title": "hà lan đấu với serbia",
     "creator": "Tìm kiếm liên quan: hà lan vs",
@@ -1378,8 +1424,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_46",
-    "rank": 46,
+    "id": "gg_trend_48",
+    "rank": 48,
     "platform": "google",
     "title": "đại hội thể thao châu á 2026",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1403,8 +1449,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_47",
-    "rank": 47,
+    "id": "gg_trend_49",
+    "rank": 49,
     "platform": "google",
     "title": "đảng việt tân",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1428,8 +1474,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_48",
-    "rank": 48,
+    "id": "gg_trend_50",
+    "rank": 50,
     "platform": "google",
     "title": "mạc văn khoa",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1453,8 +1499,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_49",
-    "rank": 49,
+    "id": "gg_trend_51",
+    "rank": 51,
     "platform": "google",
     "title": "vietlott",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1468,7 +1514,7 @@
     "growthPct": 200,
     "growthFormatted": "↑200%",
     "velocity": "↑200%",
-    "startedAgo": "21 giờ trước",
+    "startedAgo": "22 giờ trước",
     "publishedAt": "2026-10-04T21:50:00.000Z",
     "relatedQueries": [],
     "catIds": [
@@ -1478,8 +1524,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_50",
-    "rank": 50,
+    "id": "gg_trend_52",
+    "rank": 52,
     "platform": "google",
     "title": "đại hội thể thao châu á",
     "creator": "Tìm kiếm liên quan: thể thao",
@@ -1508,8 +1554,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_51",
-    "rank": 51,
+    "id": "gg_trend_53",
+    "rank": 53,
     "platform": "google",
     "title": "thái lan vs philippines",
     "creator": "Tìm kiếm liên quan: thailand vs philippines",
@@ -1538,8 +1584,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_52",
-    "rank": 52,
+    "id": "gg_trend_54",
+    "rank": 54,
     "platform": "google",
     "title": "xổ số miền bắc",
     "creator": "Tìm kiếm liên quan: xổ số miền nam ngày 30 tháng 9",
@@ -1592,8 +1638,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_53",
-    "rank": 53,
+    "id": "gg_trend_55",
+    "rank": 55,
     "platform": "google",
     "title": "vòng chung kết",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1617,8 +1663,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_54",
-    "rank": 54,
+    "id": "gg_trend_56",
+    "rank": 56,
     "platform": "google",
     "title": "hàn quốc đấu với venezuela",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1642,8 +1688,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_55",
-    "rank": 55,
+    "id": "gg_trend_57",
+    "rank": 57,
     "platform": "google",
     "title": "cricket",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1657,7 +1703,7 @@
     "growthPct": 1000,
     "growthFormatted": "↑1,000%",
     "velocity": "↑1,000%",
-    "startedAgo": "14 giờ trước",
+    "startedAgo": "15 giờ trước",
     "publishedAt": "2026-10-05T04:50:00.000Z",
     "relatedQueries": [],
     "catIds": [
@@ -1667,8 +1713,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_56",
-    "rank": 56,
+    "id": "gg_trend_58",
+    "rank": 58,
     "platform": "google",
     "title": "úc đấu với brasil",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1692,8 +1738,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_57",
-    "rank": 57,
+    "id": "gg_trend_59",
+    "rank": 59,
     "platform": "google",
     "title": "b52",
     "creator": "B-52s Get Prototype System for Beyond-Line-of-Sight Communications",
@@ -1717,8 +1763,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_58",
-    "rank": 58,
+    "id": "gg_trend_60",
+    "rank": 60,
     "platform": "google",
     "title": "chat gpt",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1742,8 +1788,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_59",
-    "rank": 59,
+    "id": "gg_trend_61",
+    "rank": 61,
     "platform": "google",
     "title": "xe máy điện",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1767,8 +1813,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_60",
-    "rank": 60,
+    "id": "gg_trend_62",
+    "rank": 62,
     "platform": "google",
     "title": "tiền",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1792,8 +1838,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_61",
-    "rank": 61,
+    "id": "gg_trend_63",
+    "rank": 63,
     "platform": "google",
     "title": "argentina",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1817,8 +1863,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_62",
-    "rank": 62,
+    "id": "gg_trend_64",
+    "rank": 64,
     "platform": "google",
     "title": "đặng lê nguyên vũ",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1842,8 +1888,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_63",
-    "rank": 63,
+    "id": "gg_trend_65",
+    "rank": 65,
     "platform": "google",
     "title": "thuế",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1868,8 +1914,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_64",
-    "rank": 64,
+    "id": "gg_trend_66",
+    "rank": 66,
     "platform": "google",
     "title": "fpt",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1893,8 +1939,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_65",
-    "rank": 65,
+    "id": "gg_trend_67",
+    "rank": 67,
     "platform": "google",
     "title": "qatar",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1918,8 +1964,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_66",
-    "rank": 66,
+    "id": "gg_trend_68",
+    "rank": 68,
     "platform": "google",
     "title": "nana",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1943,8 +1989,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_67",
-    "rank": 67,
+    "id": "gg_trend_69",
+    "rank": 69,
     "platform": "google",
     "title": "đường nguyễn chí thanh",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1968,8 +2014,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_68",
-    "rank": 68,
+    "id": "gg_trend_70",
+    "rank": 70,
     "platform": "google",
     "title": "facebook",
     "creator": "Xu hướng tìm kiếm Google",
@@ -1993,8 +2039,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_69",
-    "rank": 69,
+    "id": "gg_trend_71",
+    "rank": 71,
     "platform": "google",
     "title": "bỉ đấu với thổ nhĩ kỳ",
     "creator": "Tìm kiếm liên quan: bỉ vs",
@@ -2020,8 +2066,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_70",
-    "rank": 70,
+    "id": "gg_trend_72",
+    "rank": 72,
     "platform": "google",
     "title": "đội tuyển bóng đá quốc gia trung quốc",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2045,8 +2091,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_71",
-    "rank": 71,
+    "id": "gg_trend_73",
+    "rank": 73,
     "platform": "google",
     "title": "giáo viên",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2070,8 +2116,8 @@
     "category": "Xu hướng khác"
   },
   {
-    "id": "gg_trend_72",
-    "rank": 72,
+    "id": "gg_trend_74",
+    "rank": 74,
     "platform": "google",
     "title": "samsung galaxy s26",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2095,33 +2141,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_73",
-    "rank": 73,
-    "platform": "google",
-    "title": "giải vô địch bóng đá các quốc gia châu âu",
-    "creator": "Xu hướng tìm kiếm Google",
-    "newsTitle": null,
-    "newsSource": "Google Search",
-    "newsUrl": "https://www.google.com/search?q=gi%E1%BA%A3i%20v%C3%B4%20%C4%91%E1%BB%8Bch%20b%C3%B3ng%20%C4%91%C3%A1%20c%C3%A1c%20qu%E1%BB%91c%20gia%20ch%C3%A2u%20%C3%A2u",
-    "thumbnail": null,
-    "url": "https://www.google.com/search?q=gi%E1%BA%A3i%20v%C3%B4%20%C4%91%E1%BB%8Bch%20b%C3%B3ng%20%C4%91%C3%A1%20c%C3%A1c%20qu%E1%BB%91c%20gia%20ch%C3%A2u%20%C3%A2u",
-    "trafficNum": 500,
-    "primaryMetric": "500+ lượt tìm kiếm",
-    "growthPct": 600,
-    "growthFormatted": "↑600%",
-    "velocity": "↑600%",
-    "startedAgo": "20 giờ trước",
-    "publishedAt": "2026-10-04T23:10:00.000Z",
-    "relatedQueries": [],
-    "catIds": [
-      17
-    ],
-    "categoryId": "sports",
-    "category": "Thể thao"
-  },
-  {
-    "id": "gg_trend_74",
-    "rank": 74,
+    "id": "gg_trend_75",
+    "rank": 75,
     "platform": "google",
     "title": "croatia vs england",
     "creator": "Tìm kiếm liên quan: croatia national football team vs england national football team standings",
@@ -2147,33 +2168,33 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_75",
-    "rank": 75,
+    "id": "gg_trend_76",
+    "rank": 76,
     "platform": "google",
-    "title": "thẻ căn cước",
+    "title": "giải vô địch bóng đá các quốc gia châu âu",
     "creator": "Xu hướng tìm kiếm Google",
     "newsTitle": null,
     "newsSource": "Google Search",
-    "newsUrl": "https://www.google.com/search?q=th%E1%BA%BB%20c%C4%83n%20c%C6%B0%E1%BB%9Bc",
+    "newsUrl": "https://www.google.com/search?q=gi%E1%BA%A3i%20v%C3%B4%20%C4%91%E1%BB%8Bch%20b%C3%B3ng%20%C4%91%C3%A1%20c%C3%A1c%20qu%E1%BB%91c%20gia%20ch%C3%A2u%20%C3%A2u",
     "thumbnail": null,
-    "url": "https://www.google.com/search?q=th%E1%BA%BB%20c%C4%83n%20c%C6%B0%E1%BB%9Bc",
-    "trafficNum": 2000,
-    "primaryMetric": "2 N+ lượt tìm kiếm",
-    "growthPct": 1000,
-    "growthFormatted": "↑1,000%",
-    "velocity": "↑1,000%",
-    "startedAgo": "2 ngày trước",
-    "publishedAt": "2026-10-02T21:30:00.000Z",
+    "url": "https://www.google.com/search?q=gi%E1%BA%A3i%20v%C3%B4%20%C4%91%E1%BB%8Bch%20b%C3%B3ng%20%C4%91%C3%A1%20c%C3%A1c%20qu%E1%BB%91c%20gia%20ch%C3%A2u%20%C3%A2u",
+    "trafficNum": 500,
+    "primaryMetric": "500+ lượt tìm kiếm",
+    "growthPct": 600,
+    "growthFormatted": "↑600%",
+    "velocity": "↑600%",
+    "startedAgo": "20 giờ trước",
+    "publishedAt": "2026-10-04T23:10:00.000Z",
     "relatedQueries": [],
     "catIds": [
-      10
+      17
     ],
-    "categoryId": "news",
-    "category": "Tin tức & Xã hội"
+    "categoryId": "sports",
+    "category": "Thể thao"
   },
   {
-    "id": "gg_trend_76",
-    "rank": 76,
+    "id": "gg_trend_77",
+    "rank": 77,
     "platform": "google",
     "title": "hóa đơn",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2197,8 +2218,33 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_77",
-    "rank": 77,
+    "id": "gg_trend_78",
+    "rank": 78,
+    "platform": "google",
+    "title": "thẻ căn cước",
+    "creator": "Xu hướng tìm kiếm Google",
+    "newsTitle": null,
+    "newsSource": "Google Search",
+    "newsUrl": "https://www.google.com/search?q=th%E1%BA%BB%20c%C4%83n%20c%C6%B0%E1%BB%9Bc",
+    "thumbnail": null,
+    "url": "https://www.google.com/search?q=th%E1%BA%BB%20c%C4%83n%20c%C6%B0%E1%BB%9Bc",
+    "trafficNum": 2000,
+    "primaryMetric": "2 N+ lượt tìm kiếm",
+    "growthPct": 1000,
+    "growthFormatted": "↑1,000%",
+    "velocity": "↑1,000%",
+    "startedAgo": "2 ngày trước",
+    "publishedAt": "2026-10-02T21:30:00.000Z",
+    "relatedQueries": [],
+    "catIds": [
+      10
+    ],
+    "categoryId": "news",
+    "category": "Tin tức & Xã hội"
+  },
+  {
+    "id": "gg_trend_79",
+    "rank": 79,
     "platform": "google",
     "title": "mytv",
     "creator": "Tìm kiếm liên quan: fptplay",
@@ -2227,8 +2273,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_78",
-    "rank": 78,
+    "id": "gg_trend_80",
+    "rank": 80,
     "platform": "google",
     "title": "chuyển khoản",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2252,8 +2298,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_79",
-    "rank": 79,
+    "id": "gg_trend_81",
+    "rank": 81,
     "platform": "google",
     "title": "vtv",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2277,8 +2323,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_80",
-    "rank": 80,
+    "id": "gg_trend_82",
+    "rank": 82,
     "platform": "google",
     "title": "thuế",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2302,8 +2348,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_81",
-    "rank": 81,
+    "id": "gg_trend_83",
+    "rank": 83,
     "platform": "google",
     "title": "giao dịch tài chính",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2327,8 +2373,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_82",
-    "rank": 82,
+    "id": "gg_trend_84",
+    "rank": 84,
     "platform": "google",
     "title": "vietnam thailand",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2352,8 +2398,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_83",
-    "rank": 83,
+    "id": "gg_trend_85",
+    "rank": 85,
     "platform": "google",
     "title": "anh vs",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2377,8 +2423,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_84",
-    "rank": 84,
+    "id": "gg_trend_86",
+    "rank": 86,
     "platform": "google",
     "title": "carlos alcaraz",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2402,8 +2448,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_85",
-    "rank": 85,
+    "id": "gg_trend_87",
+    "rank": 87,
     "platform": "google",
     "title": "trợ cấp",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2427,8 +2473,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_86",
-    "rank": 86,
+    "id": "gg_trend_88",
+    "rank": 88,
     "platform": "google",
     "title": "điện",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2452,8 +2498,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_87",
-    "rank": 87,
+    "id": "gg_trend_89",
+    "rank": 89,
     "platform": "google",
     "title": "vtc news",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2477,8 +2523,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_88",
-    "rank": 88,
+    "id": "gg_trend_90",
+    "rank": 90,
     "platform": "google",
     "title": "mexico đấu với peru",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2502,8 +2548,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_89",
-    "rank": 89,
+    "id": "gg_trend_91",
+    "rank": 91,
     "platform": "google",
     "title": "hy lạp đấu với hà lan",
     "creator": "Tìm kiếm liên quan: hà lan vs",
@@ -2529,8 +2575,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_90",
-    "rank": 90,
+    "id": "gg_trend_92",
+    "rank": 92,
     "platform": "google",
     "title": "đội tuyển bóng chuyền nam quốc gia việt nam",
     "creator": "Tìm kiếm liên quan: quả bóng chuyền",
@@ -2556,8 +2602,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_91",
-    "rank": 91,
+    "id": "gg_trend_93",
+    "rank": 93,
     "platform": "google",
     "title": "trương mỹ lan",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2581,8 +2627,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_92",
-    "rank": 92,
+    "id": "gg_trend_94",
+    "rank": 94,
     "platform": "google",
     "title": "hoa kỳ đấu với chile",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2606,33 +2652,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_93",
-    "rank": 93,
-    "platform": "google",
-    "title": "đe dọa",
-    "creator": "Xu hướng tìm kiếm Google",
-    "newsTitle": null,
-    "newsSource": "Google Search",
-    "newsUrl": "https://www.google.com/search?q=%C4%91e%20d%E1%BB%8Da",
-    "thumbnail": null,
-    "url": "https://www.google.com/search?q=%C4%91e%20d%E1%BB%8Da",
-    "trafficNum": 500,
-    "primaryMetric": "500+ lượt tìm kiếm",
-    "growthPct": 1000,
-    "growthFormatted": "↑1,000%",
-    "velocity": "↑1,000%",
-    "startedAgo": "1 ngày trước",
-    "publishedAt": "2026-10-04T08:20:00.000Z",
-    "relatedQueries": [],
-    "catIds": [
-      10
-    ],
-    "categoryId": "news",
-    "category": "Tin tức & Xã hội"
-  },
-  {
-    "id": "gg_trend_94",
-    "rank": 94,
+    "id": "gg_trend_95",
+    "rank": 95,
     "platform": "google",
     "title": "đội tuyển bóng đá quốc gia hàn quốc",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2656,8 +2677,33 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_95",
-    "rank": 95,
+    "id": "gg_trend_96",
+    "rank": 96,
+    "platform": "google",
+    "title": "đe dọa",
+    "creator": "Xu hướng tìm kiếm Google",
+    "newsTitle": null,
+    "newsSource": "Google Search",
+    "newsUrl": "https://www.google.com/search?q=%C4%91e%20d%E1%BB%8Da",
+    "thumbnail": null,
+    "url": "https://www.google.com/search?q=%C4%91e%20d%E1%BB%8Da",
+    "trafficNum": 500,
+    "primaryMetric": "500+ lượt tìm kiếm",
+    "growthPct": 1000,
+    "growthFormatted": "↑1,000%",
+    "velocity": "↑1,000%",
+    "startedAgo": "1 ngày trước",
+    "publishedAt": "2026-10-04T08:20:00.000Z",
+    "relatedQueries": [],
+    "catIds": [
+      10
+    ],
+    "categoryId": "news",
+    "category": "Tin tức & Xã hội"
+  },
+  {
+    "id": "gg_trend_97",
+    "rank": 97,
     "platform": "google",
     "title": "xe tải",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2681,8 +2727,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_96",
-    "rank": 96,
+    "id": "gg_trend_98",
+    "rank": 98,
     "platform": "google",
     "title": "denmark vs portugal",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2706,8 +2752,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_97",
-    "rank": 97,
+    "id": "gg_trend_99",
+    "rank": 99,
     "platform": "google",
     "title": "máy bay ném bom chiến lược",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2731,8 +2777,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_98",
-    "rank": 98,
+    "id": "gg_trend_100",
+    "rank": 100,
     "platform": "google",
     "title": "đợt lạnh",
     "creator": "Tìm kiếm liên quan: dự báo thời tiết hôm nay",
@@ -2758,8 +2804,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_99",
-    "rank": 99,
+    "id": "gg_trend_101",
+    "rank": 101,
     "platform": "google",
     "title": "roberto fernández",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2783,8 +2829,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_100",
-    "rank": 100,
+    "id": "gg_trend_102",
+    "rank": 102,
     "platform": "google",
     "title": "tết nguyên đán",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2808,33 +2854,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_101",
-    "rank": 101,
-    "platform": "google",
-    "title": "nation league",
-    "creator": "Xu hướng tìm kiếm Google",
-    "newsTitle": null,
-    "newsSource": "Google Search",
-    "newsUrl": "https://www.google.com/search?q=nation%20league",
-    "thumbnail": null,
-    "url": "https://www.google.com/search?q=nation%20league",
-    "trafficNum": 200,
-    "primaryMetric": "200+ lượt tìm kiếm",
-    "growthPct": 200,
-    "growthFormatted": "↑200%",
-    "velocity": "↑200%",
-    "startedAgo": "23 giờ trước",
-    "publishedAt": "2026-10-04T20:40:00.000Z",
-    "relatedQueries": [],
-    "catIds": [
-      17
-    ],
-    "categoryId": "sports",
-    "category": "Thể thao"
-  },
-  {
-    "id": "gg_trend_102",
-    "rank": 102,
+    "id": "gg_trend_103",
+    "rank": 103,
     "platform": "google",
     "title": "nguyễn trường thắng",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2858,33 +2879,33 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_103",
-    "rank": 103,
+    "id": "gg_trend_104",
+    "rank": 104,
     "platform": "google",
-    "title": "đông trạch",
+    "title": "nation league",
     "creator": "Xu hướng tìm kiếm Google",
     "newsTitle": null,
     "newsSource": "Google Search",
-    "newsUrl": "https://www.google.com/search?q=%C4%91%C3%B4ng%20tr%E1%BA%A1ch",
+    "newsUrl": "https://www.google.com/search?q=nation%20league",
     "thumbnail": null,
-    "url": "https://www.google.com/search?q=%C4%91%C3%B4ng%20tr%E1%BA%A1ch",
-    "trafficNum": 2000,
-    "primaryMetric": "2 N+ lượt tìm kiếm",
-    "growthPct": 1000,
-    "growthFormatted": "↑1,000%",
-    "velocity": "↑1,000%",
-    "startedAgo": "4 ngày trước",
-    "publishedAt": "2026-10-01T08:40:00.000Z",
+    "url": "https://www.google.com/search?q=nation%20league",
+    "trafficNum": 200,
+    "primaryMetric": "200+ lượt tìm kiếm",
+    "growthPct": 200,
+    "growthFormatted": "↑200%",
+    "velocity": "↑200%",
+    "startedAgo": "23 giờ trước",
+    "publishedAt": "2026-10-04T20:40:00.000Z",
     "relatedQueries": [],
     "catIds": [
-      10
+      17
     ],
-    "categoryId": "news",
-    "category": "Tin tức & Xã hội"
+    "categoryId": "sports",
+    "category": "Thể thao"
   },
   {
-    "id": "gg_trend_104",
-    "rank": 104,
+    "id": "gg_trend_105",
+    "rank": 105,
     "platform": "google",
     "title": "quách ngọc ngoan",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2908,8 +2929,33 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_105",
-    "rank": 105,
+    "id": "gg_trend_106",
+    "rank": 106,
+    "platform": "google",
+    "title": "đông trạch",
+    "creator": "Xu hướng tìm kiếm Google",
+    "newsTitle": null,
+    "newsSource": "Google Search",
+    "newsUrl": "https://www.google.com/search?q=%C4%91%C3%B4ng%20tr%E1%BA%A1ch",
+    "thumbnail": null,
+    "url": "https://www.google.com/search?q=%C4%91%C3%B4ng%20tr%E1%BA%A1ch",
+    "trafficNum": 2000,
+    "primaryMetric": "2 N+ lượt tìm kiếm",
+    "growthPct": 1000,
+    "growthFormatted": "↑1,000%",
+    "velocity": "↑1,000%",
+    "startedAgo": "4 ngày trước",
+    "publishedAt": "2026-10-01T08:40:00.000Z",
+    "relatedQueries": [],
+    "catIds": [
+      10
+    ],
+    "categoryId": "news",
+    "category": "Tin tức & Xã hội"
+  },
+  {
+    "id": "gg_trend_107",
+    "rank": 107,
     "platform": "google",
     "title": "tesla",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2933,8 +2979,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_106",
-    "rank": 106,
+    "id": "gg_trend_108",
+    "rank": 108,
     "platform": "google",
     "title": "hậu pháo",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2959,8 +3005,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_107",
-    "rank": 107,
+    "id": "gg_trend_109",
+    "rank": 109,
     "platform": "google",
     "title": "canada đấu với peru",
     "creator": "Xu hướng tìm kiếm Google",
@@ -2984,8 +3030,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_108",
-    "rank": 108,
+    "id": "gg_trend_110",
+    "rank": 110,
     "platform": "google",
     "title": "fifa asean cup 2026",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3009,8 +3055,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_109",
-    "rank": 109,
+    "id": "gg_trend_111",
+    "rank": 111,
     "platform": "google",
     "title": "thieunien.vn",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3034,8 +3080,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_110",
-    "rank": 110,
+    "id": "gg_trend_112",
+    "rank": 112,
     "platform": "google",
     "title": "scotland đấu với thụy sĩ",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3059,8 +3105,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_111",
-    "rank": 111,
+    "id": "gg_trend_113",
+    "rank": 113,
     "platform": "google",
     "title": "mất điện",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3084,8 +3130,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_112",
-    "rank": 112,
+    "id": "gg_trend_114",
+    "rank": 114,
     "platform": "google",
     "title": "thụy sĩ đấu với slovenia",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3109,8 +3155,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_113",
-    "rank": 113,
+    "id": "gg_trend_115",
+    "rank": 115,
     "platform": "google",
     "title": "williams minh hoàng",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3134,8 +3180,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_114",
-    "rank": 114,
+    "id": "gg_trend_116",
+    "rank": 116,
     "platform": "google",
     "title": "my tv",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3159,8 +3205,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_115",
-    "rank": 115,
+    "id": "gg_trend_117",
+    "rank": 117,
     "platform": "google",
     "title": "wang xiyu",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3184,8 +3230,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_116",
-    "rank": 116,
+    "id": "gg_trend_118",
+    "rank": 118,
     "platform": "google",
     "title": "lamine yamal",
     "creator": "Tìm kiếm liên quan: spain vs croatia",
@@ -3211,8 +3257,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_117",
-    "rank": 117,
+    "id": "gg_trend_119",
+    "rank": 119,
     "platform": "google",
     "title": "áo vs",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3236,8 +3282,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_118",
-    "rank": 118,
+    "id": "gg_trend_120",
+    "rank": 120,
     "platform": "google",
     "title": "chatgpt",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3261,8 +3307,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_119",
-    "rank": 119,
+    "id": "gg_trend_121",
+    "rank": 121,
     "platform": "google",
     "title": "phạm nhật vượng",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3286,8 +3332,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_120",
-    "rank": 120,
+    "id": "gg_trend_122",
+    "rank": 122,
     "platform": "google",
     "title": "xổ số miền nam ngày 29 tháng 9",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3311,8 +3357,8 @@
     "category": "Công nghệ & Đời sống"
   },
   {
-    "id": "gg_trend_121",
-    "rank": 121,
+    "id": "gg_trend_123",
+    "rank": 123,
     "platform": "google",
     "title": "vụ án",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3336,8 +3382,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_122",
-    "rank": 122,
+    "id": "gg_trend_124",
+    "rank": 124,
     "platform": "google",
     "title": "álvaro arbeloa",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3361,8 +3407,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_123",
-    "rank": 123,
+    "id": "gg_trend_125",
+    "rank": 125,
     "platform": "google",
     "title": "trò đùa nguy hiểm",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3386,8 +3432,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_124",
-    "rank": 124,
+    "id": "gg_trend_126",
+    "rank": 126,
     "platform": "google",
     "title": "nguyễn thị tâm",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3411,8 +3457,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_125",
-    "rank": 125,
+    "id": "gg_trend_127",
+    "rank": 127,
     "platform": "google",
     "title": "quang lê",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3436,8 +3482,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_126",
-    "rank": 126,
+    "id": "gg_trend_128",
+    "rank": 128,
     "platform": "google",
     "title": "pháp – ý",
     "creator": "Tìm kiếm liên quan: pháp",
@@ -3463,8 +3509,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_127",
-    "rank": 127,
+    "id": "gg_trend_129",
+    "rank": 129,
     "platform": "google",
     "title": "2026",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3488,8 +3534,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_128",
-    "rank": 128,
+    "id": "gg_trend_130",
+    "rank": 130,
     "platform": "google",
     "title": "philippines vs",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3513,8 +3559,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_129",
-    "rank": 129,
+    "id": "gg_trend_131",
+    "rank": 131,
     "platform": "google",
     "title": "2027",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3538,8 +3584,8 @@
     "category": "Xu hướng khác"
   },
   {
-    "id": "gg_trend_130",
-    "rank": 130,
+    "id": "gg_trend_132",
+    "rank": 132,
     "platform": "google",
     "title": "mất điện",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3563,8 +3609,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_131",
-    "rank": 131,
+    "id": "gg_trend_133",
+    "rank": 133,
     "platform": "google",
     "title": "người cao tuổi",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3588,8 +3634,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_132",
-    "rank": 132,
+    "id": "gg_trend_134",
+    "rank": 134,
     "platform": "google",
     "title": "máy bay",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3613,8 +3659,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_133",
-    "rank": 133,
+    "id": "gg_trend_135",
+    "rank": 135,
     "platform": "google",
     "title": "công ty cổ phần hoàng anh gia lai",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3638,8 +3684,8 @@
     "category": "Giải trí & Truyền thông"
   },
   {
-    "id": "gg_trend_134",
-    "rank": 134,
+    "id": "gg_trend_136",
+    "rank": 136,
     "platform": "google",
     "title": "thụy điển đấu với ba lan",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3663,8 +3709,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_135",
-    "rank": 135,
+    "id": "gg_trend_137",
+    "rank": 137,
     "platform": "google",
     "title": "erling haaland",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3688,8 +3734,8 @@
     "category": "Thể thao"
   },
   {
-    "id": "gg_trend_136",
-    "rank": 136,
+    "id": "gg_trend_138",
+    "rank": 138,
     "platform": "google",
     "title": "va chạm",
     "creator": "Xu hướng tìm kiếm Google",
@@ -3713,8 +3759,8 @@
     "category": "Tin tức & Xã hội"
   },
   {
-    "id": "gg_trend_137",
-    "rank": 137,
+    "id": "gg_trend_139",
+    "rank": 139,
     "platform": "google",
     "title": "trương mỹ lan",
     "creator": "Xu hướng tìm kiếm Google",

@@ -306,14 +306,15 @@ export function renderOverview(container, items, onPlayMedia, state = {}) {
                     </div>
                     <div class="ov-feed-grid">
                         ${feedItems.map((item, idx) => {
-                            const platformIcon = ICONS[item.platform] || '';
-                            const isSquare = item.platform === 'spotify';
-                            const platformNames = { youtube: 'YouTube', spotify: 'Spotify', google: 'Google', netflix: 'Netflix' };
+                            const platform = item.platform || (item.url?.includes('spotify') ? 'spotify' : (item.url?.includes('youtu') ? 'youtube' : (item.url?.includes('netflix') ? 'netflix' : 'google')));
+                            const platformIcon = ICONS[platform] || '';
+                            const isSquare = platform === 'spotify';
+                            const platformNames = { youtube: 'YouTube', spotify: 'Spotify', google: 'Google Trends', netflix: 'Netflix' };
                             return `
-                                <div class="ov-feed-card ov-feed-${item.platform}" data-id="${item.id}" data-url="${item.url || ''}" data-preview="${item.previewUrl || ''}">
+                                <div class="ov-feed-card ov-feed-${platform}" data-id="${item.id}" data-url="${item.url || ''}" data-preview="${item.previewUrl || ''}">
                                     <div class="ov-feed-thumb-box ${isSquare ? 'thumb-square' : ''}">
                                         ${item.thumbnail ? `<img src="${item.thumbnail}" alt="${item.title}" loading="lazy">` : `<div class="ov-feed-thumb-placeholder">${platformIcon}</div>`}
-                                        <span class="ov-feed-plat-tag ${item.platform}">${platformIcon} <span>${platformNames[item.platform] || item.platform}</span></span>
+                                        <span class="ov-feed-plat-tag ${platform}">${platformIcon} <span>${platformNames[platform] || 'Xu hướng'}</span></span>
                                     </div>
                                     <div class="ov-feed-body">
                                         <h4 class="ov-feed-title" title="${item.title}">${item.title}</h4>

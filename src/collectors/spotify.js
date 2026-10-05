@@ -54,16 +54,40 @@ export async function scrapeSpotifyPlaylist(playlistId) {
         const entity = json.props?.pageProps?.state?.data?.entity;
         if (!entity || !entity.trackList) return [];
 
-        const defaultCover = entity.visualIdentity?.image?.[0]?.url || '';
+        const defaultCover = entity.visualIdentity?.image?.[0]?.url || 'https://charts-images.scdn.co/assets/locale_en/regional/daily/region_vn_default.jpg';
 
-        return entity.trackList.map((t, idx) => {
+        // Lấy ảnh bìa album bài hát thực tế thông qua Spotify oEmbed (theo batch 10 song song, cực nhanh)
+        const trackThumbnails = {};
+        const tracks = entity.trackList || [];
+        const BATCH_SIZE = 10;
+
+        for (let i = 0; i < tracks.length; i += BATCH_SIZE) {
+            const batch = tracks.slice(i, i + BATCH_SIZE);
+            await Promise.all(batch.map(async (t) => {
+                const trackId = t.uri ? t.uri.replace('spotify:track:', '') : null;
+                if (!trackId) return;
+                try {
+                    const oembedRes = await axios.get(`https://open.spotify.com/oembed?url=https://open.spotify.com/track/${trackId}`, {
+                        timeout: 3500,
+                        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
+                    });
+                    if (oembedRes.data && oembedRes.data.thumbnail_url) {
+                        trackThumbnails[trackId] = oembedRes.data.thumbnail_url;
+                    }
+                } catch (_) {}
+            }));
+        }
+
+        return tracks.map((t, idx) => {
             const trackId = t.uri ? t.uri.replace('spotify:track:', '') : `sp_${idx + 1}`;
             const durationSec = Math.round((t.duration || 0) / 1000);
             const mins = Math.floor(durationSec / 60);
             const secs = (durationSec % 60).toString().padStart(2, '0');
+            const realCover = trackThumbnails[trackId] || defaultCover;
 
             return {
                 id: trackId,
+                platform: 'spotify',
                 rank: idx + 1,
                 rankChange: 0,
                 title: t.title || 'Untitled',
@@ -72,10 +96,10 @@ export async function scrapeSpotifyPlaylist(playlistId) {
                 durationMs: t.duration || 0,
                 previewUrl: t.audioPreview?.url || null,
                 url: `https://open.spotify.com/track/${trackId}`,
-                thumbnail: defaultCover,
+                thumbnail: realCover,
                 primaryMetric: `${(500 - idx * 7).toFixed(0)}K streams`,
                 velocity: idx < 5 ? 'Top Thịnh Hành' : 'Xu hướng',
-                category: entity.name || 'Spotify Vietnam',
+                category: entity.name || 'Top 50 - Vietnam',
                 publishedAt: new Date().toISOString()
             };
         });
