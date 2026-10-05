@@ -25,7 +25,7 @@
 ---
 
 <div align="center">
-  <img src="public/assets/preview.png?v=2" alt="Giao diện Top Trending" width="100%">
+  <img src="public/assets/preview.png" alt="Giao diện Top Trending" width="100%">
 </div>
 
 ---

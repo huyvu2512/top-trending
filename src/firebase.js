@@ -11,9 +11,17 @@ let db = null;
 export function initFirebase() {
     if (db) return db;
 
-    const projectId = process.env.FIREBASE_PROJECT_ID;
-    const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-    const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n');
+    const projectId = process.env.FIREBASE_PROJECT_ID?.trim();
+    const clientEmail = process.env.FIREBASE_CLIENT_EMAIL?.trim();
+    let privateKey = process.env.FIREBASE_PRIVATE_KEY;
+
+    if (privateKey) {
+        privateKey = privateKey.trim();
+        if ((privateKey.startsWith('"') && privateKey.endsWith('"')) || (privateKey.startsWith("'") && privateKey.endsWith("'"))) {
+            privateKey = privateKey.slice(1, -1);
+        }
+        privateKey = privateKey.replace(/\\r/g, '').replace(/\\n/g, '\n').replace(/\r\n/g, '\n');
+    }
 
     if (!projectId || !clientEmail || !privateKey) {
         console.log('[Firebase]: Chưa cấu hình đầy đủ biến môi trường trong .env. Dữ liệu sẽ lưu cục bộ tại public/data.json.');
