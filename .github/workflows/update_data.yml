@@ -1,15 +1,15 @@
-name: Sync Data to Firebase & Repository
+name: Trending Data Pipeline
 
 on:
   schedule:
-    - cron: '0 */3 * * *' # Tự động chạy mỗi 3 tiếng một lần
-  workflow_dispatch:      # Cho phép bấm chạy thủ công trên giao diện GitHub
+    - cron: '0 */3 * * *' # Tu dong chay moi 3 tieng mot lan
+  workflow_dispatch:      # Cho phep bam chay thu cong tren giao dien GitHub
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  sync:
+  pipeline:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,18 +20,10 @@ jobs:
 
       - run: npm ci || npm install
 
-      - name: Fetch fresh data and push to Firebase
+      - name: Fetch fresh data and sync to Firestore
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
           FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
           FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
         run: npm run fetch
-
-      - name: Commit and push updated fresh data files
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/*.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(data): auto-update fresh trends data [skip ci]" && git push)
-
