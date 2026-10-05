@@ -88,9 +88,9 @@ async function preloadAllPlatforms() {
 }
 
 function formatUpdateTime(isoString) {
-    if (!isoString) return '--:-- --/--/----';
+    if (!isoString) return null;
     const d = new Date(isoString);
-    if (isNaN(d.getTime())) return '--:-- --/--/----';
+    if (isNaN(d.getTime())) return null;
     const pad = (n) => String(n).padStart(2, '0');
     const hh = pad(d.getHours());
     const mm = pad(d.getMinutes());
@@ -103,7 +103,12 @@ function formatUpdateTime(isoString) {
 function updateHeaderTimestamp() {
     const el = document.getElementById('header-updated-time');
     if (!el) return;
-    el.textContent = formatUpdateTime(state.data?.last_updated);
+    const formatted = formatUpdateTime(state.data?.last_updated);
+    if (formatted) {
+        el.textContent = formatted;
+    } else {
+        el.innerHTML = '<span class="header-time-skeleton skeleton-shimmer"></span>';
+    }
 }
 
 // Load metadata from /data/platforms.json
