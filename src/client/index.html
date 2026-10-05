@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Trending</title>
+
+    <!-- Meta SEO & Crawlers -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="description"
+        content="Theo dõi xu hướng nổi trội, cập nhật và phân tích dữ liệu thịnh hành tại Việt Nam">
+    <meta name="keywords"
+        content="top trending, xu hướng việt nam, bảng xếp hạng youtube, spotify trending vn, google trends việt nam, netflix top 10 việt nam, thịnh hành việt nam">
+    <meta name="author" content="Top Trending">
+    <link rel="canonical" href="/">
+
+    <!-- Open Graph (Facebook, Zalo, Telegram, Discord, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Top Trending">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:title" content="Top Trending — Bảng Xếp Hạng Xu Hướng Thịnh Hành Việt Nam">
+    <meta property="og:description"
+        content="Theo dõi xu hướng nổi trội, cập nhật và phân tích dữ liệu thịnh hành tại Việt Nam">
+    <meta property="og:image" content="/assets/preview.png">
+    <meta property="og:image:secure_url" content="/assets/preview.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="463">
+    <meta property="og:image:alt" content="Top Trending — Theo dõi xu hướng nổi trội, cập nhật và phân tích dữ liệu thịnh hành tại Việt Nam">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Top Trending — Bảng Xếp Hạng Xu Hướng Thịnh Hành Việt Nam">
+    <meta name="twitter:description"
+        content="Theo dõi xu hướng nổi trội, cập nhật và phân tích dữ liệu thịnh hành tại Việt Nam">
+    <meta name="twitter:image" content="/assets/preview.png">
+    <meta name="twitter:image:alt" content="Top Trending Preview">
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Top Trending",
+      "alternateName": "Top Trending VN",
+      "url": "/",
+      "description": "Theo dõi xu hướng nổi trội, cập nhật và phân tích dữ liệu thịnh hành tại Việt Nam",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "All",
+      "inLanguage": "vi",
+      "image": "/assets/preview.png"
+    }
+    </script>
+
+    <!-- Favicon & PWA & Sitemap -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+    <!-- Typography: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Instant Theme Detection (Follows Device/System Preference with Zero Flicker) -->
+    <script>
+        (function () {
+            try {
+                const saved = localStorage.getItem('top_trending_theme');
+                const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = saved ? saved : (systemDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) { }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="/style.css?v=123">
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <!-- Brand -->
+            <a href="/" class="brand-logo" id="brand-logo" title="Top Trending — Trang Chủ">
+                <img src="/assets/logo.png" alt="Top Trending" class="brand-logo-img">
+                <span class="brand-name">Top<span class="brand-name-accent">Trending</span></span>
+            </a>
+
+            <!-- Platforms Navigation Segment (Centered in Header) -->
+            <nav class="header-nav-center" aria-label="Bộ lọc nền tảng">
+                <div class="platforms-segment" id="platforms-bar" role="tablist">
+                    <!-- Dynamic Platform Tabs -->
+                </div>
+            </nav>
+
+            <!-- Header Right Actions -->
+            <div class="header-actions">
+                <!-- Timestamp Badge: Cập nhật: HH:mm DD/MM/YYYY -->
+                <div class="header-updated-badge" id="header-updated-badge" title="Thời gian cập nhật dữ liệu xu hướng mới nhất">
+                    <svg class="updated-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span><span class="badge-label-prefix">Cập nhật: </span><strong id="header-updated-time">23:25 05/10/2026</strong></span>
+                </div>
+
+                <!-- Theme Toggle Switch (Dark / Light) -->
+                <button id="theme-toggle-btn" class="theme-toggle-btn" role="switch" aria-checked="false" aria-label="Đổi giao diện Sáng / Tối"
+                    title="Đổi giao diện Sáng / Tối">
+                    <span class="theme-toggle-thumb">
+                        <svg class="svg-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="svg-icon theme-icon-sun hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="main-wrapper">
+        <!-- Dynamic Platform View Container -->
+        <section id="view-container" class="view-container">
+            <!-- Rendered dynamically by active view module -->
+        </section>
+    </main>
+
+    <!-- Mobile App Bottom Navigation Bar (Fixed at Real Screen Bottom) -->
+    <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Điều hướng di động">
+        <div class="platforms-segment" id="mobile-platforms-bar" role="tablist">
+            <!-- Dynamic Platform Tabs for Mobile -->
+        </div>
+    </nav>
+
+    <script type="module" src="/app.js?v=121"></script>
+</body>
+
+</html>

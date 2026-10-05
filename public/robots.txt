@@ -1,0 +1,6 @@
+# robots.txt for Top Trending
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://toptrending.vn/sitemap.xml

@@ -1,0 +1,21 @@
+{
+  "name": "top-trending",
+  "version": "2.0.0",
+  "description": "Theo dõi xu hướng nổi trội, cập nhật và phân tích dữ liệu thịnh hành tại Việt Nam",
+  "main": "src/server/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server/index.js",
+    "fetch": "node src/pipeline/index.js",
+    "fetch:youtube": "node src/pipeline/scrape_youtube.js",
+    "fetch:spotify": "node src/pipeline/scrape_spotify.js",
+    "fetch:google": "node src/pipeline/scrape_google.js",
+    "fetch:netflix": "node src/pipeline/scrape_netflix.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase-admin": "^14.5.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Top Trending",
+  "short_name": "Top Trending",
+  "description": "Theo dõi xu hướng nổi trội, cập nhật và phân tích dữ liệu thịnh hành tại Việt Nam",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090a0d",
+  "theme_color": "#090a0d",
+  "icons": [
+    {
+      "src": "/assets/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
