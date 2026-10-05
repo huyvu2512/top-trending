@@ -257,13 +257,19 @@ export function buildSpotifyContentHtml(items, isOverview, currentCategory, stat
     // Tính toán Kỷ Lục Spotify từ fullItems (đã lọc trùng lặp)
     if (_lastSpotifyItems !== fullItems && fullItems.length > 0) {
         const uniqueFull = dedupeTracks(fullItems);
+        const byCat = (catId) => dedupeTracks(fullItems.filter(t => t.categoryId === catId));
+        const chartsList = byCat('charts');
+        const vpopList = byCat('artists');
+        const hitsList = byCat('playlists');
+        const radioList = byCat('radio');
+
         _cachedSpotifyRecords = {
-            topCharts: dedupeTracks(fullItems.filter(t => t.categoryId === 'charts')).slice(0, 5),
-            topVpop: dedupeTracks(fullItems.filter(t => t.categoryId === 'artists')).slice(0, 5),
+            topCharts: chartsList.length >= 3 ? chartsList.slice(0, 5) : uniqueFull.slice(0, 5),
+            topVpop: vpopList.length >= 3 ? vpopList.slice(0, 5) : uniqueFull.slice(5, 10),
             longestTracks: [...uniqueFull].sort((a, b) => (b.durationMs || 0) - (a.durationMs || 0)).slice(0, 5),
-            topHits: dedupeTracks(fullItems.filter(t => t.categoryId === 'playlists')).slice(0, 5),
+            topHits: hitsList.length >= 3 ? hitsList.slice(0, 5) : uniqueFull.slice(10, 15),
             shortestTracks: [...uniqueFull].filter(t => (t.durationMs || 0) > 60000).sort((a, b) => (a.durationMs || 0) - (b.durationMs || 0)).slice(0, 5),
-            viralRadio: dedupeTracks(fullItems.filter(t => t.categoryId === 'radio')).slice(0, 5)
+            viralRadio: radioList.length >= 3 ? radioList.slice(0, 5) : uniqueFull.slice(15, 20)
         };
         _lastSpotifyItems = fullItems;
     }
