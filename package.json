@@ -2,16 +2,12 @@
   "name": "top-trending",
   "version": "2.0.0",
   "description": "Theo dõi xu hướng nổi trội, cập nhật và phân tích dữ liệu thịnh hành tại Việt Nam",
-  "main": "src/server/index.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "dev": "node src/server/index.js",
-    "build": "node scripts/build.mjs",
-    "fetch": "node src/pipeline/index.js",
-    "fetch:youtube": "node src/pipeline/scrape_youtube.js",
-    "fetch:spotify": "node src/pipeline/scrape_spotify.js",
-    "fetch:google": "node src/pipeline/scrape_google.js",
-    "fetch:netflix": "node src/pipeline/scrape_netflix.js"
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "fetch": "node src/pipeline.js"
   },
   "dependencies": {
     "axios": "^1.6.8",

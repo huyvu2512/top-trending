@@ -1,24 +1,32 @@
+import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs/promises';
 import { spawn } from 'child_process';
-import { getFirebaseStatus, getRankingFromFirestore, getAllRankingsFromFirestore } from '../../pipeline/firebase.js';
+import os from 'os';
+import { getFirebaseStatus, getRankingFromFirestore, getAllRankingsFromFirestore } from './firebase.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const router = express.Router();
-const dataDir = path.resolve(__dirname, '../../../data');
-const pipelineScript = path.resolve(__dirname, '../../pipeline/index.js');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-// ==========================================================================
-// REST API ROUTER (FIRESTORE DATABASE & LOCAL FALLBACK)
-// ==========================================================================
+const publicDir = path.resolve(__dirname, '../public');
+const dataDir = path.resolve(publicDir, 'data');
+const pipelineScript = path.resolve(__dirname, 'pipeline.js');
 
-// 1. Kiểm tra trạng thái hệ thống & kết nối DB
-// GET /api/status
-router.get('/status', async (req, res) => {
+app.use(express.json());
+
+// 1. Phục vụ toàn bộ frontend & static assets & data
+app.use(express.static(publicDir));
+app.use('/assets', express.static(path.join(publicDir, 'assets')));
+app.use('/images', express.static(path.join(publicDir, 'assets')));
+app.use('/data', express.static(dataDir));
+
+// 2. REST API Endpoints
+app.get('/api/status', async (req, res) => {
     const dbStatus = getFirebaseStatus();
     let lastUpdated = null;
     try {
@@ -38,9 +46,7 @@ router.get('/status', async (req, res) => {
     });
 });
 
-// 2. Lấy toàn bộ rankings (Ưu tiên Firestore DB -> Fallback file local)
-// GET /api/rankings
-router.get('/rankings', async (req, res) => {
+app.get('/api/rankings', async (req, res) => {
     const dbData = await getAllRankingsFromFirestore();
     if (dbData && dbData.rankings && Object.keys(dbData.rankings).length > 0) {
         return res.json({
@@ -63,12 +69,8 @@ router.get('/rankings', async (req, res) => {
     }
 });
 
-// 3. Lấy rankings từng nền tảng (/api/rankings/youtube, /api/rankings/spotify, ...)
-// GET /api/rankings/:platform
-router.get('/rankings/:platform', async (req, res) => {
+app.get('/api/rankings/:platform', async (req, res) => {
     const platform = req.params.platform.toLowerCase();
-    
-    // Ưu tiên đọc từ Firestore Document
     const firestoreDoc = await getRankingFromFirestore(platform);
     if (firestoreDoc && firestoreDoc.items) {
         return res.json({
@@ -80,7 +82,6 @@ router.get('/rankings/:platform', async (req, res) => {
         });
     }
 
-    // Fallback đọc file local data/{platform}.json
     try {
         const filePath = path.join(dataDir, `${platform}.json`);
         const items = JSON.parse(await fs.readFile(filePath, 'utf-8'));
@@ -95,21 +96,17 @@ router.get('/rankings/:platform', async (req, res) => {
     }
 });
 
-// 4. Kích hoạt thủ công pipeline cào dữ liệu qua API (hỗ trợ cả GET /api/fetch và POST /api/sync)
 const triggerFetch = (req, res) => {
     console.log('[API]: Kích hoạt pipeline cào dữ liệu mới 100%...');
     const fetchProcess = spawn('node', [pipelineScript]);
-    
     let output = '';
     fetchProcess.stdout.on('data', (data) => {
         output += data.toString();
         console.log(`[Fetch]: ${data}`);
     });
-    
     fetchProcess.stderr.on('data', (data) => {
         console.error(`[Fetch Lỗi]: ${data}`);
     });
-    
     fetchProcess.on('close', (code) => {
         if (code === 0) {
             res.json({ success: true, message: 'Cập nhật dữ liệu mới thành công và đồng bộ DB', log: output });
@@ -119,7 +116,34 @@ const triggerFetch = (req, res) => {
     });
 };
 
-router.get('/fetch', triggerFetch);
-router.post('/sync', triggerFetch);
+app.get('/api/fetch', triggerFetch);
+app.post('/api/sync', triggerFetch);
 
-export default router;
+// 3. Fallback SPA routing cho mọi sub-path
+app.get('*', (req, res) => {
+    res.sendFile(path.join(publicDir, 'index.html'));
+});
+
+function getLocalIp() {
+    const interfaces = os.networkInterfaces();
+    for (const name of Object.keys(interfaces)) {
+        for (const iface of interfaces[name]) {
+            if (iface.family === 'IPv4' && !iface.internal) {
+                return iface.address;
+            }
+        }
+    }
+    return '127.0.0.1';
+}
+
+if (!process.env.VERCEL) {
+    app.listen(PORT, '0.0.0.0', () => {
+        const localIp = getLocalIp();
+        console.log(`Top Trending Server đang chạy:`);
+        console.log(`  - Local:    http://localhost:${PORT}`);
+        console.log(`  - Network:  http://${localIp}:${PORT}`);
+        console.log(`  - API:      http://localhost:${PORT}/api/status`);
+    });
+}
+
+export default app;

@@ -11,13 +11,13 @@ import { saveRankingToFirestore } from './firebase.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const PLATFORMS_FILE_PATH = path.resolve(__dirname, '../../data/platforms.json');
+const PUBLIC_DATA_DIR = path.resolve(__dirname, '../public/data');
+const ROOT_DATA_DIR = path.resolve(__dirname, '../data');
 
 async function main() {
     console.log('=== [TOP TRENDING DATA PIPELINE] BẮT ĐẦU CÀO DỮ LIỆU ===');
     const startTime = Date.now();
 
-    // 1. Đọc metadata từ data/platforms.json
     const defaultData = {
         last_updated: null,
         region: { code: "VN", name: "Việt Nam", flag: "🇻🇳" },
@@ -57,31 +57,39 @@ async function main() {
     };
 
     let currentData = { ...defaultData };
+    const platformsFilePath = path.join(PUBLIC_DATA_DIR, 'platforms.json');
 
     try {
-        const fileContent = await fs.readFile(PLATFORMS_FILE_PATH, 'utf-8');
+        const fileContent = await fs.readFile(platformsFilePath, 'utf-8');
         currentData = JSON.parse(fileContent);
-    } catch (e) {
-        console.log('[Pipeline]: Khởi tạo mới data/platforms.json từ template.');
-    }
-
-    // Luôn khởi tạo rankings mới tinh, KHÔNG giữ lại bất kỳ dữ liệu cũ nào
-    currentData.rankings = {};
-
-    // Hàm lưu file vào data/{platform}.json
-    async function saveDataFile(platform, items) {
-        if (!items || items.length === 0) return;
+    } catch (_) {
         try {
-            const filePath = path.resolve(__dirname, `../../data/${platform}.json`);
-            await fs.mkdir(path.dirname(filePath), { recursive: true });
-            await fs.writeFile(filePath, JSON.stringify(items, null, 2), 'utf-8');
-            console.log(`[Pipeline]: Đã lưu dữ liệu vào data/${platform}.json`);
+            const rootContent = await fs.readFile(path.join(ROOT_DATA_DIR, 'platforms.json'), 'utf-8');
+            currentData = JSON.parse(rootContent);
         } catch (e) {
-            console.warn(`[Save Error ${platform}]:`, e.message);
+            console.log('[Pipeline]: Khởi tạo mới platforms.json từ template.');
         }
     }
 
-    // 2. Thu thập Google Trends (Việt Nam) - 100% Free
+    currentData.rankings = {};
+
+    async function saveDataFile(fileName, content) {
+        if (!content) return;
+        const serialized = JSON.stringify(content, null, 2);
+        const targetDirs = [PUBLIC_DATA_DIR, ROOT_DATA_DIR];
+
+        for (const dir of targetDirs) {
+            try {
+                await fs.mkdir(dir, { recursive: true });
+                await fs.writeFile(path.join(dir, fileName), serialized, 'utf-8');
+            } catch (e) {
+                console.warn(`[Save Error ${fileName} in ${dir}]:`, e.message);
+            }
+        }
+        console.log(`[Pipeline]: Đã lưu dữ liệu vào ${fileName}`);
+    }
+
+    // 1. Google Trends (Việt Nam)
     try {
         const ggResult = await fetchGoogleTrends('VN');
         const ggTrending = Array.isArray(ggResult) ? ggResult : (ggResult.trending || []);
@@ -90,68 +98,57 @@ async function main() {
         if (ggTrending.length > 0) {
             currentData.rankings['google'] = ggTrending;
             await saveRankingToFirestore('google', ggTrending, { platform: 'google', region: 'VN' });
-            await saveDataFile('google', ggTrending);
+            await saveDataFile('google.json', ggTrending);
         }
         if (ggExplore.top && ggExplore.top.length > 0) {
-            const explorePath = path.resolve(__dirname, '../../data/google_explore.json');
-            await fs.writeFile(explorePath, JSON.stringify(ggExplore, null, 2), 'utf-8');
-            console.log('[Pipeline]: Đã lưu dữ liệu vào data/google_explore.json');
+            await saveDataFile('google_explore.json', ggExplore);
         }
     } catch (err) {
         console.error('[Google Trends Pipe Error]:', err.message);
     }
 
-    // 3. Thu thập YouTube (Việt Nam)
+    // 2. YouTube (Việt Nam)
     try {
         const ytVn = await fetchYouTubeTrends('VN', 'all', []);
         if (ytVn.length > 0) {
             currentData.rankings['youtube'] = ytVn;
             await saveRankingToFirestore('youtube', ytVn, { platform: 'youtube', region: 'VN' });
-            await saveDataFile('youtube', ytVn);
+            await saveDataFile('youtube.json', ytVn);
         }
     } catch (err) {
         console.error('[YouTube Pipe Error]:', err.message);
     }
 
-    // 4. Thu thập Spotify (Việt Nam)
+    // 3. Spotify (Việt Nam)
     try {
         const spVn = await fetchSpotifyTop50('VN');
         if (spVn.length > 0) {
             currentData.rankings['spotify'] = spVn;
             await saveRankingToFirestore('spotify', spVn, { platform: 'spotify', region: 'VN' });
-            await saveDataFile('spotify', spVn);
+            await saveDataFile('spotify.json', spVn);
         }
     } catch (err) {
         console.error('[Spotify Pipe Error]:', err.message);
     }
 
-    // 5. Thu thập Netflix (Việt Nam)
+    // 4. Netflix (Việt Nam)
     try {
         const nfVn = await fetchNetflixTrends();
         if (nfVn.length > 0) {
             currentData.rankings['netflix'] = nfVn;
             await saveRankingToFirestore('netflix', nfVn, { platform: 'netflix', region: 'VN' });
-            await saveDataFile('netflix', nfVn);
+            await saveDataFile('netflix.json', nfVn);
         }
     } catch (err) {
         console.error('[Netflix Pipe Error]:', err.message);
     }
 
-
-
-    // Cập nhật timestamp và dữ liệu mới tinh vào platforms.json
+    // Cập nhật timestamp và metadata vào platforms.json
     try {
-        const platformsPath = path.resolve(__dirname, '../../data/platforms.json');
-        await fs.mkdir(path.dirname(platformsPath), { recursive: true });
-        let pContent = currentData;
-        try {
-            pContent = JSON.parse(await fs.readFile(platformsPath, 'utf-8'));
-        } catch (_) {}
         const nowIso = new Date().toISOString();
-        pContent.last_updated = nowIso;
-        pContent.rankings = currentData.rankings;
-        await fs.writeFile(platformsPath, JSON.stringify(pContent, null, 2), 'utf-8');
-        console.log(`[Pipeline]: Đã cập nhật mốc thời gian hoàn tất: ${nowIso} và lưu dữ liệu mới.`);
+        currentData.last_updated = nowIso;
+        await saveDataFile('platforms.json', currentData);
+        console.log(`[Pipeline]: Đã cập nhật mốc thời gian hoàn tất: ${nowIso}`);
     } catch (err) {
         console.warn('[Pipeline platforms.json error]:', err.message);
     }

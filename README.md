@@ -67,44 +67,46 @@ Hệ thống tích hợp trực tiếp YouTube Data API v3, Spotify Web API, Goo
 top-trending/
 ├── .github/
 │   └── workflows/
-│       └── update_data.yml        # Workflow chạy cào dữ liệu qua cron mỗi 3 tiếng
-├── public/                        # Tài nguyên tĩnh công khai
-│   ├── assets/                    # Favicon, logo thương hiệu, preview image
+│       └── update_data.yml        # Workflow Sync Data to Firebase tự động mỗi 3 tiếng
+├── public/                        # Toàn bộ Frontend tĩnh và tài nguyên web (phục vụ trực tiếp)
+│   ├── assets/                    # Favicon, logo thương hiệu, banner preview
 │   │   ├── favicon.png
 │   │   ├── logo.png
 │   │   └── preview.png
+│   ├── data/                      # Dữ liệu bảng xếp hạng tĩnh JSON
+│   │   ├── google.json
+│   │   ├── google_explore.json
+│   │   ├── netflix.json
+│   │   ├── platforms.json
+│   │   ├── spotify.json
+│   │   └── youtube.json
+│   ├── views/                     # Các module giao diện render từng nền tảng
+│   │   ├── google.js
+│   │   ├── netflix.js
+│   │   ├── overview.js
+│   │   ├── spotify.js
+│   │   └── youtube.js
+│   ├── app.js                     # Trình điều khiển router và logic phía client
+│   ├── index.html                 # Trang chủ duy nhất và thẻ meta SEO
 │   ├── manifest.json              # Cấu hình PWA
 │   ├── robots.txt                 # Cấu hình robot tìm kiếm
-│   └── sitemap.xml                # Sơ đồ trang web phục vụ SEO
-├── src/                           # Mã nguồn chính của dự án
-│   ├── client/                    # Giao diện người dùng (Frontend)
-│   │   ├── index.html             # Trang giao diện chính và thẻ meta SEO
-│   │   ├── app.js                 # Bộ điều phối trung tâm client
-│   │   ├── style.css              # Hệ thống stylesheet Dark Theme toàn diện
-│   │   └── views/                 # Các module giao diện theo từng nền tảng
-│   │       ├── google.js          # Giao diện Google Trends
-│   │       ├── netflix.js         # Giao diện Netflix Top 10
-│   │       ├── overview.js        # Giao diện Bảng xu hướng tổng hợp
-│   │       ├── spotify.js         # Giao diện Spotify Top 50
-│   │       └── youtube.js         # Giao diện YouTube Trending
-│   ├── pipeline/                  # Hệ thống thu thập và xử lý dữ liệu
-│   │   ├── collectors/            # Module cào dữ liệu độc lập từng nền tảng
-│   │   │   ├── google_trends.js
-│   │   │   ├── netflix.js
-│   │   │   ├── spotify.js
-│   │   │   └── youtube.js
-│   │   ├── firebase.js            # Module kết nối và đồng bộ Firestore DB
-│   │   └── index.js               # Master runner điều phối pipeline
-│   └── server/                    # Backend Express
-│       ├── routes/
-│       │   └── api.js             # REST API Router (/status, /rankings, /fetch)
-│       └── index.js               # Khởi tạo server và phục vụ static
+│   ├── sitemap.xml                # Sơ đồ trang web
+│   └── style.css                  # Hệ thống giao diện stylesheet
+├── src/                           # Toàn bộ mã nguồn logic backend và thu thập dữ liệu
+│   ├── collectors/                # Bộ thu thập dữ liệu chuyên biệt từng nền tảng
+│   │   ├── google_trends.js
+│   │   ├── netflix.js
+│   │   ├── spotify.js
+│   │   └── youtube.js
+│   ├── firebase.js                # Kết nối Cloud Firestore và helper DB
+│   ├── pipeline.js                # Trình điều phối cào dữ liệu và ghi Firestore
+│   └── server.js                  # Server Express local và REST API
 ├── .env.example                   # Mẫu cấu hình biến môi trường
-├── .gitignore                     # Cấu hình bỏ qua file nhạy cảm và file rác
-├── package.json                   # Cấu hình dependencies và scripts
-├── vercel.json                    # Cấu hình định tuyến và Security Headers
-├── SECURITY.md                    # Chính sách bảo mật và quy trình báo lỗi
-├── LICENSE                        # Giấy phép mã nguồn mở MIT
+├── .gitignore                     # Bỏ qua tệp nhạy cảm và node_modules
+├── package.json                   # Cấu hình dependencies và lệnh chạy
+├── vercel.json                    # Cấu hình định tuyến CDN và bảo mật headers
+├── SECURITY.md                    # Chính sách bảo mật
+├── LICENSE                        # Giấy phép MIT
 └── README.md                      # Tài liệu hướng dẫn dự án
 ```
 
@@ -137,14 +139,8 @@ npm run dev
 
 ### Chạy thủ công Pipeline cào dữ liệu
 ```bash
-# Cào toàn bộ 4 nền tảng và đồng bộ vào Cloud Firestore
+# Cào toàn bộ 4 nền tảng và đồng bộ vào Cloud Firestore và public/data/
 npm run fetch
-
-# Hoặc cào riêng từng nền tảng:
-npm run fetch:youtube
-npm run fetch:spotify
-npm run fetch:google
-npm run fetch:netflix
 ```
 
 ---

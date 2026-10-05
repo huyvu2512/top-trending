@@ -1,0 +1,756 @@
+{
+  "top": [
+    {
+      "rank": 1,
+      "query": "xổ số",
+      "score": 100,
+      "change": "-10%",
+      "changeNum": -10,
+      "url": "https://www.google.com/search?q=x%E1%BB%95%20s%E1%BB%91"
+    },
+    {
+      "rank": 2,
+      "query": "dịch",
+      "score": 54,
+      "change": "-10%",
+      "changeNum": -10,
+      "url": "https://www.google.com/search?q=d%E1%BB%8Bch"
+    },
+    {
+      "rank": 3,
+      "query": "thời tiết",
+      "score": 48,
+      "change": "+20%",
+      "changeNum": 20,
+      "url": "https://www.google.com/search?q=th%E1%BB%9Di%20ti%E1%BA%BFt"
+    },
+    {
+      "rank": 4,
+      "query": "số miền nam",
+      "score": 41,
+      "change": "-10%",
+      "changeNum": -10,
+      "url": "https://www.google.com/search?q=s%E1%BB%91%20mi%E1%BB%81n%20nam"
+    },
+    {
+      "rank": 5,
+      "query": "xổ số miền nam",
+      "score": 39,
+      "change": "-10%",
+      "changeNum": -10,
+      "url": "https://www.google.com/search?q=x%E1%BB%95%20s%E1%BB%91%20mi%E1%BB%81n%20nam"
+    },
+    {
+      "rank": 6,
+      "query": "youtube",
+      "score": 35,
+      "change": "+4%",
+      "changeNum": 4,
+      "url": "https://www.google.com/search?q=youtube"
+    },
+    {
+      "rank": 7,
+      "query": "gg",
+      "score": 32,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=gg"
+    },
+    {
+      "rank": 8,
+      "query": "xsmn",
+      "score": 29,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=xsmn"
+    },
+    {
+      "rank": 9,
+      "query": "xsmb",
+      "score": 28,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=xsmb"
+    },
+    {
+      "rank": 10,
+      "query": "vàng",
+      "score": 27,
+      "change": "+20%",
+      "changeNum": 20,
+      "url": "https://www.google.com/search?q=v%C3%A0ng"
+    },
+    {
+      "rank": 11,
+      "query": "xổ số miền bắc",
+      "score": 25,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=x%E1%BB%95%20s%E1%BB%91%20mi%E1%BB%81n%20b%E1%BA%AFc"
+    },
+    {
+      "rank": 12,
+      "query": "google",
+      "score": 25,
+      "change": "-9%",
+      "changeNum": -9,
+      "url": "https://www.google.com/search?q=google"
+    },
+    {
+      "rank": 13,
+      "query": "chat",
+      "score": 23,
+      "change": "+30%",
+      "changeNum": 30,
+      "url": "https://www.google.com/search?q=chat"
+    },
+    {
+      "rank": 14,
+      "query": "ai",
+      "score": 21,
+      "change": "+30%",
+      "changeNum": 30,
+      "url": "https://www.google.com/search?q=ai"
+    },
+    {
+      "rank": 15,
+      "query": "gpt",
+      "score": 20,
+      "change": "+40%",
+      "changeNum": 40,
+      "url": "https://www.google.com/search?q=gpt"
+    },
+    {
+      "rank": 16,
+      "query": "chat gpt",
+      "score": 19,
+      "change": "+40%",
+      "changeNum": 40,
+      "url": "https://www.google.com/search?q=chat%20gpt"
+    },
+    {
+      "rank": 17,
+      "query": "tiktok",
+      "score": 19,
+      "change": "+20%",
+      "changeNum": 20,
+      "url": "https://www.google.com/search?q=tiktok"
+    },
+    {
+      "rank": 18,
+      "query": "xổ số hôm nay",
+      "score": 18,
+      "change": "-3%",
+      "changeNum": -3,
+      "url": "https://www.google.com/search?q=x%E1%BB%95%20s%E1%BB%91%20h%C3%B4m%20nay"
+    },
+    {
+      "rank": 19,
+      "query": "giá vàng",
+      "score": 18,
+      "change": "+30%",
+      "changeNum": 30,
+      "url": "https://www.google.com/search?q=gi%C3%A1%20v%C3%A0ng"
+    },
+    {
+      "rank": 20,
+      "query": "vn",
+      "score": 18,
+      "change": "+6%",
+      "changeNum": 6,
+      "url": "https://www.google.com/search?q=vn"
+    },
+    {
+      "rank": 21,
+      "query": "gg dịch",
+      "score": 17,
+      "change": "-30%",
+      "changeNum": -30,
+      "url": "https://www.google.com/search?q=gg%20d%E1%BB%8Bch"
+    },
+    {
+      "rank": 22,
+      "query": "game",
+      "score": 16,
+      "change": "+0%",
+      "changeNum": 0,
+      "url": "https://www.google.com/search?q=game"
+    },
+    {
+      "rank": 23,
+      "query": "fb",
+      "score": 15,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=fb"
+    },
+    {
+      "rank": 24,
+      "query": "facebook",
+      "score": 15,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=facebook"
+    },
+    {
+      "rank": 25,
+      "query": "xổ số miền trung",
+      "score": 14,
+      "change": "+0%",
+      "changeNum": 0,
+      "url": "https://www.google.com/search?q=x%E1%BB%95%20s%E1%BB%91%20mi%E1%BB%81n%20trung"
+    },
+    {
+      "rank": 26,
+      "query": "world cup",
+      "score": 13,
+      "change": "+1250%",
+      "changeNum": 1250,
+      "url": "https://www.google.com/search?q=world%20cup"
+    },
+    {
+      "rank": 27,
+      "query": "dich",
+      "score": 13,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=dich"
+    },
+    {
+      "rank": 28,
+      "query": "gemini",
+      "score": 11,
+      "change": "+250%",
+      "changeNum": 250,
+      "url": "https://www.google.com/search?q=gemini"
+    },
+    {
+      "rank": 29,
+      "query": "yt",
+      "score": 11,
+      "change": "+3%",
+      "changeNum": 3,
+      "url": "https://www.google.com/search?q=yt"
+    },
+    {
+      "rank": 30,
+      "query": "thời tiết ngày mai",
+      "score": 10,
+      "change": "+10%",
+      "changeNum": 10,
+      "url": "https://www.google.com/search?q=th%E1%BB%9Di%20ti%E1%BA%BFt%20ng%C3%A0y%20mai"
+    },
+    {
+      "rank": 31,
+      "query": "giá vàng hôm nay",
+      "score": 9,
+      "change": "+30%",
+      "changeNum": 30,
+      "url": "https://www.google.com/search?q=gi%C3%A1%20v%C3%A0ng%20h%C3%B4m%20nay"
+    },
+    {
+      "rank": 32,
+      "query": "poki",
+      "score": 9,
+      "change": "+30%",
+      "changeNum": 30,
+      "url": "https://www.google.com/search?q=poki"
+    },
+    {
+      "rank": 33,
+      "query": "zalo",
+      "score": 9,
+      "change": "-2%",
+      "changeNum": -2,
+      "url": "https://www.google.com/search?q=zalo"
+    },
+    {
+      "rank": 34,
+      "query": "sxmb",
+      "score": 8,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=sxmb"
+    },
+    {
+      "rank": 35,
+      "query": "máy tính",
+      "score": 8,
+      "change": "-10%",
+      "changeNum": -10,
+      "url": "https://www.google.com/search?q=m%C3%A1y%20t%C3%ADnh"
+    },
+    {
+      "rank": 36,
+      "query": "world cup 2026",
+      "score": 8,
+      "change": "+3350%",
+      "changeNum": 3350,
+      "url": "https://www.google.com/search?q=world%20cup%202026"
+    },
+    {
+      "rank": 37,
+      "query": "you",
+      "score": 7,
+      "change": "-1%",
+      "changeNum": -1,
+      "url": "https://www.google.com/search?q=you"
+    },
+    {
+      "rank": 38,
+      "query": "lịch âm",
+      "score": 7,
+      "change": "+20%",
+      "changeNum": 20,
+      "url": "https://www.google.com/search?q=l%E1%BB%8Bch%20%C3%A2m"
+    },
+    {
+      "rank": 39,
+      "query": "xsmt",
+      "score": 7,
+      "change": "-5%",
+      "changeNum": -5,
+      "url": "https://www.google.com/search?q=xsmt"
+    },
+    {
+      "rank": 40,
+      "query": "sxmn",
+      "score": 7,
+      "change": "-10%",
+      "changeNum": -10,
+      "url": "https://www.google.com/search?q=sxmn"
+    },
+    {
+      "rank": 41,
+      "query": "map",
+      "score": 7,
+      "change": "-5%",
+      "changeNum": -5,
+      "url": "https://www.google.com/search?q=map"
+    },
+    {
+      "rank": 42,
+      "query": "google dịch",
+      "score": 7,
+      "change": "-30%",
+      "changeNum": -30,
+      "url": "https://www.google.com/search?q=google%20d%E1%BB%8Bch"
+    },
+    {
+      "rank": 43,
+      "query": "gmail",
+      "score": 7,
+      "change": "-10%",
+      "changeNum": -10,
+      "url": "https://www.google.com/search?q=gmail"
+    },
+    {
+      "rank": 44,
+      "query": "xổ số miền nam hôm nay",
+      "score": 7,
+      "change": "+4%",
+      "changeNum": 4,
+      "url": "https://www.google.com/search?q=x%E1%BB%95%20s%E1%BB%91%20mi%E1%BB%81n%20nam%20h%C3%B4m%20nay"
+    },
+    {
+      "rank": 45,
+      "query": "roblox",
+      "score": 6,
+      "change": "+0%",
+      "changeNum": 0,
+      "url": "https://www.google.com/search?q=roblox"
+    },
+    {
+      "rank": 46,
+      "query": "wc",
+      "score": 6,
+      "change": "+1600%",
+      "changeNum": 1600,
+      "url": "https://www.google.com/search?q=wc"
+    },
+    {
+      "rank": 47,
+      "query": "chatgpt",
+      "score": 6,
+      "change": "+50%",
+      "changeNum": 50,
+      "url": "https://www.google.com/search?q=chatgpt"
+    },
+    {
+      "rank": 48,
+      "query": "24h",
+      "score": 5,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=24h"
+    },
+    {
+      "rank": 49,
+      "query": "xổ số miền bắc hôm nay",
+      "score": 5,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=x%E1%BB%95%20s%E1%BB%91%20mi%E1%BB%81n%20b%E1%BA%AFc%20h%C3%B4m%20nay"
+    },
+    {
+      "rank": 50,
+      "query": "gg dich",
+      "score": 5,
+      "change": "-20%",
+      "changeNum": -20,
+      "url": "https://www.google.com/search?q=gg%20dich"
+    }
+  ],
+  "rising": [
+    {
+      "rank": 1,
+      "query": "fifa world cup 2026",
+      "growth": "+5000%",
+      "growthNum": 5000,
+      "url": "https://www.google.com/search?q=fifa%20world%20cup%202026"
+    },
+    {
+      "rank": 2,
+      "query": "thế vận hội mùa đông 2026",
+      "growth": "+3500%",
+      "growthNum": 3500,
+      "url": "https://www.google.com/search?q=th%E1%BA%BF%20v%E1%BA%ADn%20h%E1%BB%99i%20m%C3%B9a%20%C4%91%C3%B4ng%202026"
+    },
+    {
+      "rank": 3,
+      "query": "lịch thi đấu wc",
+      "growth": "+3500%",
+      "growthNum": 3500,
+      "url": "https://www.google.com/search?q=l%E1%BB%8Bch%20thi%20%C4%91%E1%BA%A5u%20wc"
+    },
+    {
+      "rank": 4,
+      "query": "world cup 2026",
+      "growth": "+3350%",
+      "growthNum": 3350,
+      "url": "https://www.google.com/search?q=world%20cup%202026"
+    },
+    {
+      "rank": 5,
+      "query": "lich thi dau wc",
+      "growth": "+2750%",
+      "growthNum": 2750,
+      "url": "https://www.google.com/search?q=lich%20thi%20dau%20wc"
+    },
+    {
+      "rank": 6,
+      "query": "lịch thi đấu world cup 2026",
+      "growth": "+2700%",
+      "growthNum": 2700,
+      "url": "https://www.google.com/search?q=l%E1%BB%8Bch%20thi%20%C4%91%E1%BA%A5u%20world%20cup%202026"
+    },
+    {
+      "rank": 7,
+      "query": "wc 2026",
+      "growth": "+2200%",
+      "growthNum": 2200,
+      "url": "https://www.google.com/search?q=wc%202026"
+    },
+    {
+      "rank": 8,
+      "query": "wc",
+      "growth": "+1600%",
+      "growthNum": 1600,
+      "url": "https://www.google.com/search?q=wc"
+    },
+    {
+      "rank": 9,
+      "query": "world cup",
+      "growth": "+1250%",
+      "growthNum": 1250,
+      "url": "https://www.google.com/search?q=world%20cup"
+    },
+    {
+      "rank": 10,
+      "query": "chatgbt",
+      "growth": "+450%",
+      "growthNum": 450,
+      "url": "https://www.google.com/search?q=chatgbt"
+    },
+    {
+      "rank": 11,
+      "query": "youtuber",
+      "growth": "+400%",
+      "growthNum": 400,
+      "url": "https://www.google.com/search?q=youtuber"
+    },
+    {
+      "rank": 12,
+      "query": "gemini",
+      "growth": "+250%",
+      "growthNum": 250,
+      "url": "https://www.google.com/search?q=gemini"
+    },
+    {
+      "rank": 13,
+      "query": "giá vàng thế giới",
+      "growth": "+250%",
+      "growthNum": 250,
+      "url": "https://www.google.com/search?q=gi%C3%A1%20v%C3%A0ng%20th%E1%BA%BF%20gi%E1%BB%9Bi"
+    },
+    {
+      "rank": 14,
+      "query": "vtvgo",
+      "growth": "+130%",
+      "growthNum": 130,
+      "url": "https://www.google.com/search?q=vtvgo"
+    },
+    {
+      "rank": 15,
+      "query": "tt",
+      "growth": "+80%",
+      "growthNum": 80,
+      "url": "https://www.google.com/search?q=tt"
+    },
+    {
+      "rank": 16,
+      "query": "chatgpt",
+      "growth": "+50%",
+      "growthNum": 50,
+      "url": "https://www.google.com/search?q=chatgpt"
+    },
+    {
+      "rank": 17,
+      "query": "trò chơi miễn phí",
+      "growth": "+40%",
+      "growthNum": 40,
+      "url": "https://www.google.com/search?q=tr%C3%B2%20ch%C6%A1i%20mi%E1%BB%85n%20ph%C3%AD"
+    },
+    {
+      "rank": 18,
+      "query": "chat gpt",
+      "growth": "+40%",
+      "growthNum": 40,
+      "url": "https://www.google.com/search?q=chat%20gpt"
+    },
+    {
+      "rank": 19,
+      "query": "kqbd",
+      "growth": "+40%",
+      "growthNum": 40,
+      "url": "https://www.google.com/search?q=kqbd"
+    },
+    {
+      "rank": 20,
+      "query": "gpt",
+      "growth": "+40%",
+      "growthNum": 40,
+      "url": "https://www.google.com/search?q=gpt"
+    },
+    {
+      "rank": 21,
+      "query": "ai",
+      "growth": "+30%",
+      "growthNum": 30,
+      "url": "https://www.google.com/search?q=ai"
+    },
+    {
+      "rank": 22,
+      "query": "olm",
+      "growth": "+30%",
+      "growthNum": 30,
+      "url": "https://www.google.com/search?q=olm"
+    },
+    {
+      "rank": 23,
+      "query": "giá vàng",
+      "growth": "+30%",
+      "growthNum": 30,
+      "url": "https://www.google.com/search?q=gi%C3%A1%20v%C3%A0ng"
+    },
+    {
+      "rank": 24,
+      "query": "poki",
+      "growth": "+30%",
+      "growthNum": 30,
+      "url": "https://www.google.com/search?q=poki"
+    },
+    {
+      "rank": 25,
+      "query": "chat",
+      "growth": "+30%",
+      "growthNum": 30,
+      "url": "https://www.google.com/search?q=chat"
+    },
+    {
+      "rank": 26,
+      "query": "giá vàng hôm nay",
+      "growth": "+30%",
+      "growthNum": 30,
+      "url": "https://www.google.com/search?q=gi%C3%A1%20v%C3%A0ng%20h%C3%B4m%20nay"
+    },
+    {
+      "rank": 27,
+      "query": "ioe",
+      "growth": "+20%",
+      "growthNum": 20,
+      "url": "https://www.google.com/search?q=ioe"
+    },
+    {
+      "rank": 28,
+      "query": "ket qua bong da",
+      "growth": "+20%",
+      "growthNum": 20,
+      "url": "https://www.google.com/search?q=ket%20qua%20bong%20da"
+    },
+    {
+      "rank": 29,
+      "query": "tik",
+      "growth": "+20%",
+      "growthNum": 20,
+      "url": "https://www.google.com/search?q=tik"
+    },
+    {
+      "rank": 30,
+      "query": "vàng",
+      "growth": "+20%",
+      "growthNum": 20,
+      "url": "https://www.google.com/search?q=v%C3%A0ng"
+    },
+    {
+      "rank": 31,
+      "query": "tiktok",
+      "growth": "+20%",
+      "growthNum": 20,
+      "url": "https://www.google.com/search?q=tiktok"
+    },
+    {
+      "rank": 32,
+      "query": "mazii.net",
+      "growth": "+20%",
+      "growthNum": 20,
+      "url": "https://www.google.com/search?q=mazii.net"
+    },
+    {
+      "rank": 33,
+      "query": "thời tiết",
+      "growth": "+20%",
+      "growthNum": 20,
+      "url": "https://www.google.com/search?q=th%E1%BB%9Di%20ti%E1%BA%BFt"
+    },
+    {
+      "rank": 34,
+      "query": "lịch âm",
+      "growth": "+20%",
+      "growthNum": 20,
+      "url": "https://www.google.com/search?q=l%E1%BB%8Bch%20%C3%A2m"
+    },
+    {
+      "rank": 35,
+      "query": "local guide program",
+      "growth": "+20%",
+      "growthNum": 20,
+      "url": "https://www.google.com/search?q=local%20guide%20program"
+    },
+    {
+      "rank": 36,
+      "query": "ketqua",
+      "growth": "+10%",
+      "growthNum": 10,
+      "url": "https://www.google.com/search?q=ketqua"
+    },
+    {
+      "rank": 37,
+      "query": "lịch âm hôm nay",
+      "growth": "+10%",
+      "growthNum": 10,
+      "url": "https://www.google.com/search?q=l%E1%BB%8Bch%20%C3%A2m%20h%C3%B4m%20nay"
+    },
+    {
+      "rank": 38,
+      "query": "ngoại hạng anh",
+      "growth": "+10%",
+      "growthNum": 10,
+      "url": "https://www.google.com/search?q=ngo%E1%BA%A1i%20h%E1%BA%A1ng%20anh"
+    },
+    {
+      "rank": 39,
+      "query": "thời tiết ngày mai",
+      "growth": "+10%",
+      "growthNum": 10,
+      "url": "https://www.google.com/search?q=th%E1%BB%9Di%20ti%E1%BA%BFt%20ng%C3%A0y%20mai"
+    },
+    {
+      "rank": 40,
+      "query": "minecraft",
+      "growth": "+10%",
+      "growthNum": 10,
+      "url": "https://www.google.com/search?q=minecraft"
+    },
+    {
+      "rank": 41,
+      "query": "xsmb hôm nay",
+      "growth": "+10%",
+      "growthNum": 10,
+      "url": "https://www.google.com/search?q=xsmb%20h%C3%B4m%20nay"
+    },
+    {
+      "rank": 42,
+      "query": "discord",
+      "growth": "+10%",
+      "growthNum": 10,
+      "url": "https://www.google.com/search?q=discord"
+    },
+    {
+      "rank": 43,
+      "query": "tik tok",
+      "growth": "+7%",
+      "growthNum": 7,
+      "url": "https://www.google.com/search?q=tik%20tok"
+    },
+    {
+      "rank": 44,
+      "query": "vn",
+      "growth": "+6%",
+      "growthNum": 6,
+      "url": "https://www.google.com/search?q=vn"
+    },
+    {
+      "rank": 45,
+      "query": "gia vang hom nay",
+      "growth": "+5%",
+      "growthNum": 5,
+      "url": "https://www.google.com/search?q=gia%20vang%20hom%20nay"
+    },
+    {
+      "rank": 46,
+      "query": "vioedu",
+      "growth": "+5%",
+      "growthNum": 5,
+      "url": "https://www.google.com/search?q=vioedu"
+    },
+    {
+      "rank": 47,
+      "query": "youtube",
+      "growth": "+4%",
+      "growthNum": 4,
+      "url": "https://www.google.com/search?q=youtube"
+    },
+    {
+      "rank": 48,
+      "query": "soundcloud",
+      "growth": "+4%",
+      "growthNum": 4,
+      "url": "https://www.google.com/search?q=soundcloud"
+    },
+    {
+      "rank": 49,
+      "query": "xổ số miền nam hôm nay",
+      "growth": "+4%",
+      "growthNum": 4,
+      "url": "https://www.google.com/search?q=x%E1%BB%95%20s%E1%BB%91%20mi%E1%BB%81n%20nam%20h%C3%B4m%20nay"
+    },
+    {
+      "rank": 50,
+      "query": "zalo web",
+      "growth": "+3%",
+      "growthNum": 3,
+      "url": "https://www.google.com/search?q=zalo%20web"
+    }
+  ]
+}

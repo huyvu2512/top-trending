@@ -1,4 +1,4 @@
-name: Trending Data Pipeline
+name: Sync Data to Firebase
 
 on:
   schedule:
