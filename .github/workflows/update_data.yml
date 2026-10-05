@@ -2,7 +2,7 @@ name: Sync Data to Firebase
 
 on:
   schedule:
-    - cron: '0 */3 * * *' # Tu dong chay moi 3 tieng mot lan
+    - cron: '0 */6 * * *' # Tu dong chay moi 6 tieng mot lan
   workflow_dispatch:      # Cho phep bam chay thu cong tren giao dien GitHub
 
 concurrency:
@@ -15,7 +15,7 @@ permissions:
 jobs:
   sync_data:
     name: Sync Trending Data
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
