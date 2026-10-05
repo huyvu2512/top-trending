@@ -88,13 +88,9 @@ async function preloadAllPlatforms() {
 }
 
 function formatUpdateTime(isoString) {
-    let d;
-    if (isoString) {
-        d = new Date(isoString);
-    }
-    if (!d || isNaN(d.getTime())) {
-        d = new Date();
-    }
+    if (!isoString) return '--:-- --/--/----';
+    const d = new Date(isoString);
+    if (isNaN(d.getTime())) return '--:-- --/--/----';
     const pad = (n) => String(n).padStart(2, '0');
     const hh = pad(d.getHours());
     const mm = pad(d.getMinutes());
