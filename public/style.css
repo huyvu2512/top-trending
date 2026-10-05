@@ -2141,6 +2141,7 @@ button {
         line-height: 1.25 !important;
         margin-bottom: 1px !important;
         -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
     }
 
     .ov-hero-author {
@@ -2340,6 +2341,7 @@ button {
         font-size: 11px !important;
         line-height: 1.25 !important;
         -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
     }
 
     .ov-feed-author {
