@@ -6,7 +6,7 @@ Dự án Top Trending được xây dựng với mục đích theo dõi, tổng 
 
 ## Quản lý Thông tin và Khóa Bảo mật
 
-1. **Không lưu trữ Secret Key trên kho mã nguồn:** Toàn bộ thông tin xác thực nhạy cảm (Firebase Private Key, YouTube API Key, Spotify Client Secret) chỉ được quản lý thông qua biến môi trường local (.env) và hệ thống GitHub Actions Secrets. File .env và các file chứa khóa dịch vụ được cấu hình chặn tuyệt đối trong .gitignore.
+1. **Không lưu trữ Secret Key trên kho mã nguồn:** Toàn bộ thông tin xác thực nhạy cảm (Firebase Private Key, YouTube API Key) chỉ được quản lý thông qua biến môi trường local (.env) và hệ thống GitHub Actions Secrets. File .env và các file chứa khóa dịch vụ được cấu hình chặn tuyệt đối trong .gitignore.
 2. **Cơ chế lưu trữ Cloud an toàn:** Dữ liệu bảng xếp hạng trên Cloud Firestore được tổ chức theo mô hình Bucket Document (chỉ ghi đè dữ liệu mới nhất, không lưu trữ bất kỳ thông tin định danh người dùng cá nhân nào).
 3. **Kết nối mã hóa HTTPS:** Toàn bộ luồng giao tiếp giữa client, server backend, pipeline thu thập dữ liệu và các hệ thống API bên ngoài đều được mã hóa toàn trình qua kết nối HTTPS / TLS tiêu chuẩn.
 4. **Tiêu đề bảo mật:** Hệ thống cấu hình sẵn các tiêu đề bảo mật trên mạng lưới phân phối Vercel Edge Network và Express middleware.

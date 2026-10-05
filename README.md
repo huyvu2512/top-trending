@@ -127,7 +127,7 @@ npm install
 
 # 3. Cấu hình biến môi trường
 cp .env.example .env
-# Chỉnh sửa file .env để điền khóa Firebase, YouTube API Key và Spotify API Key
+# Chỉnh sửa file .env để điền khóa Firebase và YouTube API Key (Spotify, Google Trends và Netflix hoạt động 100% tự động không cần key)
 
 # 4. Chạy server phát triển
 npm run dev
@@ -175,7 +175,7 @@ Hệ thống cung cấp các endpoint REST API backend phục vụ tra cứu d�
 ### Tự động hóa GitHub Actions
 Dự án tích hợp sẵn workflow tại `.github/workflows/update_data.yml`:
 - Tự động kích hoạt mỗi 3 tiếng một lần thông qua cron job `0 */3 * * *`.
-- Nạp các Secrets cấu hình từ GitHub Settings (`FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY`, `YOUTUBE_API_KEY`, `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`).
+- Nạp các Secrets cấu hình từ GitHub Settings (`FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY`, `YOUTUBE_API_KEY`).
 - Chạy pipeline cào dữ liệu sạch và ghi trực tiếp vào Cloud Firestore, đảm bảo bảng xếp hạng luôn tươi mới liên tục 24/7.
 
 ---
