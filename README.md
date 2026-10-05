@@ -18,7 +18,7 @@
 [![Last Commit](https://img.shields.io/github/last-commit/huyvu2512/top-trending?style=flat-square&label=Last%20Commit&color=3fb950)](https://github.com/huyvu2512/top-trending/commits/main)
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=huyvu2512.top-trending&left_text=Visitors&left_color=6e7681&right_color=5865F2)
 
-[Báo Lỗi](https://github.com/huyvu2512/top-trending/issues) · [Yêu Cầu Tính Năng](https://github.com/huyvu2512/top-trending/issues)
+[Xem Website](https://trending.huyvu2512.io.vn/) · [Báo Lỗi](https://github.com/huyvu2512/top-trending/issues) · [Yêu Cầu Tính Năng](https://github.com/huyvu2512/top-trending/issues)
 
 </div>
 
