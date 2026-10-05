@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "node src/server/index.js",
+    "build": "node scripts/build.mjs",
     "fetch": "node src/pipeline/index.js",
     "fetch:youtube": "node src/pipeline/scrape_youtube.js",
     "fetch:spotify": "node src/pipeline/scrape_spotify.js",
