@@ -29,11 +29,17 @@ app.use('/data', express.static(dataDir));
 app.get('/api/status', async (req, res) => {
     const dbStatus = getFirebaseStatus();
     let lastUpdated = null;
-    try {
-        const platformsPath = path.join(dataDir, 'platforms.json');
-        const content = JSON.parse(await fs.readFile(platformsPath, 'utf-8'));
-        lastUpdated = content.last_updated;
-    } catch (_) {}
+    const platforms = ['youtube', 'spotify', 'google', 'netflix'];
+    const platformsUpdated = {};
+    for (const p of platforms) {
+        try {
+            const filePath = path.join(dataDir, `${p}.json`);
+            const stat = await fs.stat(filePath);
+            const mtime = stat.mtime.toISOString();
+            platformsUpdated[p] = mtime;
+            if (!lastUpdated || mtime > lastUpdated) lastUpdated = mtime;
+        } catch (_) {}
+    }
 
     res.json({
         status: 'ok',
@@ -42,28 +48,51 @@ app.get('/api/status', async (req, res) => {
             type: 'firebase_firestore',
             ...dbStatus
         },
+        platforms_updated: platformsUpdated,
         last_updated: lastUpdated
     });
 });
 
 app.get('/api/rankings', async (req, res) => {
-    const dbData = await getAllRankingsFromFirestore();
-    if (dbData && dbData.rankings && Object.keys(dbData.rankings).length > 0) {
-        return res.json({
-            source: 'firebase_firestore',
-            last_updated: dbData.last_updated,
-            platforms_updated: dbData.platforms_updated || {},
-            rankings: dbData.rankings
-        });
+    try {
+        const dbData = await getAllRankingsFromFirestore();
+        if (dbData && dbData.rankings && Object.keys(dbData.rankings).length > 0) {
+            return res.json({
+                source: 'firebase_firestore',
+                last_updated: dbData.last_updated,
+                platforms_updated: dbData.platforms_updated || {},
+                rankings: dbData.rankings
+            });
+        }
+    } catch (dbErr) {
+        console.warn('[API /rankings]: Lỗi đọc Firestore, chuyển sang file cục bộ:', dbErr.message);
     }
 
     try {
-        const platformsPath = path.join(dataDir, 'platforms.json');
-        const content = JSON.parse(await fs.readFile(platformsPath, 'utf-8'));
+        const platforms = ['youtube', 'spotify', 'google', 'netflix'];
+        const rankings = {};
+        const platformsUpdated = {};
+        let latestUpdate = null;
+
+        await Promise.all(platforms.map(async (p) => {
+            try {
+                const filePath = path.join(dataDir, `${p}.json`);
+                const stat = await fs.stat(filePath);
+                const content = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+                rankings[p] = content;
+                const mtime = stat.mtime.toISOString();
+                platformsUpdated[p] = mtime;
+                if (!latestUpdate || mtime > latestUpdate) latestUpdate = mtime;
+            } catch (_) {
+                rankings[p] = [];
+            }
+        }));
+
         return res.json({
-            source: 'local_file',
-            last_updated: content.last_updated,
-            rankings: content.rankings || {}
+            source: 'local_files',
+            last_updated: latestUpdate,
+            platforms_updated: platformsUpdated,
+            rankings
         });
     } catch (e) {
         return res.status(500).json({ error: 'Không thể đọc dữ liệu rankings', details: e.message });

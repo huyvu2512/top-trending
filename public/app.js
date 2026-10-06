@@ -205,13 +205,16 @@ async function loadMetadata() {
 
     // 3. Fallback file cục bộ nếu ngoại tuyến
     if (!fetched) {
-        try {
-            const fileRes = await fetch('/data/platforms.json');
-            if (fileRes.ok) {
-                const fileJson = await fileRes.json();
-                state.data = { ...state.data, ...fileJson };
-            }
-        } catch (_) {}
+        const platforms = ['youtube', 'spotify', 'google', 'netflix'];
+        await Promise.all(platforms.map(async (p) => {
+            try {
+                const fileRes = await fetch(`/data/${p}.json`);
+                if (fileRes.ok) {
+                    state.data.rankings[p] = await fileRes.json();
+                    fetched = true;
+                }
+            } catch (_) {}
+        }));
     }
 
     updateHeaderTimestamp();
