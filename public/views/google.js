@@ -11,7 +11,7 @@
  * - Tab Khám phá (Explore): Bảng so sánh 2 cột chuẩn Google
  */
 
-import { formatUpdateTime } from '../app.js';
+import { formatUpdateTime } from '../utils.js';
 
 let _exploreCache = null;
 let _lastGoogleItems = null;

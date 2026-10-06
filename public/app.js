@@ -8,6 +8,7 @@ import { renderYouTube, renderYouTubeSkeleton, renderYouTubeContentSkeleton, upd
 import { renderSpotify, renderSpotifySkeleton, renderSpotifyContentSkeleton, updateSpotifyContent } from './views/spotify.js';
 import { renderGoogle, renderGoogleSkeleton, renderGoogleContentSkeleton, updateGoogleContent } from './views/google.js';
 import { renderNetflix, renderNetflixSkeleton, renderNetflixContentSkeleton, updateNetflixContent } from './views/netflix.js';
+import { formatUpdateTime } from './utils.js';
 
 // Application State Store
 const state = {
@@ -85,19 +86,6 @@ async function preloadAllPlatforms() {
     } catch (e) {
         console.warn('Preload warning:', e);
     }
-}
-
-export function formatUpdateTime(isoString) {
-    if (!isoString) return null;
-    const d = new Date(isoString);
-    if (isNaN(d.getTime())) return null;
-    const pad = (n) => String(n).padStart(2, '0');
-    const hh = pad(d.getHours());
-    const mm = pad(d.getMinutes());
-    const DD = pad(d.getDate());
-    const MM = pad(d.getMonth() + 1);
-    const YYYY = d.getFullYear();
-    return `${hh}:${mm} ${DD}/${MM}/${YYYY}`;
 }
 
 function updateHeaderTimestamp() {

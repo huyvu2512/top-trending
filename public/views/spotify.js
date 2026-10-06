@@ -9,7 +9,7 @@
  * - Kỷ Lục Spotify: 6 thẻ kỷ lục đối xứng ở trang Tổng hợp
  */
 
-import { formatUpdateTime } from '../app.js';
+import { formatUpdateTime } from '../utils.js';
 
 let _lastSpotifyItems = null;
 let _cachedSpotifyRecords = null;

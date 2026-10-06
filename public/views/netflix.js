@@ -11,7 +11,7 @@
  * - Dữ liệu thực tế 100% từ bảng xếp hạng Netflix Tudum Top 10 tại Việt Nam
  */
 
-import { formatUpdateTime } from '../app.js';
+import { formatUpdateTime } from '../utils.js';
 
 let _lastNetflixItems = null;
 let _cachedNetflixRecords = null;

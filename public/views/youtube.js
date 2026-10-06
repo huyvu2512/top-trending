@@ -8,7 +8,7 @@
  * - Khung Video Records in Vietnam: 2 cột đối xứng (Most Engaging, Most Liked, Most Commented, Most Viewed, Newest Videos, Oldest Videos)
  */
 
-import { formatUpdateTime } from '../app.js';
+import { formatUpdateTime } from '../utils.js';
 
 // Module-level Memoization Cache for records
 let _lastBaseItems = null;
