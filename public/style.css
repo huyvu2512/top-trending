@@ -2094,18 +2094,38 @@ button {
         font-weight: 700;
     }
 
+    .platform-chip.active::after {
+        content: '';
+        position: absolute;
+        bottom: 3px;
+        width: 18px;
+        height: 2.5px;
+        border-radius: var(--radius-full);
+        background-color: var(--accent-primary, #6366f1);
+    }
+
     [data-theme="light"] .platform-chip.active span {
         color: #0f172a !important;
     }
 
+    [data-theme="light"] .platform-chip.active::after {
+        background-color: #4f46e5;
+    }
+
     .platform-chip.active .platform-icon {
-        transform: scale(1.08);
+        transform: scale(1.1);
+        color: var(--accent-primary, #6366f1) !important;
+    }
+
+    [data-theme="light"] .platform-chip.active .platform-icon {
+        color: #4f46e5 !important;
     }
 
     /* 3. Main Workspace & View Container */
     .main-wrapper {
-        height: calc(100vh - 54px);
-        padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px));
+        min-height: calc(100dvh - 54px);
+        height: auto !important;
+        padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
         -webkit-overflow-scrolling: touch;
         overflow-x: hidden !important;
         max-width: 100vw !important;
@@ -2113,38 +2133,51 @@ button {
     }
 
     .view-container {
-        padding: 8px 8px 24px !important;
+        padding: 10px 12px 28px !important;
         max-width: 100% !important;
         width: 100% !important;
         overflow-x: hidden !important;
         box-sizing: border-box !important;
     }
 
-    /* 4. Category Strip (Wrap Multi-Line & Compact Pills for Mobile) */
+    /* 4. Category Strip (Smooth Horizontal Scrollable Native Row) */
     .chart-navigation {
-        margin-bottom: 12px !important;
-        gap: 6px !important;
+        margin-bottom: 14px !important;
+        margin-left: -12px !important;
+        margin-right: -12px !important;
+        padding: 0 12px !important;
+        overflow: hidden !important;
     }
 
     .categories-strip {
         display: flex !important;
-        flex-wrap: wrap !important;
-        overflow-x: visible !important;
-        overflow-y: visible !important;
-        -webkit-overflow-scrolling: auto !important;
-        gap: 5px 6px !important;
-        padding: 2px 0 4px !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        gap: 7px !important;
+        padding: 2px 2px 6px !important;
         max-width: 100% !important;
     }
 
+    .categories-strip::-webkit-scrollbar {
+        display: none !important;
+    }
+
     .cat-pill {
-        padding: 4px 10px !important;
-        font-size: 11px !important;
-        height: 25px !important;
-        line-height: 15px !important;
+        padding: 6px 14px !important;
+        font-size: 12px !important;
+        height: 31px !important;
+        line-height: 17px !important;
         border-radius: var(--radius-full) !important;
         white-space: nowrap !important;
         flex-shrink: 0 !important;
+        font-weight: 600 !important;
+    }
+
+    .cat-pill.active {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
     }
 
     /* 5. Overview Mobile Polish (Compact & Screen-Fit) */
@@ -2453,9 +2486,17 @@ button {
         max-width: 100% !important;
         min-width: 0 !important;
         box-sizing: border-box !important;
-        overflow: hidden !important;
+        overflow: visible !important;
         padding-bottom: 4px !important;
         gap: 6px !important;
+    }
+
+    .platform-title-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+        width: 100% !important;
     }
 
     .sp-heading,
@@ -2465,47 +2506,63 @@ button {
     .sp-popular-title,
     .yt-popular-title,
     .gg-popular-title {
-        font-size: 14.5px !important;
-        font-weight: 750 !important;
-        line-height: 1.3 !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        line-height: 1.35 !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
         display: block !important;
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    .platform-time-badge {
+        display: inline-flex !important;
+        align-items: center !important;
+        height: 25px !important;
+        padding: 0 10px !important;
+        font-size: 11px !important;
+        border-radius: var(--radius-full) !important;
+        gap: 5px !important;
+    }
+
+    .platform-time-badge .badge-clock-icon {
+        width: 12px !important;
+        height: 12px !important;
     }
 
     /* 7. YouTube Mobile Polish */
     .yt-popular-section {
-        padding: 8px 6px !important;
-        border-radius: 8px !important;
+        padding: 10px 8px !important;
+        border-radius: 10px !important;
     }
 
     .yt-pop-item {
         display: flex !important;
         align-items: center !important;
-        padding: 6px 4px !important;
-        gap: 8px !important;
+        padding: 8px 6px !important;
+        gap: 10px !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
-        overflow: hidden !important;
+        border-radius: 8px !important;
     }
 
     .yt-pop-rank-col {
-        width: 18px !important;
-        min-width: 18px !important;
+        width: 20px !important;
+        min-width: 20px !important;
         flex-shrink: 0 !important;
         text-align: center !important;
     }
 
     .yt-pop-thumb-box {
-        width: 58px !important;
-        height: 33px !important;
-        min-width: 58px !important;
-        border-radius: 4px !important;
+        width: 72px !important;
+        height: 40px !important;
+        min-width: 72px !important;
+        border-radius: 6px !important;
         flex-shrink: 0 !important;
         overflow: hidden !important;
     }
@@ -2516,44 +2573,53 @@ button {
         overflow: hidden !important;
         display: flex !important;
         flex-direction: column !important;
-        gap: 2px !important;
+        gap: 3px !important;
     }
 
     .yt-pop-title {
-        font-size: 12px !important;
-        line-height: 1.25 !important;
-        white-space: nowrap !important;
+        font-size: 12.5px !important;
+        line-height: 1.3 !important;
+        font-weight: 600 !important;
+        white-space: normal !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
         overflow: hidden !important;
-        text-overflow: ellipsis !important;
         width: 100% !important;
-        display: block !important;
     }
 
     .yt-pop-channel-row {
-        font-size: 10.5px !important;
+        font-size: 11px !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         width: 100% !important;
-        display: block !important;
+        display: flex !important;
+        align-items: center !important;
         gap: 4px !important;
+        color: var(--text-secondary) !important;
     }
 
-    /* Ẩn chỉ số phụ để tránh tràn chữ */
+    /* Hiển thị chỉ số view/velocity gọn gàng */
     .yt-pop-metrics-row {
-        display: none !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        font-size: 10.5px !important;
+        color: var(--text-muted) !important;
     }
 
     .yt-records-container,
     .yt-side-card {
-        padding: 8px 6px !important;
-        border-radius: 8px !important;
+        padding: 10px 8px !important;
+        border-radius: 10px !important;
     }
 
     .yt-channel-row-item,
     .yt-rec-item {
-        padding: 5px 3px !important;
-        gap: 6px !important;
+        padding: 6px 4px !important;
+        gap: 8px !important;
         width: 100% !important;
         overflow: hidden !important;
     }
@@ -2569,49 +2635,49 @@ button {
 
     /* 8. Spotify, Google & Netflix Shared Row Polish (.sp-pop-item) */
     .sp-popular-section {
-        padding: 8px 6px !important;
-        border-radius: 8px !important;
+        padding: 10px 8px !important;
+        border-radius: 10px !important;
     }
 
     .sp-pop-item {
         display: flex !important;
         align-items: center !important;
-        padding: 6px 4px !important;
-        gap: 8px !important;
+        padding: 7px 6px !important;
+        gap: 10px !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
-        overflow: hidden !important;
+        border-radius: 8px !important;
     }
 
     .sp-pop-rank-col {
-        width: 18px !important;
-        min-width: 18px !important;
-        max-width: 18px !important;
+        width: 20px !important;
+        min-width: 20px !important;
+        max-width: 20px !important;
         flex-shrink: 0 !important;
         text-align: center !important;
     }
 
     .sp-rank-num {
-        font-size: 13px !important;
+        font-size: 13.5px !important;
         font-weight: 800 !important;
     }
 
     .sp-pop-thumb-box {
-        width: 38px !important;
-        height: 38px !important;
-        min-width: 38px !important;
-        max-width: 38px !important;
+        width: 42px !important;
+        height: 42px !important;
+        min-width: 42px !important;
+        max-width: 42px !important;
         border-radius: 6px !important;
         flex-shrink: 0 !important;
         overflow: hidden !important;
     }
 
     .sp-pop-thumb-box.nf-thumb-frame {
-        width: 44px !important;
-        height: 28px !important;
-        min-width: 44px !important;
-        max-width: 44px !important;
+        width: 48px !important;
+        height: 32px !important;
+        min-width: 48px !important;
+        max-width: 48px !important;
     }
 
     .sp-pop-details {
@@ -2620,28 +2686,32 @@ button {
         overflow: hidden !important;
         display: flex !important;
         flex-direction: column !important;
-        gap: 2px !important;
+        gap: 3px !important;
     }
 
     .sp-pop-title {
-        font-size: 12px !important;
+        font-size: 12.5px !important;
         font-weight: 600 !important;
-        line-height: 1.25 !important;
-        white-space: nowrap !important;
+        line-height: 1.3 !important;
+        white-space: normal !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
         overflow: hidden !important;
-        text-overflow: ellipsis !important;
         width: 100% !important;
-        display: block !important;
     }
 
     .sp-pop-artist-row {
-        font-size: 10.5px !important;
+        font-size: 11px !important;
         color: var(--text-secondary) !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         width: 100% !important;
-        display: block !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
     }
 
     .sp-artist-label {
