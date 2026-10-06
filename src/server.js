@@ -52,6 +52,7 @@ app.get('/api/rankings', async (req, res) => {
         return res.json({
             source: 'firebase_firestore',
             last_updated: dbData.last_updated,
+            platforms_updated: dbData.platforms_updated || {},
             rankings: dbData.rankings
         });
     }

@@ -98,6 +98,27 @@ export async function getRankingFromFirestore(docKey) {
 }
 
 /**
+ * Lưu metadata tổng hợp toàn hệ thống vào Firestore
+ */
+export async function saveMetadataToFirestore(metadata = {}) {
+    const firestore = initFirebase();
+    if (!firestore) return false;
+
+    try {
+        const docRef = firestore.collection('rankings').doc('metadata');
+        await docRef.set({
+            ...metadata,
+            last_updated: metadata.last_updated || new Date().toISOString()
+        });
+        console.log('[Firebase]: Đã cập nhật doc "metadata" mốc hoàn tất tổng hợp.');
+        return true;
+    } catch (error) {
+        console.error('[Firebase Lỗi ghi doc metadata]:', error.message);
+        return false;
+    }
+}
+
+/**
  * Đọc toàn bộ rankings từ Firestore
  */
 export async function getAllRankingsFromFirestore() {
@@ -108,20 +129,32 @@ export async function getAllRankingsFromFirestore() {
         const colRef = firestore.collection('rankings');
         const snap = await colRef.get();
         const rankings = {};
+        const platformsUpdated = {};
         let latestUpdate = null;
 
         snap.forEach(doc => {
             const data = doc.data();
             const key = doc.id;
-            if (key !== 'metadata') {
+            if (key === 'metadata') {
+                if (data.last_updated) {
+                    latestUpdate = data.last_updated;
+                }
+            } else {
                 rankings[key] = data.items || [];
-                if (data.lastUpdated && (!latestUpdate || data.lastUpdated > latestUpdate)) {
-                    latestUpdate = data.lastUpdated;
+                if (data.lastUpdated) {
+                    platformsUpdated[key] = data.lastUpdated;
+                    if (!latestUpdate || data.lastUpdated > latestUpdate) {
+                        latestUpdate = data.lastUpdated;
+                    }
                 }
             }
         });
 
-        return { rankings, last_updated: latestUpdate };
+        return {
+            rankings,
+            last_updated: latestUpdate,
+            platforms_updated: platformsUpdated
+        };
     } catch (error) {
         console.error('[Firebase Lỗi đọc all rankings]:', error.message);
         return null;

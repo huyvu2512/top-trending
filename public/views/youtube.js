@@ -8,6 +8,8 @@
  * - Khung Video Records in Vietnam: 2 cột đối xứng (Most Engaging, Most Liked, Most Commented, Most Viewed, Newest Videos, Oldest Videos)
  */
 
+import { formatUpdateTime } from '../app.js';
+
 // Module-level Memoization Cache for records
 let _lastBaseItems = null;
 let _cachedRecords = null;
@@ -854,13 +856,23 @@ export function renderYouTube(container, items, onPlayMedia, state = {}, onSelec
     const currentCategory = state.activeCategory || 'all';
     const isOverview = currentCategory === 'all';
     const mainContentHtml = buildYouTubeContentHtml(items, isOverview, currentCategory, state);
+    const updatedTimeStr = formatUpdateTime(state.data?.platforms_updated?.youtube || state.data?.last_updated);
 
     container.innerHTML = `
         <div class="yt-dashboard-layout view-fade-in">
             <!-- 1. BẢNG XẾP HẠNG XU HƯỚNG YOUTUBE • VIỆT NAM (Ở TRÊN CÙNG) -->
             <div class="yt-header-banner">
                 <div class="yt-brand-lead">
-                    <h2 class="yt-heading">Bảng Xếp Hạng Xu Hướng YouTube • Việt Nam</h2>
+                    <div class="platform-title-row">
+                        <h2 class="yt-heading">Bảng Xếp Hạng Xu Hướng YouTube • Việt Nam</h2>
+                        <div class="platform-time-badge" title="Thời gian thu thập bảng xếp hạng YouTube">
+                            <svg class="badge-clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Cập nhật: <strong>${updatedTimeStr || '<span class="header-time-skeleton skeleton-shimmer"></span>'}</strong></span>
+                        </div>
+                    </div>
                 </div>
             </div>
 

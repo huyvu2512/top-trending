@@ -9,6 +9,8 @@
  * - Kỷ Lục Spotify: 6 thẻ kỷ lục đối xứng ở trang Tổng hợp
  */
 
+import { formatUpdateTime } from '../app.js';
+
 let _lastSpotifyItems = null;
 let _cachedSpotifyRecords = null;
 let _currentAudio = null;
@@ -834,13 +836,23 @@ export function renderSpotify(container, items, onPlayMedia, state = {}, onSelec
     const currentCategory = state.activeCategory || 'all';
     const isOverview = currentCategory === 'all';
     const mainContentHtml = buildSpotifyContentHtml(items, isOverview, currentCategory, state);
+    const updatedTimeStr = formatUpdateTime(state.data?.platforms_updated?.spotify || state.data?.last_updated);
 
     container.innerHTML = `
         <div class="sp-dashboard-layout view-fade-in">
             <!-- 1. TIÊU ĐỀ BANNER Ở TRÊN CÙNG -->
             <div class="sp-header-banner">
                 <div class="sp-brand-lead">
-                    <h2 class="sp-heading">Bảng Xếp Hạng Xu Hướng Spotify • Việt Nam</h2>
+                    <div class="platform-title-row">
+                        <h2 class="sp-heading">Bảng Xếp Hạng Xu Hướng Spotify • Việt Nam</h2>
+                        <div class="platform-time-badge" title="Thời gian thu thập bảng xếp hạng Spotify">
+                            <svg class="badge-clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Cập nhật: <strong>${updatedTimeStr || '<span class="header-time-skeleton skeleton-shimmer"></span>'}</strong></span>
+                        </div>
+                    </div>
                 </div>
             </div>
 

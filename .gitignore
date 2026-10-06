@@ -18,7 +18,7 @@ yarn-error.log*
 # File / thư mục rác, tạm thời
 scratch/
 /data/
-!public/data/
+public/data/platforms.json
 .DS_Store
 Thumbs.db
 .vscode/

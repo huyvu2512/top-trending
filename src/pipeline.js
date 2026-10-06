@@ -7,7 +7,7 @@ import { fetchGoogleTrends } from './collectors/google_trends.js';
 import { fetchYouTubeTrends } from './collectors/youtube.js';
 import { fetchSpotifyTop50 } from './collectors/spotify.js';
 import { fetchNetflixTrends } from './collectors/netflix.js';
-import { saveRankingToFirestore } from './firebase.js';
+import { saveRankingToFirestore, saveMetadataToFirestore } from './firebase.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -143,14 +143,17 @@ async function main() {
         console.error('[Netflix Pipe Error]:', err.message);
     }
 
-    // Cập nhật timestamp và metadata vào platforms.json
+    // Cập nhật timestamp và metadata vào Firestore & file cục bộ
     try {
         const nowIso = new Date().toISOString();
         currentData.last_updated = nowIso;
+        await saveMetadataToFirestore({
+            last_updated: nowIso
+        });
         await saveDataFile('platforms.json', currentData);
-        console.log(`[Pipeline]: Đã cập nhật mốc thời gian hoàn tất: ${nowIso}`);
+        console.log(`[Pipeline]: Đã cập nhật mốc thời gian hoàn tất tổng hợp: ${nowIso}`);
     } catch (err) {
-        console.warn('[Pipeline platforms.json error]:', err.message);
+        console.warn('[Pipeline metadata error]:', err.message);
     }
 
     const duration = ((Date.now() - startTime) / 1000).toFixed(1);

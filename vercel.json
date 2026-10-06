@@ -1,6 +1,7 @@
 {
   "rewrites": [
-    { "source": "/((?!assets/|views/|data/|app\\.js|style\\.css|manifest\\.json|robots\\.txt|sitemap\\.xml).*)", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": "/api/index.js" },
+    { "source": "/((?!api/|assets/|views/|data/|app\\.js|style\\.css|manifest\\.json|robots\\.txt|sitemap\\.xml).*)", "destination": "/index.html" }
   ],
   "headers": [
     {

@@ -87,7 +87,7 @@ async function preloadAllPlatforms() {
     }
 }
 
-function formatUpdateTime(isoString) {
+export function formatUpdateTime(isoString) {
     if (!isoString) return null;
     const d = new Date(isoString);
     if (isNaN(d.getTime())) return null;
@@ -111,21 +111,123 @@ function updateHeaderTimestamp() {
     }
 }
 
-// Load metadata from /data/platforms.json
-async function loadMetadata() {
-    try {
-        const res = await fetch('/data/platforms.json');
-        state.data = await res.json();
-        if (!state.data.rankings) state.data.rankings = {};
-
-        renderPlatforms();
-        updateHeaderTimestamp();
-        await fetchRankingData();
-        // Background preload remaining platforms
-        preloadAllPlatforms();
-    } catch (e) {
-        console.error('Lỗi nạp metadata:', e);
+// Chuyển đổi định dạng REST document của Google Cloud Firestore sang Object JS
+function parseFirestoreRestValue(val) {
+    if (!val) return null;
+    if ('stringValue' in val) return val.stringValue;
+    if ('integerValue' in val) return parseInt(val.integerValue, 10);
+    if ('doubleValue' in val) return parseFloat(val.doubleValue);
+    if ('booleanValue' in val) return val.booleanValue;
+    if ('timestampValue' in val) return val.timestampValue;
+    if ('arrayValue' in val) return (val.arrayValue.values || []).map(parseFirestoreRestValue);
+    if ('mapValue' in val) {
+        const obj = {};
+        for (const [k, v] of Object.entries(val.mapValue.fields || {})) {
+            obj[k] = parseFirestoreRestValue(v);
+        }
+        return obj;
     }
+    return null;
+}
+
+async function fetchFromFirestoreRest() {
+    try {
+        const url = 'https://firestore.googleapis.com/v1/projects/top-trending-b1ef4/databases/(default)/documents/rankings';
+        const res = await fetch(url);
+        if (!res.ok) return null;
+        const data = await res.json();
+        const rankings = {};
+        const platformsUpdated = {};
+        let overallUpdate = null;
+
+        for (const doc of data.documents || []) {
+            const key = doc.name.split('/').pop();
+            const fields = doc.fields || {};
+            const lastUp = fields.lastUpdated?.stringValue || fields.last_updated?.stringValue;
+            if (key === 'metadata') {
+                if (lastUp) overallUpdate = lastUp;
+            } else {
+                if (lastUp) {
+                    platformsUpdated[key] = lastUp;
+                    if (!overallUpdate || lastUp > overallUpdate) {
+                        overallUpdate = lastUp;
+                    }
+                }
+                if (fields.items) {
+                    rankings[key] = parseFirestoreRestValue(fields.items);
+                }
+            }
+        }
+        return {
+            rankings,
+            platforms_updated: platformsUpdated,
+            last_updated: overallUpdate
+        };
+    } catch (e) {
+        console.warn('Firestore REST fallback warning:', e);
+        return null;
+    }
+}
+
+// Load metadata & rankings trực tiếp từ DB (ưu tiên API -> Firestore REST -> Local fallback)
+async function loadMetadata() {
+    const defaultPlatforms = [
+        { id: "all", name: "Tất cả", icon: "grid" },
+        { id: "youtube", name: "YouTube", icon: "youtube" },
+        { id: "spotify", name: "Spotify", icon: "spotify" },
+        { id: "google", name: "Google Trends", icon: "google" },
+        { id: "netflix", name: "Netflix", icon: "netflix" }
+    ];
+
+    state.data = {
+        platforms: defaultPlatforms,
+        rankings: {},
+        platforms_updated: {},
+        last_updated: null
+    };
+
+    renderPlatforms();
+
+    let fetched = false;
+
+    // 1. Thử gọi API backend (/api/rankings)
+    try {
+        const apiRes = await fetch('/api/rankings');
+        if (apiRes.ok) {
+            const json = await apiRes.json();
+            if (json.rankings && Object.keys(json.rankings).length > 0) {
+                state.data.rankings = json.rankings;
+                state.data.last_updated = json.last_updated;
+                state.data.platforms_updated = json.platforms_updated || {};
+                fetched = true;
+            }
+        }
+    } catch (_) {}
+
+    // 2. Nếu API chưa phản hồi, tải trực tiếp qua REST API của Firestore (Google Cloud Edge CDN)
+    if (!fetched) {
+        const fsData = await fetchFromFirestoreRest();
+        if (fsData && Object.keys(fsData.rankings).length > 0) {
+            state.data.rankings = fsData.rankings;
+            state.data.last_updated = fsData.last_updated;
+            state.data.platforms_updated = fsData.platforms_updated || {};
+            fetched = true;
+        }
+    }
+
+    // 3. Fallback file cục bộ nếu ngoại tuyến
+    if (!fetched) {
+        try {
+            const fileRes = await fetch('/data/platforms.json');
+            if (fileRes.ok) {
+                const fileJson = await fileRes.json();
+                state.data = { ...state.data, ...fileJson };
+            }
+        } catch (_) {}
+    }
+
+    updateHeaderTimestamp();
+    await fetchRankingData();
 }
 
 function setupEvents() {
