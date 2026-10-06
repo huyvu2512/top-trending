@@ -137,9 +137,9 @@ export function buildNetflixContentHtml(items, isOverview, currentCategory, stat
                                 <div class="sp-pop-details">
                                     <div class="sp-pop-title" title="${item.title}">${item.title}</div>
                                     <div class="sp-pop-artist-row">
-                                        <span class="sp-artist-label">${item.creator || item.category || 'Netflix Tudum'}</span>
+                                        <span class="sp-artist-label">${item.creator || item.category || 'Phim'}</span>
                                         <span class="sp-pop-bullet">•</span>
-                                        <span class="sp-category-pill">${item.category || 'Netflix'}</span>
+                                        <span class="sp-pop-metric-badge">${weeksText}</span>
                                     </div>
                                 </div>
 

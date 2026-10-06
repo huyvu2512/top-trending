@@ -2106,7 +2106,7 @@ button {
     .main-wrapper {
         min-height: calc(100dvh - 54px);
         height: auto !important;
-        padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+        padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
         -webkit-overflow-scrolling: touch;
         overflow-x: hidden !important;
         max-width: 100vw !important;
@@ -2123,11 +2123,28 @@ button {
 
     /* 4. Category Strip (Smooth Horizontal Scrollable Native Row) */
     .chart-navigation {
-        margin-bottom: 14px !important;
+        margin-bottom: 10px !important;
         margin-left: -12px !important;
         margin-right: -12px !important;
         padding: 0 12px !important;
         overflow: hidden !important;
+        position: relative !important;
+    }
+
+    .chart-navigation::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 6px;
+        width: 32px;
+        pointer-events: none;
+        background: linear-gradient(to right, transparent, var(--bg-body, #0a0b0d));
+        opacity: 0.95;
+    }
+
+    [data-theme="light"] .chart-navigation::after {
+        background: linear-gradient(to right, transparent, #ffffff);
     }
 
     .categories-strip {
@@ -2137,8 +2154,8 @@ button {
         overflow-y: hidden !important;
         -webkit-overflow-scrolling: touch !important;
         scrollbar-width: none !important;
-        gap: 7px !important;
-        padding: 2px 2px 6px !important;
+        gap: 6px !important;
+        padding: 2px 28px 6px 2px !important;
         max-width: 100% !important;
     }
 
@@ -2147,9 +2164,9 @@ button {
     }
 
     .cat-pill {
-        padding: 6px 14px !important;
-        font-size: 12px !important;
-        height: 31px !important;
+        padding: 5px 12px !important;
+        font-size: 11.5px !important;
+        height: 29px !important;
         line-height: 17px !important;
         border-radius: var(--radius-full) !important;
         white-space: nowrap !important;
@@ -2459,8 +2476,6 @@ button {
 
     .sp-header-banner,
     .yt-header-banner,
-    .sp-popular-head,
-    .yt-popular-head,
     .sp-head-lead,
     .yt-head-lead {
         width: 100% !important;
@@ -2468,15 +2483,22 @@ button {
         min-width: 0 !important;
         box-sizing: border-box !important;
         overflow: visible !important;
-        padding-bottom: 4px !important;
+        padding-bottom: 2px !important;
+        margin-bottom: 8px !important;
         gap: 6px !important;
+    }
+
+    /* Ẩn tiêu đề con lặp lại trong khung thẻ trên Mobile để ưu tiên nội dung Top 1-4 ngay trên màn hình đầu */
+    .sp-popular-head,
+    .yt-popular-head {
+        display: none !important;
     }
 
     .platform-title-row {
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-start !important;
-        gap: 6px !important;
+        gap: 5px !important;
         width: 100% !important;
     }
 
@@ -2487,9 +2509,9 @@ button {
     .sp-popular-title,
     .yt-popular-title,
     .gg-popular-title {
-        font-size: 16px !important;
-        font-weight: 800 !important;
-        line-height: 1.35 !important;
+        font-size: 15.5px !important;
+        font-weight: 750 !important;
+        line-height: 1.3 !important;
         white-space: normal !important;
         overflow: visible !important;
         text-overflow: unset !important;
@@ -2503,16 +2525,16 @@ button {
     .platform-time-badge {
         display: inline-flex !important;
         align-items: center !important;
-        height: 25px !important;
-        padding: 0 10px !important;
-        font-size: 11px !important;
+        height: 23px !important;
+        padding: 0 9px !important;
+        font-size: 10.5px !important;
         border-radius: var(--radius-full) !important;
-        gap: 5px !important;
+        gap: 4px !important;
     }
 
     .platform-time-badge .badge-clock-icon {
-        width: 12px !important;
-        height: 12px !important;
+        width: 11px !important;
+        height: 11px !important;
     }
 
     /* 7. YouTube Mobile Polish */
@@ -2655,10 +2677,11 @@ button {
     }
 
     .sp-pop-thumb-box.nf-thumb-frame {
-        width: 48px !important;
-        height: 32px !important;
-        min-width: 48px !important;
-        max-width: 48px !important;
+        width: 52px !important;
+        height: 35px !important;
+        min-width: 52px !important;
+        max-width: 52px !important;
+        border-radius: 5px !important;
     }
 
     .sp-pop-details {
@@ -2692,7 +2715,7 @@ button {
         width: 100% !important;
         display: flex !important;
         align-items: center !important;
-        gap: 4px !important;
+        gap: 3px !important;
     }
 
     .sp-artist-label {
@@ -2700,10 +2723,27 @@ button {
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         display: inline !important;
+        max-width: 60% !important;
+        flex-shrink: 1 !important;
+    }
+
+    .sp-pop-bullet {
+        display: inline-block !important;
+        font-size: 10px !important;
+        opacity: 0.5 !important;
+        margin: 0 1px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .sp-pop-metric-badge {
+        display: inline-block !important;
+        font-size: 10.5px !important;
+        color: var(--text-muted) !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
     }
 
     /* ẨN CÁC MỤC KHÔNG QUAN TRỌNG ĐỂ KHÔNG BỊ TRÀN MÀN HÌNH */
-    .sp-pop-bullet,
     .sp-category-pill,
     .sp-audio-player-col,
     .sp-progress-container,
@@ -2715,6 +2755,28 @@ button {
     .gg-pop-metrics-row,
     .gg-pop-time-pill {
         display: none !important;
+    }
+
+    /* Active touch feedback mượt mà trên Mobile */
+    .yt-pop-item:active,
+    .sp-pop-item:active,
+    .yt-rec-item:active,
+    .sp-rec-item:active,
+    .ov-panel-row:active,
+    .ov-spotlight-card:active {
+        transform: scale(0.985);
+        background: var(--bg-surface-hover) !important;
+        transition: transform 0.08s ease, background-color 0.08s ease !important;
+    }
+
+    .cat-pill:active {
+        transform: scale(0.95);
+        transition: transform 0.08s ease !important;
+    }
+
+    .platform-chip:active {
+        transform: scale(0.92);
+        transition: transform 0.08s ease !important;
     }
 
     .sp-side-card,
@@ -4818,6 +4880,13 @@ button {
     border-radius: 4px;
     background: rgba(255, 255, 255, 0.06);
     color: var(--text-muted);
+}
+
+.sp-pop-metric-badge {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
 }
 
 /* Right Stats in Track Row */

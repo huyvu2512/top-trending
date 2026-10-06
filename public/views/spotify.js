@@ -369,8 +369,16 @@ export function buildSpotifyContentHtml(items, isOverview, currentCategory, stat
                                         <div class="sp-pop-title" title="${item.title}">${item.title}</div>
                                         <div class="sp-pop-artist-row">
                                             <span class="sp-artist-label">${item.creator}</span>
-                                            <span class="sp-pop-bullet">•</span>
-                                            <span class="sp-category-pill">${catName}</span>
+                                            ${item.primaryMetric ? `
+                                                <span class="sp-pop-bullet">•</span>
+                                                <span class="sp-pop-metric-badge">${item.primaryMetric}</span>
+                                            ` : (item.duration ? `
+                                                <span class="sp-pop-bullet">•</span>
+                                                <span class="sp-pop-metric-badge">${item.duration}</span>
+                                            ` : (catName ? `
+                                                <span class="sp-pop-bullet">•</span>
+                                                <span class="sp-category-pill">${catName}</span>
+                                            ` : ''))}
                                         </div>
                                     </div>
 

@@ -362,8 +362,13 @@ export function buildGoogleContentHtml(items, isOverview, currentCategory, state
                                     <div class="sp-pop-title" title="${item.title}">${item.title}</div>
                                     <div class="sp-pop-artist-row">
                                         <span class="sp-artist-label" title="${subtitle}">${subtitle}</span>
-                                        <span class="sp-pop-bullet">•</span>
-                                        <span class="sp-category-pill">${item.category || 'Google'}</span>
+                                        ${item.primaryMetric ? `
+                                            <span class="sp-pop-bullet">•</span>
+                                            <span class="sp-pop-metric-badge">${item.primaryMetric}</span>
+                                        ` : (item.category ? `
+                                            <span class="sp-pop-bullet">•</span>
+                                            <span class="sp-category-pill">${item.category}</span>
+                                        ` : '')}
                                     </div>
                                 </div>
 
