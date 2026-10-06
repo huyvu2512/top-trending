@@ -43,8 +43,8 @@ Hệ thống tích hợp trực tiếp YouTube Data API v3, Spotify Web API, Goo
 - Đồng bộ Cloud Firestore - Áp dụng kiến trúc Bucket Document Pattern lưu trữ dữ liệu theo từng tài liệu riêng biệt, chỉ tiêu tốn 4-5 lượt ghi mỗi chu kỳ và vận hành hoàn toàn trong gói miễn phí của Firebase Spark.
 - Tự động hóa qua GitHub Actions - Thiết lập lịch trình cron tự động chạy pipeline mỗi 3 tiếng trên GitHub Actions, tự động đồng bộ lên Database mà không tạo bất kỳ commit rác nào trong lịch sử Git.
 - REST API module hóa - Cung cấp hệ thống router API riêng biệt (/api/status, /api/rankings, /api/rankings/:platform, /api/fetch, /api/sync) hỗ trợ truy vấn dữ liệu từ Firestore và kích hoạt cào dữ liệu thủ công.
-- Trực quan hóa dữ liệu hiện đại - Giao diện Dark theme tối giản, bảng Spotlight tiêu điểm Top 1, bộ lọc đa danh mục linh hoạt (Tổng hợp, Âm nhạc, Trò chơi, Tin tức, Thể thao, Phim ảnh).
-- Tối ưu hóa di động - Hệ thống thanh điều hướng Bottom Navigation Bar cố định chuẩn Native App trên màn hình di động, danh mục tự động xuống dòng và xử lý chống tràn chữ với hiệu ứng ellipsis.
+- Trực quan hóa dữ liệu hiện đại - Giao diện Dark/Light theme trực quan, bảng Spotlight tiêu điểm Top 1, bộ lọc đa danh mục linh hoạt (Tổng hợp, Âm nhạc, Trò chơi, Tin tức, Thể thao, Phim ảnh).
+- Tối ưu hóa di động - Hệ thống thanh điều hướng Bottom Navigation Bar chuẩn Native App, thanh bộ lọc chuyên mục trượt ngang mượt mà, phản hồi xúc giác chạm (:active) và bố cục hiển thị số liệu tinh gọn.
 - Chuẩn hóa SEO và Link Preview - Tích hợp đầy đủ thẻ OpenGraph, Twitter Cards, Schema.org JSON-LD, sitemap.xml và robots.txt giúp hiển thị ảnh xem trước sắc nét khi chia sẻ liên kết trên Facebook, Zalo, Telegram.
 
 ---
@@ -77,7 +77,6 @@ top-trending/
 │   │   ├── google.json
 │   │   ├── google_explore.json
 │   │   ├── netflix.json
-│   │   ├── platforms.json
 │   │   ├── spotify.json
 │   │   └── youtube.json
 │   ├── views/                     # Các module giao diện render từng nền tảng
@@ -151,7 +150,7 @@ Hệ thống cung cấp các endpoint REST API backend phục vụ tra cứu d�
 | Endpoint | Method | Mô tả |
 | :--- | :--- | :--- |
 | `/api/status` | GET | Kiểm tra trạng thái hệ thống, kết nối Firestore DB và thời gian cập nhật |
-| `/api/rankings` | GET | Lấy toàn bộ bảng xếp hạng từ Firestore (kèm fallback file local) |
+| `/api/rankings` | GET | Lấy toàn bộ bảng xếp hạng từ Firestore (kèm fallback các file dữ liệu nền tảng cục bộ) |
 | `/api/rankings/:platform` | GET | Lấy bảng xếp hạng theo nền tảng cụ thể (youtube, spotify, google, netflix) |
 | `/api/fetch` | GET | Kích hoạt thủ công pipeline cào dữ liệu mới 100% |
 | `/api/sync` | POST | Đồng bộ dữ liệu mới và cập nhật trạng thái lên Cloud Firestore |

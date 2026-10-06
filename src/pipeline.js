@@ -57,21 +57,6 @@ async function main() {
     };
 
     let currentData = { ...defaultData };
-    const platformsFilePath = path.join(PUBLIC_DATA_DIR, 'platforms.json');
-
-    try {
-        const fileContent = await fs.readFile(platformsFilePath, 'utf-8');
-        currentData = JSON.parse(fileContent);
-    } catch (_) {
-        try {
-            const rootContent = await fs.readFile(path.join(ROOT_DATA_DIR, 'platforms.json'), 'utf-8');
-            currentData = JSON.parse(rootContent);
-        } catch (e) {
-            console.log('[Pipeline]: Khởi tạo mới platforms.json từ template.');
-        }
-    }
-
-    currentData.rankings = {};
 
     async function saveDataFile(fileName, content) {
         if (!content) return;
@@ -150,7 +135,6 @@ async function main() {
         await saveMetadataToFirestore({
             last_updated: nowIso
         });
-        await saveDataFile('platforms.json', currentData);
         console.log(`[Pipeline]: Đã cập nhật mốc thời gian hoàn tất tổng hợp: ${nowIso}`);
     } catch (err) {
         console.warn('[Pipeline metadata error]:', err.message);
