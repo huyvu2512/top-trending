@@ -2094,31 +2094,12 @@ button {
         font-weight: 700;
     }
 
-    .platform-chip.active::after {
-        content: '';
-        position: absolute;
-        bottom: 3px;
-        width: 18px;
-        height: 2.5px;
-        border-radius: var(--radius-full);
-        background-color: var(--accent-primary, #6366f1);
-    }
-
     [data-theme="light"] .platform-chip.active span {
         color: #0f172a !important;
     }
 
-    [data-theme="light"] .platform-chip.active::after {
-        background-color: #4f46e5;
-    }
-
     .platform-chip.active .platform-icon {
-        transform: scale(1.1);
-        color: var(--accent-primary, #6366f1) !important;
-    }
-
-    [data-theme="light"] .platform-chip.active .platform-icon {
-        color: #4f46e5 !important;
+        transform: scale(1.08);
     }
 
     /* 3. Main Workspace & View Container */
