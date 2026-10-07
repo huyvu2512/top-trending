@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { fetchGoogleTrends } from './collectors/google_trends.js';
-import { fetchYouTubeTrends } from './collectors/youtube.js';
+import { fetchYouTubeTrends, fetchYouTubeShorts } from './collectors/youtube.js';
 import { fetchSpotifyTop50 } from './collectors/spotify.js';
 import { fetchNetflixTrends } from './collectors/netflix.js';
 import { saveRankingToFirestore, saveMetadataToFirestore } from './firebase.js';
@@ -85,8 +85,8 @@ async function main() {
             await saveRankingToFirestore('google', ggTrending, { platform: 'google', region: 'VN' });
             await saveDataFile('google.json', ggTrending);
         }
-        if (ggExplore.top && ggExplore.top.length > 0) {
-            await saveDataFile('google_explore.json', ggExplore);
+        if (ggExplore && ((ggExplore.top && ggExplore.top.length > 0) || (ggExplore.rising && ggExplore.rising.length > 0))) {
+            await saveRankingToFirestore('google_explore', ggExplore.top || [], { explore: ggExplore, platform: 'google_explore', region: 'VN' });
         }
     } catch (err) {
         console.error('[Google Trends Pipe Error]:', err.message);
@@ -95,10 +95,18 @@ async function main() {
     // 2. YouTube (Việt Nam)
     try {
         const ytVn = await fetchYouTubeTrends('VN', 'all', []);
-        if (ytVn.length > 0) {
-            currentData.rankings['youtube'] = ytVn;
-            await saveRankingToFirestore('youtube', ytVn, { platform: 'youtube', region: 'VN' });
-            await saveDataFile('youtube.json', ytVn);
+        let ytShorts = [];
+        try {
+            ytShorts = await fetchYouTubeShorts('VN', 20);
+        } catch (sErr) {
+            console.warn('[YouTube Shorts Skip]:', sErr.message);
+        }
+        const combinedYt = [...ytVn, ...ytShorts];
+
+        if (combinedYt.length > 0) {
+            currentData.rankings['youtube'] = combinedYt;
+            await saveRankingToFirestore('youtube', combinedYt, { platform: 'youtube', region: 'VN' });
+            await saveDataFile('youtube.json', combinedYt);
         }
     } catch (err) {
         console.error('[YouTube Pipe Error]:', err.message);

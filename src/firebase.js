@@ -77,24 +77,61 @@ export async function saveRankingToFirestore(docKey, items, metadata = {}) {
     }
 }
 
+function parseFirestoreRestValue(val) {
+    if (!val) return null;
+    if ('stringValue' in val) return val.stringValue;
+    if ('integerValue' in val) return parseInt(val.integerValue, 10);
+    if ('doubleValue' in val) return parseFloat(val.doubleValue);
+    if ('booleanValue' in val) return val.booleanValue;
+    if ('timestampValue' in val) return val.timestampValue;
+    if ('arrayValue' in val) return (val.arrayValue.values || []).map(parseFirestoreRestValue);
+    if ('mapValue' in val) {
+        const obj = {};
+        for (const [k, v] of Object.entries(val.mapValue.fields || {})) {
+            obj[k] = parseFirestoreRestValue(v);
+        }
+        return obj;
+    }
+    return null;
+}
+
 /**
- * Đọc dữ liệu 1 nền tảng từ Firestore
+ * Đọc dữ liệu 1 nền tảng từ Firestore (hỗ trợ Admin SDK + REST API fallback)
  */
 export async function getRankingFromFirestore(docKey) {
     const firestore = initFirebase();
-    if (!firestore) return null;
-
-    try {
-        const docRef = firestore.collection('rankings').doc(docKey);
-        const snap = await docRef.get();
-        if (snap.exists) {
-            return snap.data();
+    if (firestore) {
+        try {
+            const docRef = firestore.collection('rankings').doc(docKey);
+            const snap = await docRef.get();
+            if (snap.exists) {
+                return snap.data();
+            }
+        } catch (error) {
+            console.error(`[Firebase Lỗi đọc Admin SDK doc ${docKey}]:`, error.message);
         }
-        return null;
-    } catch (error) {
-        console.error(`[Firebase Lỗi đọc doc ${docKey}]:`, error.message);
-        return null;
     }
+
+    // Fallback qua Firestore REST API công khai
+    try {
+        const pId = process.env.FIREBASE_PROJECT_ID?.trim();
+        if (!pId) return null;
+        const url = `https://firestore.googleapis.com/v1/projects/${pId}/databases/(default)/documents/rankings/${docKey}`;
+        const res = await fetch(url);
+        if (res.ok) {
+            const doc = await res.json();
+            const fields = doc.fields || {};
+            const result = {};
+            for (const [k, v] of Object.entries(fields)) {
+                result[k] = parseFirestoreRestValue(v);
+            }
+            return result;
+        }
+    } catch (restErr) {
+        console.error(`[Firebase REST fallback doc ${docKey}]:`, restErr.message);
+    }
+
+    return null;
 }
 
 /**
@@ -119,46 +156,92 @@ export async function saveMetadataToFirestore(metadata = {}) {
 }
 
 /**
- * Đọc toàn bộ rankings từ Firestore
+ * Đọc toàn bộ rankings từ Firestore (hỗ trợ Admin SDK + REST API fallback)
  */
 export async function getAllRankingsFromFirestore() {
     const firestore = initFirebase();
-    if (!firestore) return null;
+    if (firestore) {
+        try {
+            const colRef = firestore.collection('rankings');
+            const snap = await colRef.get();
+            const rankings = {};
+            const platformsUpdated = {};
+            let latestUpdate = null;
 
-    try {
-        const colRef = firestore.collection('rankings');
-        const snap = await colRef.get();
-        const rankings = {};
-        const platformsUpdated = {};
-        let latestUpdate = null;
-
-        snap.forEach(doc => {
-            const data = doc.data();
-            const key = doc.id;
-            if (key === 'metadata') {
-                if (data.last_updated) {
-                    latestUpdate = data.last_updated;
+            snap.forEach(doc => {
+                const data = doc.data();
+                const key = doc.id;
+                if (key === 'metadata') {
+                    if (data.last_updated) {
+                        latestUpdate = data.last_updated;
+                    }
+                } else {
+                    rankings[key] = data.items || [];
+                    if (data.lastUpdated) {
+                        platformsUpdated[key] = data.lastUpdated;
+                        if (!latestUpdate || data.lastUpdated > latestUpdate) {
+                            latestUpdate = data.lastUpdated;
+                        }
+                    }
                 }
-            } else {
-                rankings[key] = data.items || [];
-                if (data.lastUpdated) {
-                    platformsUpdated[key] = data.lastUpdated;
-                    if (!latestUpdate || data.lastUpdated > latestUpdate) {
-                        latestUpdate = data.lastUpdated;
+            });
+
+            if (Object.keys(rankings).length > 0) {
+                return {
+                    rankings,
+                    last_updated: latestUpdate,
+                    platforms_updated: platformsUpdated
+                };
+            }
+        } catch (error) {
+            console.error('[Firebase Lỗi đọc all rankings qua Admin SDK]:', error.message);
+        }
+    }
+
+    // Fallback qua Firestore REST API công khai
+    try {
+        const pId = process.env.FIREBASE_PROJECT_ID?.trim();
+        if (!pId) return null;
+        const url = `https://firestore.googleapis.com/v1/projects/${pId}/databases/(default)/documents/rankings`;
+        const res = await fetch(url);
+        if (res.ok) {
+            const data = await res.json();
+            const rankings = {};
+            const platformsUpdated = {};
+            let latestUpdate = null;
+
+            for (const doc of data.documents || []) {
+                const key = doc.name.split('/').pop();
+                const fields = doc.fields || {};
+                const lastUp = fields.lastUpdated?.stringValue || fields.last_updated?.stringValue;
+                if (key === 'metadata') {
+                    if (lastUp) latestUpdate = lastUp;
+                } else {
+                    if (lastUp) {
+                        platformsUpdated[key] = lastUp;
+                        if (!latestUpdate || lastUp > latestUpdate) {
+                            latestUpdate = lastUp;
+                        }
+                    }
+                    if (fields.items) {
+                        rankings[key] = parseFirestoreRestValue(fields.items);
                     }
                 }
             }
-        });
 
-        return {
-            rankings,
-            last_updated: latestUpdate,
-            platforms_updated: platformsUpdated
-        };
-    } catch (error) {
-        console.error('[Firebase Lỗi đọc all rankings]:', error.message);
-        return null;
+            if (Object.keys(rankings).length > 0) {
+                return {
+                    rankings,
+                    last_updated: latestUpdate,
+                    platforms_updated: platformsUpdated
+                };
+            }
+        }
+    } catch (restErr) {
+        console.error('[Firebase Lỗi đọc all rankings qua REST fallback]:', restErr.message);
     }
+
+    return null;
 }
 
 /**

@@ -19,27 +19,18 @@ const pipelineScript = path.resolve(__dirname, 'pipeline.js');
 
 app.use(express.json());
 
-// 1. Phục vụ toàn bộ frontend & static assets & data
+// 1. Phục vụ frontend & static assets
 app.use(express.static(publicDir));
 app.use('/assets', express.static(path.join(publicDir, 'assets')));
 app.use('/images', express.static(path.join(publicDir, 'assets')));
-app.use('/data', express.static(dataDir));
 
-// 2. REST API Endpoints
+// 2. REST API Endpoints (100% Firestore API)
 app.get('/api/status', async (req, res) => {
     const dbStatus = getFirebaseStatus();
-    let lastUpdated = null;
-    const platforms = ['youtube', 'spotify', 'google', 'netflix'];
-    const platformsUpdated = {};
-    for (const p of platforms) {
-        try {
-            const filePath = path.join(dataDir, `${p}.json`);
-            const stat = await fs.stat(filePath);
-            const mtime = stat.mtime.toISOString();
-            platformsUpdated[p] = mtime;
-            if (!lastUpdated || mtime > lastUpdated) lastUpdated = mtime;
-        } catch (_) {}
-    }
+    let dbData = null;
+    try {
+        dbData = await getAllRankingsFromFirestore();
+    } catch (_) {}
 
     res.json({
         status: 'ok',
@@ -48,8 +39,8 @@ app.get('/api/status', async (req, res) => {
             type: 'firebase_firestore',
             ...dbStatus
         },
-        platforms_updated: platformsUpdated,
-        last_updated: lastUpdated
+        platforms_updated: dbData?.platforms_updated || {},
+        last_updated: dbData?.last_updated || null
     });
 });
 
@@ -64,65 +55,32 @@ app.get('/api/rankings', async (req, res) => {
                 rankings: dbData.rankings
             });
         }
-    } catch (dbErr) {
-        console.warn('[API /rankings]: Lỗi đọc Firestore, chuyển sang file cục bộ:', dbErr.message);
-    }
-
-    try {
-        const platforms = ['youtube', 'spotify', 'google', 'netflix'];
-        const rankings = {};
-        const platformsUpdated = {};
-        let latestUpdate = null;
-
-        await Promise.all(platforms.map(async (p) => {
-            try {
-                const filePath = path.join(dataDir, `${p}.json`);
-                const stat = await fs.stat(filePath);
-                const content = JSON.parse(await fs.readFile(filePath, 'utf-8'));
-                rankings[p] = content;
-                const mtime = stat.mtime.toISOString();
-                platformsUpdated[p] = mtime;
-                if (!latestUpdate || mtime > latestUpdate) latestUpdate = mtime;
-            } catch (_) {
-                rankings[p] = [];
-            }
-        }));
-
-        return res.json({
-            source: 'local_files',
-            last_updated: latestUpdate,
-            platforms_updated: platformsUpdated,
-            rankings
+        return res.status(503).json({
+            error: 'Dữ liệu chưa sẵn sàng trên Firestore',
+            status: 'unavailable'
         });
     } catch (e) {
-        return res.status(500).json({ error: 'Không thể đọc dữ liệu rankings', details: e.message });
+        return res.status(500).json({ error: 'Không thể đọc dữ liệu rankings từ Firestore', details: e.message });
     }
 });
 
 app.get('/api/rankings/:platform', async (req, res) => {
     const platform = req.params.platform.toLowerCase();
-    const firestoreDoc = await getRankingFromFirestore(platform);
-    if (firestoreDoc && firestoreDoc.items) {
-        return res.json({
-            source: 'firebase_firestore',
-            platform,
-            last_updated: firestoreDoc.lastUpdated,
-            total: firestoreDoc.totalItems || firestoreDoc.items.length,
-            items: firestoreDoc.items
-        });
-    }
-
     try {
-        const filePath = path.join(dataDir, `${platform}.json`);
-        const items = JSON.parse(await fs.readFile(filePath, 'utf-8'));
-        return res.json({
-            source: 'local_file',
-            platform,
-            total: items.length,
-            items
-        });
+        const firestoreDoc = await getRankingFromFirestore(platform);
+        if (firestoreDoc && (firestoreDoc.items || firestoreDoc.explore)) {
+            return res.json({
+                source: 'firebase_firestore',
+                platform,
+                last_updated: firestoreDoc.lastUpdated,
+                total: firestoreDoc.totalItems || firestoreDoc.items?.length || 0,
+                items: firestoreDoc.items || [],
+                explore: firestoreDoc.explore || null
+            });
+        }
+        return res.status(404).json({ error: `Không tìm thấy dữ liệu trên Firestore cho: ${platform}` });
     } catch (e) {
-        return res.status(404).json({ error: `Không tìm thấy dữ liệu cho nền tảng: ${platform}` });
+        return res.status(500).json({ error: 'Lỗi truy vấn Firestore', details: e.message });
     }
 });
 

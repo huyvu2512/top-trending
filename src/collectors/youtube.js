@@ -202,3 +202,131 @@ export async function fetchYouTubeTrends(regionCode = 'VN', categoryKey = 'all',
         return [];
     }
 }
+
+/**
+ * Thu thập danh sách YouTube Shorts nổi bật tại Việt Nam
+ * Sử dụng YouTube Search API với bộ lọc videoDuration=short và từ khóa #shorts
+ * @param {string} regionCode - Mã quốc gia: 'VN'
+ * @param {number} maxResults - Số lượng Shorts cần lấy (mặc định 20)
+ */
+export async function fetchYouTubeShorts(regionCode = 'VN', maxResults = 20) {
+    const apiKey = process.env.YOUTUBE_API_KEY;
+    if (!apiKey) {
+        console.warn(`[YouTube Shorts]: Bỏ qua cào do chưa cấu hình YOUTUBE_API_KEY.`);
+        return [];
+    }
+
+    try {
+        console.log(`[YouTube Shorts]: Đang tìm kiếm Shorts nổi bật tại ${regionCode}...`);
+        // 1. Tìm video ngắn có từ khóa #shorts nhiều lượt xem nhất
+        const searchRes = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+            params: {
+                part: 'snippet',
+                q: '#shorts',
+                type: 'video',
+                videoDuration: 'short',
+                regionCode: regionCode,
+                relevanceLanguage: 'vi',
+                order: 'viewCount',
+                maxResults: maxResults,
+                key: apiKey
+            },
+            timeout: 15000
+        });
+
+        const videoIds = (searchRes.data.items || []).map(i => i.id?.videoId).filter(Boolean);
+        if (videoIds.length === 0) return [];
+
+        // 2. Lấy chi tiết thông số video (views, likes, comments, duration)
+        const detailsRes = await axios.get(API_URL, {
+            params: {
+                part: 'snippet,statistics,contentDetails',
+                id: videoIds.join(','),
+                key: apiKey
+            },
+            timeout: 15000
+        });
+
+        const rawItems = detailsRes.data.items || [];
+
+        // 3. Lấy thông tin kênh (Avatar)
+        const channelIds = [...new Set(rawItems.map(i => i.snippet?.channelId).filter(Boolean))];
+        const channelMap = {};
+        if (channelIds.length > 0) {
+            try {
+                const chanRes = await axios.get('https://www.googleapis.com/youtube/v3/channels', {
+                    params: {
+                        part: 'snippet,statistics',
+                        id: channelIds.slice(0, 50).join(','),
+                        key: apiKey
+                    },
+                    timeout: 10000
+                });
+                (chanRes.data.items || []).forEach(ch => {
+                    channelMap[ch.id] = {
+                        avatar: ch.snippet?.thumbnails?.default?.url || ch.snippet?.thumbnails?.medium?.url,
+                        subscribers: parseInt(ch.statistics?.subscriberCount || '0', 10),
+                        videoCount: parseInt(ch.statistics?.videoCount || '0', 10),
+                        totalViews: parseInt(ch.statistics?.viewCount || '0', 10)
+                    };
+                });
+            } catch (_) {}
+        }
+
+        const items = rawItems.map((item, index) => {
+            const currentRank = index + 1;
+            const videoId = item.id;
+            const channelId = item.snippet?.channelId;
+            const channelInfo = channelMap[channelId] || {};
+
+            const views = parseInt(item.statistics?.viewCount || '0', 10);
+            const likes = parseInt(item.statistics?.likeCount || '0', 10);
+            const comments = parseInt(item.statistics?.commentCount || '0', 10);
+
+            let formattedViews = `${views.toLocaleString('vi-VN')} lượt xem`;
+            if (views >= 1_000_000) {
+                formattedViews = `${(views / 1_000_000).toFixed(1)}M lượt xem`;
+            } else if (views >= 1_000) {
+                formattedViews = `${(views / 1_000).toFixed(0)}K lượt xem`;
+            }
+
+            const engagementRate = views > 0 ? (((likes + comments) / views) * 100).toFixed(1) : '0.0';
+            const likeRate = views > 0 ? ((likes / views) * 100).toFixed(1) : '0.0';
+
+            return {
+                id: `yt_shorts_${regionCode.toLowerCase()}_${videoId}`,
+                embedId: videoId,
+                platform: 'youtube',
+                isShort: true,
+                rank: currentRank,
+                rankChange: null,
+                title: item.snippet?.title || 'Không có tiêu đề',
+                creator: item.snippet?.channelTitle || 'Kênh YouTube',
+                channelId: channelId,
+                channelAvatar: channelInfo.avatar || item.snippet?.thumbnails?.default?.url,
+                channelSubscribers: channelInfo.subscribers || 0,
+                channelVideoCount: channelInfo.videoCount || 0,
+                channelTotalViews: channelInfo.totalViews || 0,
+                thumbnail: item.snippet?.thumbnails?.maxres?.url || item.snippet?.thumbnails?.high?.url || item.snippet?.thumbnails?.medium?.url || item.snippet?.thumbnails?.default?.url,
+                duration: parseDuration(item.contentDetails?.duration),
+                url: `https://www.youtube.com/shorts/${videoId}`,
+                primaryMetric: formattedViews,
+                rawViews: views,
+                rawLikes: likes,
+                rawComments: comments,
+                engagementRate: parseFloat(engagementRate),
+                likeRate: parseFloat(likeRate),
+                velocity: 'Shorts Nổi bật',
+                category: 'Shorts',
+                categoryId: 'shorts',
+                publishedAt: item.snippet?.publishedAt || new Date().toISOString()
+            };
+        });
+
+        console.log(`[YouTube Shorts]: Hoàn tất thu thập ${items.length} Shorts nổi bật tại ${regionCode}.`);
+        return items;
+    } catch (err) {
+        console.warn('[YouTube Shorts Error]:', err.response?.data?.error?.message || err.message);
+        return [];
+    }
+}

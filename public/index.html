@@ -78,10 +78,13 @@
         })();
     </script>
 
-    <link rel="stylesheet" href="/style.css?v=127">
+    <link rel="stylesheet" href="/style.css?v=128">
 </head>
 
 <body>
+    <!-- Top Glowing Loading Progress Bar -->
+    <div id="top-progress-bar" class="top-progress-bar active" style="width: 45%; opacity: 1;"></div>
+
     <!-- Header Navigation -->
     <header class="site-header">
         <div class="header-container">
@@ -137,9 +140,74 @@
 
     <!-- Main Workspace -->
     <main class="main-wrapper">
-        <!-- Dynamic Platform View Container -->
+        <!-- Dynamic Platform View Container (Initial Skeleton Shimmer for 0ms load) -->
         <section id="view-container" class="view-container">
-            <!-- Rendered dynamically by active view module -->
+            <div class="skeleton-layout" style="display: flex; flex-direction: column; gap: 28px; padding-bottom: 30px;">
+                <div style="display: flex; justify-content: flex-start; align-items: center; border-bottom: 1.5px solid var(--border-medium); padding-bottom: 14px;">
+                    <div class="skeleton-shimmer" style="width: 280px; height: 26px; border-radius: 6px;"></div>
+                </div>
+                <!-- Spotlight Section Skeleton -->
+                <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px;">
+                    <div style="background: var(--bg-surface); border: 1px solid var(--border-medium); border-radius: var(--radius-xl); min-height: 330px; padding: 26px; display: flex; flex-direction: column; justify-content: flex-end; gap: 12px;">
+                        <div class="skeleton-shimmer" style="width: 140px; height: 18px; border-radius: 4px;"></div>
+                        <div class="skeleton-shimmer" style="width: 80%; height: 28px; border-radius: 6px;"></div>
+                        <div class="skeleton-shimmer" style="width: 45%; height: 16px; border-radius: 4px;"></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 12px; justify-content: space-between;">
+                        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 14px 16px; display: flex; align-items: center; gap: 14px; flex: 1;">
+                            <div class="skeleton-shimmer" style="width: 56px; height: 56px; border-radius: 8px; flex-shrink: 0;"></div>
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                                <div class="skeleton-shimmer" style="width: 90px; height: 12px; border-radius: 3px;"></div>
+                                <div class="skeleton-shimmer" style="width: 80%; height: 16px; border-radius: 4px;"></div>
+                                <div class="skeleton-shimmer" style="width: 50%; height: 12px; border-radius: 3px;"></div>
+                            </div>
+                        </div>
+                        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 14px 16px; display: flex; align-items: center; gap: 14px; flex: 1;">
+                            <div class="skeleton-shimmer" style="width: 56px; height: 56px; border-radius: 8px; flex-shrink: 0;"></div>
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                                <div class="skeleton-shimmer" style="width: 90px; height: 12px; border-radius: 3px;"></div>
+                                <div class="skeleton-shimmer" style="width: 80%; height: 16px; border-radius: 4px;"></div>
+                                <div class="skeleton-shimmer" style="width: 50%; height: 12px; border-radius: 3px;"></div>
+                            </div>
+                        </div>
+                        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 14px 16px; display: flex; align-items: center; gap: 14px; flex: 1;">
+                            <div class="skeleton-shimmer" style="width: 56px; height: 56px; border-radius: 8px; flex-shrink: 0;"></div>
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                                <div class="skeleton-shimmer" style="width: 90px; height: 12px; border-radius: 3px;"></div>
+                                <div class="skeleton-shimmer" style="width: 80%; height: 16px; border-radius: 4px;"></div>
+                                <div class="skeleton-shimmer" style="width: 50%; height: 12px; border-radius: 3px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2x2 Grid Skeleton -->
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 10px;">
+                    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; min-height: 220px; padding: 16px; gap: 12px;">
+                        <div class="skeleton-shimmer" style="width: 140px; height: 18px; border-radius: 4px;"></div>
+                        <div class="skeleton-shimmer" style="width: 100%; height: 34px; border-radius: 6px;"></div>
+                        <div class="skeleton-shimmer" style="width: 90%; height: 34px; border-radius: 6px;"></div>
+                        <div class="skeleton-shimmer" style="width: 85%; height: 34px; border-radius: 6px;"></div>
+                    </div>
+                    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; min-height: 220px; padding: 16px; gap: 12px;">
+                        <div class="skeleton-shimmer" style="width: 140px; height: 18px; border-radius: 4px;"></div>
+                        <div class="skeleton-shimmer" style="width: 100%; height: 34px; border-radius: 6px;"></div>
+                        <div class="skeleton-shimmer" style="width: 90%; height: 34px; border-radius: 6px;"></div>
+                        <div class="skeleton-shimmer" style="width: 85%; height: 34px; border-radius: 6px;"></div>
+                    </div>
+                    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; min-height: 220px; padding: 16px; gap: 12px;">
+                        <div class="skeleton-shimmer" style="width: 140px; height: 18px; border-radius: 4px;"></div>
+                        <div class="skeleton-shimmer" style="width: 100%; height: 34px; border-radius: 6px;"></div>
+                        <div class="skeleton-shimmer" style="width: 90%; height: 34px; border-radius: 6px;"></div>
+                        <div class="skeleton-shimmer" style="width: 85%; height: 34px; border-radius: 6px;"></div>
+                    </div>
+                    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; min-height: 220px; padding: 16px; gap: 12px;">
+                        <div class="skeleton-shimmer" style="width: 140px; height: 18px; border-radius: 4px;"></div>
+                        <div class="skeleton-shimmer" style="width: 100%; height: 34px; border-radius: 6px;"></div>
+                        <div class="skeleton-shimmer" style="width: 90%; height: 34px; border-radius: 6px;"></div>
+                        <div class="skeleton-shimmer" style="width: 85%; height: 34px; border-radius: 6px;"></div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -150,7 +218,7 @@
         </div>
     </nav>
 
-    <script type="module" src="/app.js?v=126"></script>
+    <script type="module" src="/app.js?v=128"></script>
 </body>
 
 </html>

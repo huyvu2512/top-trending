@@ -39,13 +39,14 @@ Hệ thống tích hợp trực tiếp YouTube Data API v3, Spotify Web API, Goo
 
 ## Tính năng chính
 - Bảng xếp hạng đa nền tảng - Đồng bộ đồng thời bảng xếp hạng từ 4 nền tảng lớn nhất hiện nay: YouTube Trending, Spotify Top 50, Google Trends 7 ngày qua và Netflix Top 10 Phim & TV Shows tại Việt Nam.
-- Dữ liệu mới 100% - Cơ chế pipeline tự động làm mới toàn bộ dữ liệu mỗi chu kỳ quét, không sử dụng lại bất kỳ dữ liệu cũ nào, đảm bảo phản ánh chính xác nhất diễn biến thịnh hành theo thời gian thực.
-- Đồng bộ Cloud Firestore - Áp dụng kiến trúc Bucket Document Pattern lưu trữ dữ liệu theo từng tài liệu riêng biệt, chỉ tiêu tốn 4-5 lượt ghi mỗi chu kỳ và vận hành hoàn toàn trong gói miễn phí của Firebase Spark.
-- Tự động hóa qua GitHub Actions - Thiết lập lịch trình cron tự động chạy pipeline mỗi 3 tiếng trên GitHub Actions, tự động đồng bộ lên Database mà không tạo bất kỳ commit rác nào trong lịch sử Git.
-- REST API module hóa - Cung cấp hệ thống router API riêng biệt (/api/status, /api/rankings, /api/rankings/:platform, /api/fetch, /api/sync) hỗ trợ truy vấn dữ liệu từ Firestore và kích hoạt cào dữ liệu thủ công.
-- Trực quan hóa dữ liệu hiện đại - Giao diện Dark/Light theme trực quan, bảng Spotlight tiêu điểm Top 1, bộ lọc đa danh mục linh hoạt (Tổng hợp, Âm nhạc, Trò chơi, Tin tức, Thể thao, Phim ảnh).
-- Tối ưu hóa di động - Hệ thống thanh điều hướng Bottom Navigation Bar chuẩn Native App, thanh bộ lọc chuyên mục trượt ngang mượt mà, phản hồi xúc giác chạm (:active) và bố cục hiển thị số liệu tinh gọn.
-- Chuẩn hóa SEO và Link Preview - Tích hợp đầy đủ thẻ OpenGraph, Twitter Cards, Schema.org JSON-LD, sitemap.xml và robots.txt giúp hiển thị ảnh xem trước sắc nét khi chia sẻ liên kết trên Facebook, Zalo, Telegram.
+- Dữ liệu 100% Cloud Firestore API - Vận hành hoàn toàn bằng Firestore API thời gian thực, không phụ thuộc vào các tệp tĩnh cục bộ, đảm bảo tính đồng nhất và tươi mới của dữ liệu.
+- Bóc tách YouTube Shorts chuyên biệt - Tích hợp scraper riêng biệt bóc tách video ngắn YouTube Shorts qua bộ lọc thời lượng và từ khóa nhận diện, phân loại rõ ràng với video dài truyền thống.
+- Đồng bộ Cloud Firestore tối ưu - Áp dụng kiến trúc Bucket Document Pattern lưu trữ theo từng tài liệu riêng biệt, chỉ tiêu tốn 4-5 lượt ghi mỗi chu kỳ và hoàn toàn nằm trong gói miễn phí của Firebase Spark.
+- Hiệu ứng tải trang & Shimmer 0ms - Tích hợp Glowing Top Progress Bar và hiệu ứng khung xương tải trước (Skeleton Shimmer) giúp chuyển đổi tab và tải trang tức thì, loại bỏ màn hình chờ.
+- REST API module hóa - Cung cấp hệ thống router API riêng biệt (/api/status, /api/rankings, /api/rankings/:platform, /api/rankings/google_explore, /api/fetch, /api/sync) hỗ trợ truy vấn dữ liệu từ Firestore và kích hoạt cào dữ liệu an toàn.
+- Trực quan hóa dữ liệu hiện đại - Hỗ trợ chế độ Sáng / Tối (Dark / Light Theme) chuẩn thiết kế, khung viền badge tương phản cao, bảng Spotlight tiêu điểm Top 1 và bộ lọc chuyên mục trượt ngang mượt mà.
+- Tối ưu hóa di động - Thanh điều hướng Bottom Navigation Bar chuẩn Native App, phản hồi xúc giác (:active) và bố cục hiển thị số liệu tinh gọn trên mọi kích thước màn hình.
+- Chuẩn hóa SEO và Link Preview - Tích hợp đầy đủ thẻ OpenGraph, Twitter Cards, Schema.org JSON-LD, sitemap.xml và robots.txt giúp hiển thị ảnh xem trước sắc nét khi chia sẻ liên kết trên mạng xã hội.
 
 ---
 
@@ -53,11 +54,11 @@ Hệ thống tích hợp trực tiếp YouTube Data API v3, Spotify Web API, Goo
 | Thành phần | Công nghệ |
 | :--- | :--- |
 | Frontend | HTML5, Vanilla JavaScript (ES6 Modules) |
-| Styling | Vanilla CSS3 (Dark Theme, Glassmorphism, Responsive Mobile) |
+| Styling | Vanilla CSS3 (Dark/Light Theme, Glassmorphism, Responsive Mobile) |
 | Backend Server | Node.js, Express.js (Modular Router) |
 | Database Cloud | Google Cloud Firestore (Firebase Admin SDK) |
 | Pipeline & Scrapers | Axios, Child Process, Fast XML Parser, Scraper Engine |
-| Tự động hóa CI/CD | GitHub Actions (Cron Workflow) |
+| Tự động hóa CI/CD | GitHub Actions (Workflow Dispatch / Webhook Trigger) |
 | Triển khai | Vercel Edge Network / VPS Node.js |
 
 ---
@@ -67,18 +68,12 @@ Hệ thống tích hợp trực tiếp YouTube Data API v3, Spotify Web API, Goo
 top-trending/
 ├── .github/
 │   └── workflows/
-│       └── update_data.yml        # Workflow Sync Data to Firebase tự động mỗi 3 tiếng
-├── public/                        # Toàn bộ Frontend tĩnh và tài nguyên web (phục vụ trực tiếp)
+│       └── update_data.yml        # Workflow Sync Data to Firebase (Workflow Dispatch / Webhook)
+├── public/                        # Toàn bộ Frontend tĩnh và tài nguyên web
 │   ├── assets/                    # Favicon, logo thương hiệu, banner preview
 │   │   ├── favicon.png
 │   │   ├── logo.png
 │   │   └── preview.png
-│   ├── data/                      # Dữ liệu bảng xếp hạng tĩnh JSON
-│   │   ├── google.json
-│   │   ├── google_explore.json
-│   │   ├── netflix.json
-│   │   ├── spotify.json
-│   │   └── youtube.json
 │   ├── views/                     # Các module giao diện render từng nền tảng
 │   │   ├── google.js
 │   │   ├── netflix.js
@@ -90,7 +85,8 @@ top-trending/
 │   ├── manifest.json              # Cấu hình PWA
 │   ├── robots.txt                 # Cấu hình robot tìm kiếm
 │   ├── sitemap.xml                # Sơ đồ trang web
-│   └── style.css                  # Hệ thống giao diện stylesheet
+│   ├── style.css                  # Hệ thống giao diện stylesheet đa theme
+│   └── utils.js                   # Tiện ích định dạng thời gian, view count, ranking
 ├── src/                           # Toàn bộ mã nguồn logic backend và thu thập dữ liệu
 │   ├── collectors/                # Bộ thu thập dữ liệu chuyên biệt từng nền tảng
 │   │   ├── google_trends.js
@@ -138,7 +134,7 @@ npm run dev
 
 ### Chạy thủ công Pipeline cào dữ liệu
 ```bash
-# Cào toàn bộ 4 nền tảng và đồng bộ vào Cloud Firestore và public/data/
+# Cào toàn bộ 4 nền tảng và đồng bộ trực tiếp lên Cloud Firestore
 npm run fetch
 ```
 
@@ -150,8 +146,9 @@ Hệ thống cung cấp các endpoint REST API backend phục vụ tra cứu d�
 | Endpoint | Method | Mô tả |
 | :--- | :--- | :--- |
 | `/api/status` | GET | Kiểm tra trạng thái hệ thống, kết nối Firestore DB và thời gian cập nhật |
-| `/api/rankings` | GET | Lấy toàn bộ bảng xếp hạng từ Firestore (kèm fallback các file dữ liệu nền tảng cục bộ) |
+| `/api/rankings` | GET | Lấy toàn bộ bảng xếp hạng trực tiếp từ Cloud Firestore |
 | `/api/rankings/:platform` | GET | Lấy bảng xếp hạng theo nền tảng cụ thể (youtube, spotify, google, netflix) |
+| `/api/rankings/google_explore` | GET | Lấy dữ liệu Google Trends Explore theo chuyên mục |
 | `/api/fetch` | GET | Kích hoạt thủ công pipeline cào dữ liệu mới 100% |
 | `/api/sync` | POST | Đồng bộ dữ liệu mới và cập nhật trạng thái lên Cloud Firestore |
 
@@ -164,14 +161,14 @@ Hệ thống cung cấp các endpoint REST API backend phục vụ tra cứu d�
 2. Đăng nhập vào Vercel Dashboard và chọn Add New Project.
 3. Chọn repository `top-trending`.
 4. Hệ thống Vercel sẽ tự động nhận diện cấu hình thông qua `vercel.json` và `package.json`.
-5. Thiết lập các biến môi trường tương ứng trong mục Environment Variables trên Vercel.
+5. Thiết lập các biến môi trường tương ứng trong mục Environment Variables trên Vercel (`FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY`, `YOUTUBE_API_KEY`).
 6. Nhấn Deploy để hoàn tất quy trình triển khai.
 
 ### Tự động hóa GitHub Actions
 Dự án tích hợp sẵn workflow tại `.github/workflows/update_data.yml`:
-- Tự động kích hoạt mỗi 3 tiếng một lần thông qua cron job `0 */3 * * *`.
+- Hỗ trợ kích hoạt thủ công (`workflow_dispatch`) hoặc tích hợp gọi qua webhook từ các dịch vụ tự động hóa bên thứ 3.
 - Nạp các Secrets cấu hình từ GitHub Settings (`FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY`, `YOUTUBE_API_KEY`).
-- Chạy pipeline cào dữ liệu sạch và ghi trực tiếp vào Cloud Firestore, đảm bảo bảng xếp hạng luôn tươi mới liên tục 24/7.
+- Chạy pipeline cào dữ liệu sạch và ghi trực tiếp vào Cloud Firestore, đảm bảo bảng xếp hạng luôn tươi mới liên tục 24/7 mà không sinh commit rác vào Git.
 
 ---
 

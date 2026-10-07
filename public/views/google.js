@@ -29,13 +29,16 @@ export const GOOGLE_CATEGORIES = [
 async function ensureExploreData() {
     if (_exploreCache) return _exploreCache;
     try {
-        const res = await fetch('/data/google_explore.json');
+        const res = await fetch('/api/rankings/google_explore');
         if (res.ok) {
-            _exploreCache = await res.json();
-            return _exploreCache;
+            const data = await res.json();
+            if (data.explore) {
+                _exploreCache = data.explore;
+                return _exploreCache;
+            }
         }
     } catch (e) {
-        console.warn('Lỗi nạp google_explore.json:', e);
+        console.warn('Lỗi nạp google_explore từ API:', e);
     }
     return { top: [], rising: [] };
 }

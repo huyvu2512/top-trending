@@ -47,12 +47,9 @@ export function buildSpotifyContentHtml(items, isOverview, currentCategory, stat
         return num.toLocaleString();
     };
 
-    // Pre-load artist avatars cache
+    // Artist avatars cache
     if (typeof window !== 'undefined' && !window._spotifyArtistsCache) {
-        fetch('/data/spotify_artists.json')
-            .then(res => res.json())
-            .then(data => { window._spotifyArtistsCache = data; })
-            .catch(() => { });
+        window._spotifyArtistsCache = {};
     }
 
     // Helper: Avatar nghệ sĩ

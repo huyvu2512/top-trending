@@ -276,8 +276,9 @@ export function buildYouTubeContentHtml(items, isOverview, currentCategory, stat
         keywordsHtml = `<div class="yt-keywords-cloud">${renderKeywordTags(overviewKws)}</div>`;
 
         const sectionMap = {
-            'Tổng hợp': fullItems.slice(0, 50),
+            'Tổng hợp': fullItems.filter(v => !v.isShort).slice(0, 50),
             'Shorts': fullItems.filter(v => {
+                if (v.isShort || v.categoryId === 'shorts' || v.category === 'Shorts') return true;
                 const t = (v.title || '').toLowerCase();
                 const d = v.duration || '';
                 return t.includes('#shorts') || t.includes('shorts') || d.startsWith('0:') || d === '1:00';
@@ -417,10 +418,17 @@ export function buildYouTubeContentHtml(items, isOverview, currentCategory, stat
     let mainContentHtml = '';
 
     if (!items || items.length === 0) {
+        let emptyDesc = 'Hệ thống đang cập nhật dữ liệu xu hướng mới nhất.';
+        if (currentCategory === 'shorts') {
+            emptyDesc = 'Hiện tại trong Top 50 Video Xu hướng YouTube Việt Nam không có video dạng Shorts (thời lượng ≤ 60s).';
+        } else if (currentCategory && currentCategory !== 'all') {
+            emptyDesc = 'Chưa có video thịnh hành thuộc danh mục này trong chu kỳ quét hiện tại.';
+        }
+
         mainContentHtml = `
             <div class="empty-state">
                 <h3 class="empty-state-title">Chưa có dữ liệu hiển thị</h3>
-                <p class="empty-state-desc">Hệ thống đang cập nhật dữ liệu xu hướng mới nhất.</p>
+                <p class="empty-state-desc">${emptyDesc}</p>
             </div>
         `;
     } else {

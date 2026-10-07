@@ -29,7 +29,8 @@ export function renderOverview(container, items, onPlayMedia, state = {}) {
         );
     };
 
-    const ytItems = filterList(allRankings.youtube || items.filter(i => i.platform === 'youtube'));
+    const ytRaw = (allRankings.youtube || items.filter(i => i.platform === 'youtube')).filter(i => !i.isShort);
+    const ytItems = filterList(ytRaw);
     const spItems = filterList(allRankings.spotify || items.filter(i => i.platform === 'spotify'));
     const ggItems = filterList(allRankings.google || items.filter(i => i.platform === 'google'));
     const nfItems = filterList(allRankings.netflix || items.filter(i => i.platform === 'netflix'));

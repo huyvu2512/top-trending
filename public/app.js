@@ -70,11 +70,43 @@ function updateUrl(platform) {
     }
 }
 
+// Top Glowing Progress Bar Controls
+function startProgressBar() {
+    const bar = document.getElementById('top-progress-bar');
+    if (!bar) return;
+    bar.style.transition = 'width 0.4s ease, opacity 0.2s ease';
+    bar.style.opacity = '1';
+    bar.style.width = '35%';
+    bar.classList.add('active');
+    setTimeout(() => {
+        if (bar.classList.contains('active') && parseFloat(bar.style.width) < 80) {
+            bar.style.width = '75%';
+        }
+    }, 250);
+}
+
+function finishProgressBar() {
+    const bar = document.getElementById('top-progress-bar');
+    if (!bar) return;
+    bar.style.width = '100%';
+    setTimeout(() => {
+        bar.style.opacity = '0';
+        setTimeout(() => {
+            bar.style.width = '0%';
+            bar.classList.remove('active');
+        }, 300);
+    }, 200);
+}
+
 // Initialize App
 async function init() {
+    startProgressBar();
     state.activePlatform = getPlatformFromUrl();
+    // Render khung Skeleton Shimmer ngay tức thì (0ms) để không bị màn hình đen
+    renderSkeleton();
     setupEvents();
     await loadMetadata();
+    finishProgressBar();
 }
 
 // Preload all platforms in background so tab switching is instantaneous from RAM
@@ -99,65 +131,7 @@ function updateHeaderTimestamp() {
     }
 }
 
-// Chuyển đổi định dạng REST document của Google Cloud Firestore sang Object JS
-function parseFirestoreRestValue(val) {
-    if (!val) return null;
-    if ('stringValue' in val) return val.stringValue;
-    if ('integerValue' in val) return parseInt(val.integerValue, 10);
-    if ('doubleValue' in val) return parseFloat(val.doubleValue);
-    if ('booleanValue' in val) return val.booleanValue;
-    if ('timestampValue' in val) return val.timestampValue;
-    if ('arrayValue' in val) return (val.arrayValue.values || []).map(parseFirestoreRestValue);
-    if ('mapValue' in val) {
-        const obj = {};
-        for (const [k, v] of Object.entries(val.mapValue.fields || {})) {
-            obj[k] = parseFirestoreRestValue(v);
-        }
-        return obj;
-    }
-    return null;
-}
-
-async function fetchFromFirestoreRest() {
-    try {
-        const url = 'https://firestore.googleapis.com/v1/projects/top-trending-b1ef4/databases/(default)/documents/rankings';
-        const res = await fetch(url);
-        if (!res.ok) return null;
-        const data = await res.json();
-        const rankings = {};
-        const platformsUpdated = {};
-        let overallUpdate = null;
-
-        for (const doc of data.documents || []) {
-            const key = doc.name.split('/').pop();
-            const fields = doc.fields || {};
-            const lastUp = fields.lastUpdated?.stringValue || fields.last_updated?.stringValue;
-            if (key === 'metadata') {
-                if (lastUp) overallUpdate = lastUp;
-            } else {
-                if (lastUp) {
-                    platformsUpdated[key] = lastUp;
-                    if (!overallUpdate || lastUp > overallUpdate) {
-                        overallUpdate = lastUp;
-                    }
-                }
-                if (fields.items) {
-                    rankings[key] = parseFirestoreRestValue(fields.items);
-                }
-            }
-        }
-        return {
-            rankings,
-            platforms_updated: platformsUpdated,
-            last_updated: overallUpdate
-        };
-    } catch (e) {
-        console.warn('Firestore REST fallback warning:', e);
-        return null;
-    }
-}
-
-// Load metadata & rankings trực tiếp từ DB (ưu tiên API -> Firestore REST -> Local fallback)
+// Load metadata & rankings trực tiếp từ API backend (/api/rankings)
 async function loadMetadata() {
     const defaultPlatforms = [
         { id: "all", name: "Tất cả", icon: "grid" },
@@ -176,9 +150,6 @@ async function loadMetadata() {
 
     renderPlatforms();
 
-    let fetched = false;
-
-    // 1. Thử gọi API backend (/api/rankings)
     try {
         const apiRes = await fetch('/api/rankings');
         if (apiRes.ok) {
@@ -187,34 +158,10 @@ async function loadMetadata() {
                 state.data.rankings = json.rankings;
                 state.data.last_updated = json.last_updated;
                 state.data.platforms_updated = json.platforms_updated || {};
-                fetched = true;
             }
         }
-    } catch (_) {}
-
-    // 2. Nếu API chưa phản hồi, tải trực tiếp qua REST API của Firestore (Google Cloud Edge CDN)
-    if (!fetched) {
-        const fsData = await fetchFromFirestoreRest();
-        if (fsData && Object.keys(fsData.rankings).length > 0) {
-            state.data.rankings = fsData.rankings;
-            state.data.last_updated = fsData.last_updated;
-            state.data.platforms_updated = fsData.platforms_updated || {};
-            fetched = true;
-        }
-    }
-
-    // 3. Fallback file cục bộ nếu ngoại tuyến
-    if (!fetched) {
-        const platforms = ['youtube', 'spotify', 'google', 'netflix'];
-        await Promise.all(platforms.map(async (p) => {
-            try {
-                const fileRes = await fetch(`/data/${p}.json`);
-                if (fileRes.ok) {
-                    state.data.rankings[p] = await fileRes.json();
-                    fetched = true;
-                }
-            } catch (_) {}
-        }));
+    } catch (e) {
+        console.warn('Lỗi tải /api/rankings:', e);
     }
 
     updateHeaderTimestamp();
@@ -378,21 +325,32 @@ function updateActivePlatformChip(activePlatform) {
     });
 }
 
-// Load individual platform file from /data/${platform}.json
+// Load individual platform data từ backend API (/api/rankings/:platform)
 async function loadPlatformData(platform) {
-    if (state.data.rankings[platform]) return state.data.rankings[platform];
+    if (state.data.rankings[platform] && state.data.rankings[platform].length > 0) {
+        return state.data.rankings[platform];
+    }
+
     try {
-        const res = await fetch(`/data/${platform}.json`);
+        const res = await fetch(`/api/rankings/${platform}`);
         if (res.ok) {
-            const items = await res.json();
-            if (Array.isArray(items)) {
-                state.data.rankings[platform] = items;
-                return items;
+            const json = await res.json();
+            if (Array.isArray(json.items) && json.items.length > 0) {
+                state.data.rankings[platform] = json.items;
+                if (json.last_updated) {
+                    state.data.platforms_updated[platform] = json.last_updated;
+                    if (!state.data.last_updated || json.last_updated > state.data.last_updated) {
+                        state.data.last_updated = json.last_updated;
+                        updateHeaderTimestamp();
+                    }
+                }
+                return json.items;
             }
         }
     } catch (e) {
-        console.error(`Không thể tải dữ liệu /data/${platform}.json:`, e);
+        console.warn(`Lỗi tải /api/rankings/${platform}:`, e);
     }
+
     return [];
 }
 
@@ -470,6 +428,7 @@ function renderSkeleton() {
 // Chuyển đổi nền tảng mượt mà với hiệu ứng Skeleton Shimmer tự nhiên (tránh chớp giật 1 frame)
 async function switchPlatform(platform) {
     if (!platform) return;
+    startProgressBar();
     state.activePlatform = platform;
     state.activeCategory = 'all';
     updateUrl(platform);
@@ -497,6 +456,7 @@ async function switchPlatform(platform) {
     }
 
     renderCurrentView();
+    finishProgressBar();
 }
 
 // Fetch Ranking Data per Platform (Vietnam Focus)
@@ -533,7 +493,7 @@ function getFilteredItems() {
         const rawItems = state.data.rankings[state.activePlatform] || [];
         if (state.activePlatform === 'youtube') {
             if (state.activeCategory === 'all') {
-                items = rawItems;
+                items = rawItems.filter(i => !i.isShort);
             } else if (state.activeCategory === 'velocity') {
                 // Sắp xếp theo tốc độ tăng trưởng Xem/giờ
                 const getVelocityScore = (item) => {
@@ -547,14 +507,16 @@ function getFilteredItems() {
                         }
                     }
                     const pub = new Date(item.publishedAt || 0).getTime();
-                    const now = new Date('2026-10-05T17:30:00Z').getTime();
+                    const now = Date.now();
                     const hours = Math.max(1, (now - pub) / (1000 * 60 * 60));
                     return (item.rawViews || 0) / hours;
                 };
-                items = [...rawItems].sort((a, b) => getVelocityScore(b) - getVelocityScore(a));
+                const regularItems = rawItems.filter(i => !i.isShort);
+                items = [...regularItems].sort((a, b) => getVelocityScore(b) - getVelocityScore(a));
             } else if (state.activeCategory === 'shorts') {
-                // Lọc video Shorts (tiêu đề chứa #shorts, shorts hoặc thời lượng <= 60s)
+                // Lọc danh sách video Shorts thực tế
                 items = rawItems.filter(i => {
+                    if (i.isShort || i.categoryId === 'shorts' || i.category === 'Shorts') return true;
                     const title = (i.title || '').toLowerCase();
                     const isShortTitle = title.includes('#shorts') || title.includes('shorts');
                     const dur = i.duration || '';
@@ -569,7 +531,7 @@ function getFilteredItems() {
                     'news': 'Tin tức'
                 };
                 const catName = categoryMap[state.activeCategory] || state.activeCategory;
-                items = rawItems.filter(i => i.category === catName || i.categoryId === state.activeCategory);
+                items = rawItems.filter(i => !i.isShort && (i.category === catName || i.categoryId === state.activeCategory));
             }
         } else if (state.activePlatform === 'spotify') {
             if (state.activeCategory === 'all') {

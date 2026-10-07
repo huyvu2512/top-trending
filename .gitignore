@@ -15,10 +15,10 @@ yarn-debug.log*
 yarn-error.log*
 *.log
 
-# File / thư mục rác, tạm thời
+# Thư mục dữ liệu cào tạm thời (100% sử dụng Firestore API, không lưu data vào git)
+data/
+public/data/
 scratch/
-/data/
-public/data/platforms.json
 .DS_Store
 Thumbs.db
 .vscode/

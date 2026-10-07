@@ -404,18 +404,25 @@ button {
 }
 
 [data-theme="light"] .platform-time-badge {
-    background-color: #f3f4f6;
-    border-color: #e5e7eb;
-    color: #4b5563;
+    background-color: #ffffff;
+    border: 1px solid #94a3b8;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    color: #334155;
 }
 
 [data-theme="light"] .platform-time-badge strong {
-    color: #111827;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+[data-theme="light"] .platform-time-badge .badge-clock-icon {
+    color: #475569;
 }
 
 [data-theme="light"] .platform-time-badge:hover {
-    background-color: #e5e7eb;
-    border-color: #d1d5db;
+    background-color: #f8fafc;
+    border-color: #64748b;
+    box-shadow: 0 2px 5px rgba(15, 23, 42, 0.12);
 }
 
 /* Theme Toggle Switch */
@@ -481,17 +488,24 @@ button {
    ========================================================================== */
 [data-theme="light"] .header-updated-badge {
     background-color: #ffffff;
-    border-color: rgba(0, 0, 0, 0.14);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-    color: #475569;
+    border: 1px solid #94a3b8;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    color: #334155;
 }
 
 [data-theme="light"] .header-updated-badge strong {
     color: #0f172a;
+    font-weight: 600;
+}
+
+[data-theme="light"] .header-updated-badge:hover {
+    background-color: #f8fafc;
+    border-color: #64748b;
+    box-shadow: 0 2px 5px rgba(15, 23, 42, 0.12);
 }
 
 [data-theme="light"] .updated-badge-icon {
-    color: #64748b;
+    color: #475569;
 }
 
 [data-theme="light"] .region-menu {
@@ -6933,4 +6947,43 @@ button {
 .sp-pop-item:hover .nf-n-badge svg,
 .sp-rec-item:hover .nf-n-badge svg {
     transform: scale(1.08);
+}
+
+/* ==========================================================================
+   TOP PROGRESS BAR & GLOBAL LOADING EFFECTS
+   ========================================================================== */
+.top-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #ff1e42, #ff758c, #ff1e42);
+    background-size: 200% 100%;
+    z-index: 99999;
+    box-shadow: 0 0 12px rgba(255, 30, 66, 0.8), 0 0 5px rgba(255, 30, 66, 0.5);
+    transition: width 0.35s ease, opacity 0.25s ease;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.top-progress-bar.active {
+    opacity: 1;
+    animation: topProgressGlow 1.8s linear infinite;
+}
+
+@keyframes topProgressGlow {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+.skeleton-shimmer {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.13) 50%, rgba(255, 255, 255, 0.05) 75%) !important;
+    background-size: 200% 100% !important;
+    animation: skeleton-shimmer 1.4s ease-in-out infinite !important;
+}
+
+[data-theme="light"] .skeleton-shimmer {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.05) 25%, rgba(0, 0, 0, 0.12) 50%, rgba(0, 0, 0, 0.05) 75%) !important;
+    background-size: 200% 100% !important;
 }
