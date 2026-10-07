@@ -70,43 +70,13 @@ function updateUrl(platform) {
     }
 }
 
-// Top Glowing Progress Bar Controls
-function startProgressBar() {
-    const bar = document.getElementById('top-progress-bar');
-    if (!bar) return;
-    bar.style.transition = 'width 0.4s ease, opacity 0.2s ease';
-    bar.style.opacity = '1';
-    bar.style.width = '35%';
-    bar.classList.add('active');
-    setTimeout(() => {
-        if (bar.classList.contains('active') && parseFloat(bar.style.width) < 80) {
-            bar.style.width = '75%';
-        }
-    }, 250);
-}
-
-function finishProgressBar() {
-    const bar = document.getElementById('top-progress-bar');
-    if (!bar) return;
-    bar.style.width = '100%';
-    setTimeout(() => {
-        bar.style.opacity = '0';
-        setTimeout(() => {
-            bar.style.width = '0%';
-            bar.classList.remove('active');
-        }, 300);
-    }, 200);
-}
-
 // Initialize App
 async function init() {
-    startProgressBar();
     state.activePlatform = getPlatformFromUrl();
     // Render khung Skeleton Shimmer ngay tức thì (0ms) để không bị màn hình đen
     renderSkeleton();
     setupEvents();
     await loadMetadata();
-    finishProgressBar();
 }
 
 // Preload all platforms in background so tab switching is instantaneous from RAM

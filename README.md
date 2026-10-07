@@ -42,7 +42,7 @@ Hệ thống tích hợp trực tiếp YouTube Data API v3, Spotify Web API, Goo
 - Dữ liệu 100% Cloud Firestore API - Vận hành hoàn toàn bằng Firestore API thời gian thực, không phụ thuộc vào các tệp tĩnh cục bộ, đảm bảo tính đồng nhất và tươi mới của dữ liệu.
 - Bóc tách YouTube Shorts chuyên biệt - Tích hợp scraper riêng biệt bóc tách video ngắn YouTube Shorts qua bộ lọc thời lượng và từ khóa nhận diện, phân loại rõ ràng với video dài truyền thống.
 - Đồng bộ Cloud Firestore tối ưu - Áp dụng kiến trúc Bucket Document Pattern lưu trữ theo từng tài liệu riêng biệt, chỉ tiêu tốn 4-5 lượt ghi mỗi chu kỳ và hoàn toàn nằm trong gói miễn phí của Firebase Spark.
-- Hiệu ứng tải trang & Shimmer 0ms - Tích hợp Glowing Top Progress Bar và hiệu ứng khung xương tải trước (Skeleton Shimmer) giúp chuyển đổi tab và tải trang tức thì, loại bỏ màn hình chờ.
+- Hiệu ứng khung xương tải 0ms - Tích hợp cấu trúc khung xương tải trước (Skeleton Shimmer) giúp chuyển đổi tab tức thì, loại bỏ hoàn toàn màn hình chờ.
 - REST API module hóa - Cung cấp hệ thống router API riêng biệt (/api/status, /api/rankings, /api/rankings/:platform, /api/rankings/google_explore, /api/fetch, /api/sync) hỗ trợ truy vấn dữ liệu từ Firestore và kích hoạt cào dữ liệu an toàn.
 - Trực quan hóa dữ liệu hiện đại - Hỗ trợ chế độ Sáng / Tối (Dark / Light Theme) chuẩn thiết kế, khung viền badge tương phản cao, bảng Spotlight tiêu điểm Top 1 và bộ lọc chuyên mục trượt ngang mượt mà.
 - Tối ưu hóa di động - Thanh điều hướng Bottom Navigation Bar chuẩn Native App, phản hồi xúc giác (:active) và bố cục hiển thị số liệu tinh gọn trên mọi kích thước màn hình.

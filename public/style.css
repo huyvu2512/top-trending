@@ -6950,32 +6950,8 @@ button {
 }
 
 /* ==========================================================================
-   TOP PROGRESS BAR & GLOBAL LOADING EFFECTS
+   GLOBAL LOADING & SKELETON EFFECTS
    ========================================================================== */
-.top-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    width: 0%;
-    background: linear-gradient(90deg, #ff1e42, #ff758c, #ff1e42);
-    background-size: 200% 100%;
-    z-index: 99999;
-    box-shadow: 0 0 12px rgba(255, 30, 66, 0.8), 0 0 5px rgba(255, 30, 66, 0.5);
-    transition: width 0.35s ease, opacity 0.25s ease;
-    pointer-events: none;
-    opacity: 0;
-}
-
-.top-progress-bar.active {
-    opacity: 1;
-    animation: topProgressGlow 1.8s linear infinite;
-}
-
-@keyframes topProgressGlow {
-    0% { background-position: 100% 0; }
-    100% { background-position: -100% 0; }
-}
 
 .skeleton-shimmer {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.13) 50%, rgba(255, 255, 255, 0.05) 75%) !important;
