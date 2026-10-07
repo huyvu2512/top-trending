@@ -398,7 +398,6 @@ function renderSkeleton() {
 // Chuyển đổi nền tảng mượt mà với hiệu ứng Skeleton Shimmer tự nhiên (tránh chớp giật 1 frame)
 async function switchPlatform(platform) {
     if (!platform) return;
-    startProgressBar();
     state.activePlatform = platform;
     state.activeCategory = 'all';
     updateUrl(platform);
@@ -426,7 +425,6 @@ async function switchPlatform(platform) {
     }
 
     renderCurrentView();
-    finishProgressBar();
 }
 
 // Fetch Ranking Data per Platform (Vietnam Focus)
